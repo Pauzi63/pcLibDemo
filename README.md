@@ -1,5 +1,63 @@
 # Getting Started with Create React App
 
+(evt. vorher npm aus Roaming löschen)
+npm install -g typescript
+
+# create-react-app
+
+https://create-react-app.dev/docs/adding-typescript/
+yarn create react-app krmdemo --template typescript
+
+# Material-ui
+
+https://material-ui.com/getting-started/installation/
+yarn add @material-ui/core
+yarn add @material-ui/icons
+public/index.html
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" />
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
+
+# react-query
+
+https://react-query.tanstack.com/installation
+yarn add react-query
+
+# react-router
+
+https://create-react-app.dev/docs/adding-a-router
+yarn add react-router-dom
+
+# axios
+
+https://github.com/axios/axios#installing
+yarn add axios
+
+# env
+
+# MSAL
+
+yarn add msal
+yarn add react-aad-msal
+
+# Bearer Token KrmCore
+
+yarn add jwt-decode
+
+# Formik
+
+# Material-table
+
+# diverse libraries
+
+yarn add react-localization
+
+# tsconfig.json
+
+"jsx": "react"
+
+# ---------------------------------------------------------------
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
