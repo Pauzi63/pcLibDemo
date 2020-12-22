@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { ThemeProvider } from '@material-ui/core/styles';
-import useThemes from '../../styles/useThemes';
+import useThemes from '../../styles/krmTheme';
 
 import { UserLayoutSettings } from '../../context/UserLayoutSettings';
 

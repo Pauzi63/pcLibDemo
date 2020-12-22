@@ -1,0 +1,58 @@
+import React from 'react';
+import { render } from 'react-dom';
+import { BrowserRouter, Switch, Route, Redirect } from 'react-router-dom';
+import { Link } from 'react-router-dom';
+import NotFoundPage from './pages/Common/NotFoundPage';
+import Page1 from './pages/Page1/Page1';
+import Page2 from './pages/DummyPages/Page2';
+import Page3 from './pages/DummyPages/Page3';
+import ApplicationTheme from './components/Layout/ApplicationTheme';
+import MsalAuthentication from './authentication/MsalAuthentication';
+// import ClippedDrawer from './components/Layout/MuiLayout';
+import Header from './components/Layout/Header';
+import Sidebar from '././components/Layout/Sidebar';
+
+const NavBar = () => {
+  return (
+    <div className="navbar">
+      <ul>
+        <li>
+          <Link to="/">Page1</Link>
+        </li>
+        <li>
+          <Link to="/page2">Page2</Link>
+        </li>
+        <li>
+          <Link to="/page3">Page3</Link>
+        </li>
+      </ul>
+    </div>
+  );
+};
+
+const Appx = () => (
+  <MsalAuthentication>
+    <ApplicationTheme>
+      <BrowserRouter>
+        <Header />
+        <Sidebar />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+
+        <NavBar />
+        <Switch>
+          <Route exact path="/" component={Page1} />
+          <Route exact path="/page2" component={Page2} />
+          <Route exact path="/page3" component={Page3} />
+          <Route component={NotFoundPage} />
+        </Switch>
+      </BrowserRouter>
+      //{' '}
+    </ApplicationTheme>
+  </MsalAuthentication>
+);
+
+export default Appx;
