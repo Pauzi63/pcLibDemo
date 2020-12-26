@@ -1,28 +1,15 @@
 import React from 'react';
-import MaterialTable from 'material-table';
+import MaterialTablePage1List from './components/MaterialTablePage1List';
 
-const MaterialTablePage1 = () => {
+interface Props {
+  path: string;
+}
+
+export default function MaterialTablePage1(props: Props) {
   return (
-    <React.Fragment>
-      Franz!
-      <MaterialTable
-        columns={[
-          { title: 'Adı', field: 'name' },
-          { title: 'Soyadı', field: 'surname' },
-          { title: 'Doğum Yılı', field: 'birthYear', type: 'numeric' },
-          {
-            title: 'Doğum Yeri',
-            field: 'birthCity',
-            lookup: { 34: 'İstanbul', 63: 'Şanlıurfa' },
-          },
-        ]}
-        data={[
-          { name: 'Mehmet', surname: 'Baran', birthYear: 1987, birthCity: 63 },
-        ]}
-        title="Demo Title"
-      />
-    </React.Fragment>
+    <div>
+      <h1>react-query Liste</h1>
+      <MaterialTablePage1List />
+    </div>
   );
-};
-
-export default MaterialTablePage1;
+}

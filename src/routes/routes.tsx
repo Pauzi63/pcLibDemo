@@ -4,6 +4,7 @@ import Page1 from '../pages/DummyPages/Page1';
 import Page2 from '../pages/DummyPages/Page2';
 import Page3 from '../pages/DummyPages/Page3';
 import MaterialTablePage1 from '../pages/MaterialTable/MaterialTablePage1';
+import MaterialTablePage2 from '../pages/MaterialTable/MaterialTablePage2';
 
 export default function Routes() {
   return (
@@ -11,7 +12,8 @@ export default function Routes() {
       <Route exact path="/" component={Page1} />
       <Route path="/page2" component={Page2} />
       <Route path="/page3" component={Page3} />
-      <Route path="/muitable1" component={MaterialTablePage1} />
+      <Route exact path="/muitable1" component={MaterialTablePage1} />
+      <Route path="/muitable1/:id" component={MaterialTablePage2} />
       <Route component={NotFoundPage} />
     </Switch>
   );
