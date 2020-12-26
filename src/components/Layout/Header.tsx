@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import { makeStyles } from '@material-ui/core/styles';
+import { createStyles, Theme, makeStyles } from '@material-ui/core/styles';
 import {
   AppBar,
   Toolbar,
@@ -14,28 +14,31 @@ import flagUK from '../../assets/flag-united-kingdom-64.png';
 
 import globals from '../../utils/Globals';
 // import strings from '../../utils/Localization'
-
+//import useStyles from '../../styles/useStyles';
 import { UserLayoutSettings } from '../../context/UserLayoutSettings';
 
-const useStyles = makeStyles({
-  appBar: {
-    position: 'relative',
-    backgroundColor: globals.companyColor,
-  },
-  imgLogo: {
-    marginRight: 8,
-  },
-  title: {
-    flexGrow: 1,
-    color: '#ffffff',
-  },
-  imgFlag: {
-    height: 22,
-    width: 42,
-    border: '1px solid #ffffff',
-    marginRight: 15,
-  },
-});
+const useStyles = makeStyles((theme: Theme) =>
+  createStyles({
+    appBar: {
+      position: 'fixed',
+      backgroundColor: globals.companyColor,
+      zIndex: theme.zIndex.drawer + 1,
+    },
+    imgLogo: {
+      marginRight: 8,
+    },
+    title: {
+      flexGrow: 1,
+      color: '#ffffff',
+    },
+    imgFlag: {
+      height: 22,
+      width: 42,
+      border: '1px solid #ffffff',
+      marginRight: 15,
+    },
+  })
+);
 
 const Header = () => {
   const classes = useStyles();
@@ -44,7 +47,7 @@ const Header = () => {
   );
 
   return (
-    <AppBar color="default" className={classes.appBar}>
+    <AppBar position="fixed" className={classes.appBar}>
       <Toolbar>
         <img src={logo} alt="logo" className={classes.imgLogo} />
         <Typography

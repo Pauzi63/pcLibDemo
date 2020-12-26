@@ -4,7 +4,7 @@ import { red, grey } from '@material-ui/core/colors';
 // durch UserLayoutSettings Context ersetzen?
 import useDarkMode from '../hooks/useDarkMode';
 
-const useThemes = () => {
+const KrmTheme = () => {
   const { darkMode } = useDarkMode();
   return responsiveFontSizes(
     createMuiTheme({
@@ -17,4 +17,4 @@ const useThemes = () => {
   );
 };
 
-export default useThemes;
+export default KrmTheme;
