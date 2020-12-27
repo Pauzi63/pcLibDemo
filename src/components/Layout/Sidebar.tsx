@@ -92,6 +92,20 @@ const Sidebar = () => {
               </Link>
             </List>
             <Divider />
+
+            <Divider />
+            <List>
+              <Link to="/formikpage1" className={classes.link}>
+                <ListItem button>
+                  <ListItemIcon>
+                    <HomeIcon />
+                  </ListItemIcon>
+                  <ListItemText primary={'Formik Page 1'} />
+                </ListItem>
+              </Link>
+            </List>
+            <Divider />
+
             <List>
               <Link to="/page404" className={classes.link}>
                 <ListItem button>
