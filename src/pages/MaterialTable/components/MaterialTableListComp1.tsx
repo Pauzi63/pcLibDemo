@@ -5,7 +5,7 @@ import { useHistory } from 'react-router-dom';
 import CircularProgress from '@material-ui/core/CircularProgress';
 import { useGetToDos } from '../../../hooks/datahooks/useDoTo';
 
-export default function MaterialTablePage1List() {
+export default function MaterialTableListComp1() {
   const history = useHistory();
   const { data, error, isLoading, isError } = useGetToDos();
 
