@@ -3,4 +3,5 @@ export interface IBaustelle {
   baustelle: string;
   vorname: string;
   nachname: string;
+  ort: string;
 }

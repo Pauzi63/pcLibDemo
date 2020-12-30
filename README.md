@@ -1,6 +1,6 @@
 # Getting Started with Create React App
 
-(evt. vorher npm aus Roaming löschen)
+(evt. vorher npm aus Windows User Roaming-Folder löschen)
 npm install -g typescript
 
 # create-react-app
@@ -59,6 +59,12 @@ yarn add react-localization
 # Extensions
 
 C# to TypeScript
+
+# json-webserver
+
+json-webserver https://github.com/typicode/json-server
+Installation: npm install -g json-server
+Start im Verzeichnis vom db.json: json-server --watch db.json --port 3004
 
 # ---------------------------------------------------------------
 

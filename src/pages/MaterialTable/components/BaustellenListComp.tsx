@@ -1,22 +1,13 @@
-import React, {
-  Component,
-  forwardRef,
-  useContext,
-  useState,
-  useEffect,
-} from 'react';
+import React from 'react';
 import MaterialTable from 'material-table';
 import { AxiosError } from 'axios';
 import { useHistory } from 'react-router-dom';
 import CircularProgress from '@material-ui/core/CircularProgress';
 import { useGetBaustellen } from '../../../hooks/datahooks/useBaustelle';
-import { IBaustelle } from '../../../Interfaces/ResponseInterfaces';
 
 export default function BaustellenListComp() {
   const history = useHistory();
   const { data, error, isLoading, isError } = useGetBaustellen();
-
-  console.log('List data: ', data);
 
   if (isLoading) {
     return <CircularProgress />;
@@ -28,6 +19,7 @@ export default function BaustellenListComp() {
       return (
         <div>
           Es ist ein Fehler aufgetreten: {axiosError.response?.statusText}{' '}
+          {axiosError.message}
         </div>
       );
     }
@@ -38,14 +30,16 @@ export default function BaustellenListComp() {
       <MaterialTable
         title="Baustellen"
         columns={[
-          { title: 'Id', field: 'id', hidden: false },
+          { title: 'Id', field: 'id', type: 'numeric', hidden: false },
           {
             title: 'Baustelle',
             field: 'baustelle',
             removable: false,
+            type: 'string',
           },
-          { title: 'Vorname', field: 'vorname' },
-          { title: 'Nachname', field: 'nachname' },
+          { title: 'Vorname', field: 'vorname', type: 'string' },
+          { title: 'Nachname', field: 'nachname', type: 'string' },
+          { title: 'Ort', field: 'ort', type: 'string' },
         ]}
         data={data}
         options={{
