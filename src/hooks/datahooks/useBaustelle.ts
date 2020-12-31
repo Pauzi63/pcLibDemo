@@ -40,9 +40,20 @@ export function usePutBaustelle(payload: any) {
   return mutation;
 }
 
+export function usePostBaustelle(payload: IBaustelle) {
+  const { mutateAsync } = useMutation((p) => postBaustelle(payload), {});
+  return mutateAsync;
+}
 // const mutation = useMutation(newTodo => axios.post('/todos', newTodo))
 
 export async function putBaustelle(payload: IBaustelle) {
   const response = await axios.put(`${endpoint}/${payload.id}`, payload);
   return response.data;
+}
+
+export async function postBaustelle(payload: IBaustelle) {
+  const response = await axios.post(`${endpoint}`, payload);
+  return response.data;
+
+  // return await axios.post(`${endpoint}`, payload);
 }

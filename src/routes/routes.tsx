@@ -7,6 +7,7 @@ import MaterialTableListPage1 from '../pages/MaterialTable/MaterialTableListPage
 import MaterialTableDetailPage1 from '../pages/MaterialTable/MaterialTableDetailPage1';
 import BaustellenListPage from '../pages/MaterialTable/BaustellenListPage';
 import BaustellenDetailPage from '../pages/MaterialTable/BaustellenDetailPage';
+import BaustellenDetailPageAddNew from '../pages/MaterialTable/BaustellenDetailPageAddNew';
 import FormikPage1 from '../pages/Formik/FormikPage1';
 
 export default function Routes() {
@@ -18,7 +19,12 @@ export default function Routes() {
       <Route exact path="/muitable1" component={MaterialTableListPage1} />
       <Route path="/muitable1/:id" component={MaterialTableDetailPage1} />
       <Route exact path="/bsttable" component={BaustellenListPage} />
-      <Route exact path="/bsttable/:id" component={BaustellenDetailPage} />
+      <Route exact path="/bsttable/edit/:id" component={BaustellenDetailPage} />
+      <Route
+        exact
+        path="/bsttable/addnew"
+        component={BaustellenDetailPageAddNew}
+      />
       <Route path="/formikpage1" component={FormikPage1} />
       <Route component={NotFoundPage} />
     </Switch>

@@ -1,7 +1,7 @@
 import { Button } from '@material-ui/core';
 import { CircularProgress } from '@material-ui/core';
 import { AxiosError } from 'axios';
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useHistory, useParams } from 'react-router-dom';
 import {
   useGetBaustelleById,
@@ -9,19 +9,11 @@ import {
   putBaustelle,
 } from '../../hooks/datahooks/useBaustelle';
 import { IBaustelle } from '../../Interfaces/ResponseInterfaces';
-import BaustellenDetailComp from './components/BaustellenDetailComp';
 import FormikBstComp from './components/FormikBstComp';
 
 interface ParamTypes {
   id: string;
 }
-
-const intialValue = {
-  id: 0,
-  baustelle: '',
-  vorname: '',
-  nachname: '',
-};
 
 export default function BaustellenDetailPage() {
   const history = useHistory();
@@ -45,6 +37,7 @@ export default function BaustellenDetailPage() {
       return (
         <div>
           Es ist ein Fehler aufgetreten: {axiosError.response?.statusText}{' '}
+          {axiosError.message}
         </div>
       );
     }

@@ -54,7 +54,7 @@ export default function BaustellenListComp() {
         onRowClick={(event, rowData) => {
           console.log('RowData ', rowData);
           console.log('Event ', event);
-          history.push('bsttable/' + rowData?.id);
+          history.push('bsttable/edit/' + rowData?.id);
           // alert(rowData.accountTypeId);
         }}
       />
