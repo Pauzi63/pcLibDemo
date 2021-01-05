@@ -1,4 +1,4 @@
-import { Button } from '@material-ui/core';
+import { Button, CircularProgress } from '@material-ui/core';
 import { AxiosError } from 'axios';
 import React, { useEffect } from 'react';
 import { useMutation } from 'react-query';
@@ -11,30 +11,22 @@ import { IBaustelle } from '../../Interfaces/ResponseInterfaces';
 import FormikBstComp from './components/FormikBstComp';
 import Snackbar from '@material-ui/core/Snackbar';
 import MuiAlert, { AlertProps } from '@material-ui/lab/Alert';
-import { makeStyles, Theme } from '@material-ui/core/styles';
 
 function Alert(props: AlertProps) {
   return <MuiAlert elevation={6} variant="filled" {...props} />;
 }
 
-const useStyles = makeStyles((theme: Theme) => ({
-  root: {
-    width: '100%',
-    '& > * + *': {
-      marginTop: theme.spacing(2),
-    },
-  },
-}));
-
 export default function BaustellenDetailPageAddNew() {
   const history = useHistory();
-  const { mutateAsync, error, isError } = useMutation(postBaustelle, {});
-  const [open, setOpen] = React.useState(false);
+  const { mutateAsync, error, isError, isLoading } = useMutation(
+    postBaustelle,
+    {}
+  );
+  const [openSnackbar, setOpenSnackbar] = React.useState(false);
   const [fetchError, setFetchError] = React.useState('');
   const axiosError = error as AxiosError;
-  //const saveit = usePostBaustelle;
 
-  const payload: IBaustelle = {
+  const intialValues: IBaustelle = {
     id: 0,
     baustelle: '',
     vorname: '',
@@ -42,73 +34,51 @@ export default function BaustellenDetailPageAddNew() {
     ort: '',
   };
 
-  const handleClose = (event?: React.SyntheticEvent, reason?: string) => {
+  const handleCloseSnackbar = (
+    event?: React.SyntheticEvent,
+    reason?: string
+  ) => {
     if (reason === 'clickaway') {
       return;
     }
-    setOpen(false);
+    setOpenSnackbar(false);
   };
 
   async function handleSubmitData(payload: IBaustelle) {
-    // const mutation = useMutation((p) => postBaustelle(payload));
-    //const mutation = useMutation(newTodo => axios.post('/todos', newTodo))
-    // const data = await mutate(payload);
-    //const xy = await postBaustelle(payload);
-    try {
-      const data = await mutateAsync(payload);
-      console.log('mutatedata: ', data);
-    } catch (error) {
-      console.error('mutateerror: ', error);
-    } finally {
-      console.log('mutate setteld');
-    }
-    //console.log('xy: ', xy);
-    //postBaustelle(payload);
-    console.log('Handle onpPauzi ausgelöst! ', payload);
-    console.log('Mutation: ');
+    const response = await mutateAsync(payload);
+    intialValues.id = response.id;
   }
 
   useEffect(() => {
-    setOpen(isError);
+    setOpenSnackbar(isError);
     setFetchError(axiosError?.message);
   }, [isError]);
 
-  // if (isLoading) {
-  //   return <CircularProgress />;
-  // }
-
-  // if (isError === true) {
-  //   const axiosError = error as AxiosError;
-  //   setOpen(true);
-  //   setFetchError(axiosError.message);
-  //   if (error && typeof error == 'object') {
-  //     return (
-  //       <div>
-  //         Es ist ein Fehler aufgetreten: {axiosError.response?.statusText}{' '}
-  //         {axiosError.message}
-  //       </div>
-  //     );
-  //   }
-  // }
-
-  // const axiosError = error as AxiosError;
-  // if (error) {
-  //   setOpen(true);
-  // }
+  if (isLoading) {
+    return <CircularProgress />;
+  }
 
   return (
-    <div>
+    <React.Fragment>
       <h1>react-query Add new Baustelle</h1>
-      <FormikBstComp data={payload} onSubmitData={handleSubmitData} />
+      <FormikBstComp
+        intialValues={intialValues}
+        onSubmitData={handleSubmitData}
+      />
       <br />
       <br />
       <Button onClick={() => history.goBack()}>zurück</Button>
       <br />
-      <Snackbar open={open} autoHideDuration={6000} onClose={handleClose}>
-        <Alert onClose={handleClose} severity="error">
+      iD: {intialValues.id}
+      <Snackbar
+        open={openSnackbar}
+        autoHideDuration={6000}
+        onClose={handleCloseSnackbar}
+      >
+        <Alert onClose={handleCloseSnackbar} severity="error">
           {fetchError}
         </Alert>
       </Snackbar>
-    </div>
+    </React.Fragment>
   );
 }

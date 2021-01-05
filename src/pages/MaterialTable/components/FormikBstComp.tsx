@@ -5,12 +5,12 @@ import { TextField } from 'formik-material-ui';
 import { IBaustelle } from '../../../Interfaces/ResponseInterfaces';
 
 interface Props {
-  data: any;
+  intialValues: any;
   onSubmitData: (payload: IBaustelle) => void;
 }
 
 const FormikBstComp = (props: Props) => {
-  const { data, onSubmitData } = props;
+  const { intialValues, onSubmitData } = props;
 
   const onSubmit = async (values: any) => {
     const payload: IBaustelle = {
@@ -20,19 +20,20 @@ const FormikBstComp = (props: Props) => {
       nachname: values.nachname,
       ort: values.ort,
     };
+    // data.baustelle = values.baustelle;
     console.log('payload: ', payload);
-    onSubmitData(payload);
+    await onSubmitData(payload);
   };
 
   return (
     <React.Fragment>
       <Formik
         initialValues={{
-          id: data && data.id,
-          baustelle: data && data.baustelle,
-          vorname: data && data.vorname,
-          nachname: data && data.nachname,
-          ort: data && data.ort,
+          id: intialValues && intialValues.id,
+          baustelle: intialValues && intialValues.baustelle,
+          vorname: intialValues && intialValues.vorname,
+          nachname: intialValues && intialValues.nachname,
+          ort: intialValues && intialValues.ort,
         }}
         onSubmit={onSubmit}
         enableReinitialize={true}

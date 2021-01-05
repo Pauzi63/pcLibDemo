@@ -31,14 +31,14 @@ export function useGetBaustellen() {
   });
 }
 
-export function usePutBaustelle(payload: any) {
-  async function putBaustelle(payload: any) {
-    const response = await axios.put(`${endpoint}/${payload.id}`, payload);
-    return response.data;
-  }
-  const mutation = useMutation((payload) => putBaustelle(payload));
-  return mutation;
-}
+// export function usePutBaustelle(payload: IBaustelle) {
+//   async function putBaustelle(payload: IBaustelle) {
+//     const response = await axios.put(`${endpoint}/${payload.id}`, payload);
+//     return response.data;
+//   }
+//   const mutation = useMutation((payload) => putBaustelle(payload));
+//   return mutation;
+// }
 
 export function usePostBaustelle(payload: IBaustelle) {
   const { mutateAsync } = useMutation((p) => postBaustelle(payload), {});
@@ -54,6 +54,4 @@ export async function putBaustelle(payload: IBaustelle) {
 export async function postBaustelle(payload: IBaustelle) {
   const response = await axios.post(`${endpoint}`, payload);
   return response.data;
-
-  // return await axios.post(`${endpoint}`, payload);
 }
