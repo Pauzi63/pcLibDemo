@@ -2,11 +2,15 @@ import React, { useContext } from 'react';
 import { createStyles, Theme, makeStyles } from '@material-ui/core/styles';
 import {
   AppBar,
+  Badge,
   Toolbar,
   Typography,
   Switch,
   Tooltip,
+  IconButton,
+  MenuItem,
 } from '@material-ui/core';
+import NotificationsIcon from '@material-ui/icons/Notifications';
 
 import logo from '../../assets/logo.png';
 import flagAT from '../../assets/flag-austria-64.png';
@@ -16,6 +20,7 @@ import globals from '../../utils/Globals';
 // import strings from '../../utils/Localization'
 //import useStyles from '../../styles/useStyles';
 import { UserLayoutSettings } from '../../context/UserLayoutSettings';
+import { ApplicationContext } from '../../context/ApplicationContext';
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -37,6 +42,11 @@ const useStyles = makeStyles((theme: Theme) =>
       border: '1px solid #ffffff',
       marginRight: 15,
     },
+    grow: {
+      // flexGrow: 1,
+      justifyContent: 'flex-end',
+      marginright: 10,
+    },
   })
 );
 
@@ -45,6 +55,7 @@ const Header = () => {
   const { darkMode, setDarkMode, language, setLanguage } = useContext(
     UserLayoutSettings
   );
+  const { messageCount, setMessageCount } = useContext(ApplicationContext);
 
   return (
     <AppBar position="fixed" className={classes.appBar}>
@@ -58,6 +69,15 @@ const Header = () => {
         >
           {'title'}
         </Typography>
+        <MenuItem>
+          <IconButton color="inherit">
+            <Badge badgeContent={messageCount} color="secondary">
+              <NotificationsIcon />
+            </Badge>
+          </IconButton>
+          <p>Nachrichten</p>
+        </MenuItem>
+        <div className={classes.grow} />
         <Tooltip title={'changeLanguage'}>
           <div>
             {language === 'de' && (
