@@ -44,6 +44,7 @@
     "start:dev": "env-cmd -f .env.development react-scripts start",
     "start:test": "env-cmd -f .env.test react-scripts start",
     "start:prod": "env-cmd -f .env.production react-scripts start",
+    "start-backend": "json-server --watch jsonmock/db.json --port 3099",
     "build:local": "env-cmd -f .env.localhost react-scripts build",
     "build:dev": "env-cmd -f .env.development react-scripts build",
     "build:test": "env-cmd -f .env.test react-scripts build",
