@@ -39,6 +39,8 @@ import FormatAlignCenterIcon from '@material-ui/icons/FormatAlignCenter';
 import FormatAlignRightIcon from '@material-ui/icons/FormatAlignRight';
 import FormatAlignJustifyIcon from '@material-ui/icons/FormatAlignJustify';
 import { useGetToDos } from '../../hooks/datahooks/useDoTo';
+import { useGetBaustellen } from '../../hooks/datahooks/useBaustelle';
+import { IBaustelle } from '../../Interfaces/ResponseInterfaces';
 import { AxiosError } from 'axios';
 
 const top100Films = [
@@ -88,6 +90,12 @@ function UpperCasingTextField(props: TextFieldProps) {
 
 const FormikPage1 = () => {
   const { data, error, isLoading, isError } = useGetToDos();
+  const {
+    data: bstdata,
+    error: bsterror,
+    isLoading: bstLoading,
+    isError: bstIsError,
+  } = useGetBaustellen();
 
   if (isLoading) {
     return <CircularProgress />;
@@ -110,6 +118,7 @@ const FormikPage1 = () => {
         email: '',
         password: '',
         select: 'none',
+        baustelle: '',
         tags: [],
         rememberMe: true,
         date: new Date(),
@@ -186,6 +195,30 @@ const FormikPage1 = () => {
                 ))}
               </Field>
             </Box>
+
+            <Box margin={1}>
+              <Field
+                component={TextField}
+                type="text"
+                name="baustelle"
+                label="Baustellen"
+                select
+                variant="standard"
+                helperText="wähle ein Baustelle aus"
+                margin="normal"
+                InputLabelProps={{
+                  shrink: true,
+                }}
+              >
+                {bstdata &&
+                  bstdata.map((bst: IBaustelle) => (
+                    <MenuItem key={bst.id} value={bst.id}>
+                      {bst.baustelle}
+                    </MenuItem>
+                  ))}
+              </Field>
+            </Box>
+
             <Box margin={1}>
               <FormControl>
                 <InputLabel shrink={true} htmlFor="tags">

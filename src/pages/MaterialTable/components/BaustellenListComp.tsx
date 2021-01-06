@@ -1,13 +1,13 @@
-import React, { Component, forwardRef, useContext } from 'react';
+import React from 'react';
 import MaterialTable from 'material-table';
 import { AxiosError } from 'axios';
 import { useHistory } from 'react-router-dom';
 import CircularProgress from '@material-ui/core/CircularProgress';
-import { useGetToDos } from '../../../hooks/datahooks/useDoTo';
+import { useGetBaustellen } from '../../../hooks/datahooks/useBaustelle';
 
-export default function MaterialTablePage1List() {
+export default function BaustellenListComp() {
   const history = useHistory();
-  const { data, error, isLoading, isError } = useGetToDos();
+  const { data, error, isLoading, isError } = useGetBaustellen();
 
   if (isLoading) {
     return <CircularProgress />;
@@ -19,6 +19,7 @@ export default function MaterialTablePage1List() {
       return (
         <div>
           Es ist ein Fehler aufgetreten: {axiosError.response?.statusText}{' '}
+          {axiosError.message}
         </div>
       );
     }
@@ -27,18 +28,19 @@ export default function MaterialTablePage1List() {
   return (
     <React.Fragment>
       <MaterialTable
-        title="Remote Data Preview"
+        title="Baustellen"
         columns={[
-          { title: 'UserId', field: 'userId', hidden: false },
+          { title: 'Id', field: 'id', type: 'numeric', hidden: false },
           {
-            title: 'Id',
-            field: 'id',
+            title: 'Baustelle',
+            field: 'baustelle',
             removable: false,
+            type: 'string',
           },
-          { title: 'Title', field: 'title' },
-          { title: 'Completed', field: 'completed', type: 'boolean' },
+          { title: 'Vorname', field: 'vorname', type: 'string' },
+          { title: 'Nachname', field: 'nachname', type: 'string' },
+          { title: 'Ort', field: 'ort', type: 'string' },
         ]}
-        // columns={xcolumns}
         data={data}
         options={{
           filtering: true,
@@ -52,7 +54,7 @@ export default function MaterialTablePage1List() {
         onRowClick={(event, rowData) => {
           console.log('RowData ', rowData);
           console.log('Event ', event);
-          history.push('muitable1/' + rowData?.id);
+          history.push('bsttable/edit/' + rowData?.id);
           // alert(rowData.accountTypeId);
         }}
       />

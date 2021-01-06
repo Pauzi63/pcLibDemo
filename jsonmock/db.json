@@ -1,0 +1,67 @@
+{
+  "baustellen": [
+    {
+      "id": 1,
+      "baustelle": "Baustelle 1",
+      "vorname": "Franz",
+      "nachname": "Franzinger",
+      "ort": "Franzhausen"
+    },
+    {
+      "id": 2,
+      "baustelle": "Baustelle 2 abxc",
+      "vorname": "Christian Alois",
+      "nachname": "Pauzenberger",
+      "ort": "Schlüßlberg"
+    },
+    {
+      "id": 3,
+      "baustelle": "Baustelle 3 karl",
+      "vorname": "Karl",
+      "nachname": "Karlinger",
+      "ort": "Welsxx"
+    },
+    {
+      "id": 4,
+      "baustelle": "Baustelle 4",
+      "vorname": "Hans",
+      "nachname": "Hansinger",
+      "ort": "Irgendwo"
+    },
+    {
+      "id": 5,
+      "baustelle": "Otto Kurt Franz der I",
+      "vorname": "fsd",
+      "nachname": "",
+      "ort": "fs"
+    },
+    {
+      "id": 6,
+      "baustelle": "sds",
+      "vorname": "ss",
+      "nachname": "ss",
+      "ort": "ss"
+    },
+    {
+      "id": 7,
+      "baustelle": "B1",
+      "vorname": "V1",
+      "nachname": "N1",
+      "ort": "O1"
+    },
+    {
+      "id": 8,
+      "baustelle": "T1",
+      "vorname": "T2",
+      "nachname": "T3",
+      "ort": "T4"
+    },
+    {
+      "id": 9,
+      "baustelle": "T1",
+      "vorname": "T2",
+      "nachname": "N33",
+      "ort": "T4"
+    }
+  ]
+}

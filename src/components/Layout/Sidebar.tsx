@@ -91,6 +91,16 @@ const Sidebar = () => {
                 </ListItem>
               </Link>
             </List>
+            <List>
+              <Link to="/bsttable" className={classes.link}>
+                <ListItem button>
+                  <ListItemIcon>
+                    <HomeIcon />
+                  </ListItemIcon>
+                  <ListItemText primary={'Baustellen'} />
+                </ListItem>
+              </Link>
+            </List>
             <Divider />
 
             <Divider />
