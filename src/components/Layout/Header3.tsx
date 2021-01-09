@@ -96,7 +96,7 @@ interface Props {
   setMobileOpen: (mobileOpen: boolean) => void;
 }
 
-const Header = (props: Props) => {
+const Header3 = (props: Props) => {
   const classes = useStyles();
   const { drawerOpen, setDrawerOpen, mobileOpen, setMobileOpen } = props;
   const { darkMode, setDarkMode, language, setLanguage } = useContext(
@@ -104,41 +104,60 @@ const Header = (props: Props) => {
   );
   const { messageCount } = useContext(ApplicationContext);
 
-  function handleDrawerToggle() {
-    {
-      alert('Hallo');
-    }
-    setDrawerOpen(!drawerOpen);
-  }
-
-  function handleMobileDrawerToggle() {
+  const handleDrawerToggle = () => {
     setMobileOpen(!mobileOpen);
-  }
+  };
+
+  const handleDrawerOpen = () => {
+    setDrawerOpen(true);
+  };
+
+  const handleDrawerClose = () => {
+    setDrawerOpen(false);
+  };
+
+  // const handleClose = () => {
+  //   setAnchorEl(null);
+  // };
 
   return (
     <div className={classes.root}>
       <AppBar position="fixed" className={classes.appBar} color="inherit">
         <Toolbar>
-          {/* <Hidden smUp implementation="css"> */}
-          <IconButton
-            color="inherit"
-            aria-label="Open drawer"
-            onClick={handleDrawerToggle}
-            className={classes.menuButton}
-          >
-            <MenuIcon />
-          </IconButton>
-          {/* </Hidden> */}
-          {/* <Hidden xsDown implementation="css">
+          <Hidden smUp implementation="css">
             <IconButton
               color="inherit"
               aria-label="Open drawer"
-              onClick={handleMobileDrawerToggle}
+              onClick={handleDrawerToggle}
               className={classes.menuButton}
             >
               <AddIcon />
             </IconButton>
-          </Hidden> */}
+          </Hidden>
+          <Hidden xsDown implementation="css">
+            <IconButton
+              color="inherit"
+              aria-label="Open drawer"
+              onClick={handleDrawerOpen}
+              className={classNames(
+                classes.menuButtonDesktop,
+                drawerOpen && classes.hide
+              )}
+            >
+              <MenuIcon />
+            </IconButton>
+            <IconButton
+              color="inherit"
+              aria-label="Close drawer"
+              onClick={handleDrawerClose}
+              className={classNames(
+                classes.menuButtonDesktop,
+                !drawerOpen && classes.hide
+              )}
+            >
+              <MenuIcon />
+            </IconButton>
+          </Hidden>
           <img src={logo} alt="logo" className={classes.imgLogo} />
           <Typography
             className={classes.title}
@@ -200,69 +219,8 @@ const Header = (props: Props) => {
           </Hidden>
         </Toolbar>
       </AppBar>
-
-      {/* <Hidden>
-        <AppBar position="fixed" className={classes.appBar}>
-          <Toolbar>
-            <IconButton
-              edge="start"
-              className={classes.menuButton}
-              color="inherit"
-              aria-label="menu"
-            >
-              <MenuIcon />
-            </IconButton>
-            <img src={logo} alt="logo" className={classes.imgLogo} />
-            <Typography
-              className={classes.title}
-              variant="h6"
-              color="inherit"
-              noWrap
-            >
-              {'title'}
-            </Typography>
-            <MenuItem>
-              <IconButton color="inherit">
-                <Badge badgeContent={messageCount} color="secondary">
-                  <NotificationsIcon />
-                </Badge>
-              </IconButton>
-              <p>Nachrichten</p>
-            </MenuItem>
-            <div className={classes.grow} />
-            <Tooltip title={'changeLanguage'}>
-              <div>
-                {language === 'de' && (
-                  <img
-                    src={flagAT}
-                    alt={'language'}
-                    className={classes.imgFlag}
-                    onClick={() => setLanguage('en')}
-                  />
-                )}
-                {language === 'en' && (
-                  <img
-                    src={flagUK}
-                    alt={'language'}
-                    className={classes.imgFlag}
-                    onClick={() => setLanguage('de')}
-                  />
-                )}
-              </div>
-            </Tooltip>
-            <Tooltip
-              title={darkMode ? 'switchToLightMode' : 'switchToDarkMode'}
-            >
-              <Switch
-                checked={darkMode}
-                onChange={() => setDarkMode(!darkMode)}
-              />
-            </Tooltip>
-          </Toolbar>
-        </AppBar>
-      </Hidden> */}
     </div>
   );
 };
 
-export default Header;
+export default Header3;

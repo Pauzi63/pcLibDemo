@@ -9,37 +9,61 @@ import {
   MenuList,
   List,
   Divider,
+  Hidden,
+  useTheme,
 } from '@material-ui/core';
 import { Link } from 'react-router-dom';
+import DrawerContent from '../DrawerContent/DrawerContent';
 import HomeIcon from '@material-ui/icons/Home';
 import InfoIcon from '@material-ui/icons/Info';
 
 const drawerWidth = 240;
+
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
-    drawer: {
-      width: drawerWidth,
-      flexShrink: 0,
-    },
+    // drawer: {
+    //   [theme.breakpoints.up('sm')]: {
+    //     width: drawerWidth,
+    //     flexShrink: 0,
+    //   },
+    // },
     drawerPaper: {
       width: 'inherit',
     },
     drawerContainer: {
       overflow: 'auto',
     },
+    drawer: {
+      [theme.breakpoints.up('sm')]: {
+        width: drawerWidth,
+        flexShrink: 0,
+        backgroundColor: 'red',
+        marginTop: theme.spacing(5),
+      },
+    },
     link: {
       textDecoration: 'none',
       color: theme.palette.text.primary,
     },
+    toolbar: theme.mixins.toolbar,
   })
 );
 
-const Sidebar = () => {
+interface Props {
+  drawerOpen: boolean;
+  setDrawerOpen: (drawerOpen: boolean) => void;
+  mobileOpen: boolean;
+  setMobileOpen: (mobileOpen: boolean) => void;
+}
+
+const Sidebar = (props: Props) => {
   const classes = useStyles();
+  const { drawerOpen, setDrawerOpen, mobileOpen } = props;
+  const theme = useTheme();
 
   return (
     <React.Fragment>
-      <Drawer
+      {/* <Drawer
         className={classes.drawer}
         anchor="left"
         variant="permanent"
@@ -48,88 +72,55 @@ const Sidebar = () => {
         }}
       >
         <Toolbar />
-        <div className={classes.drawerContainer}>
-          <MenuList>
-            <List>
-              <Link to="/" className={classes.link}>
-                <ListItem button>
-                  <ListItemIcon>
-                    <HomeIcon />
-                  </ListItemIcon>
-                  <ListItemText primary={'Page1'} />
-                </ListItem>
-              </Link>
-            </List>
-            <List>
-              <Link to="/page2" className={classes.link}>
-                <ListItem button>
-                  <ListItemIcon>
-                    <InfoIcon />
-                  </ListItemIcon>
-                  <ListItemText primary={'Page2'} />
-                </ListItem>
-              </Link>
-            </List>
-            <List>
-              <Link to="/page3" className={classes.link}>
-                <ListItem button>
-                  <ListItemIcon>
-                    <HomeIcon />
-                  </ListItemIcon>
-                  <ListItemText primary={'Page3'} />
-                </ListItem>
-              </Link>
-            </List>
-            <Divider />
-            <List>
-              <Link to="/muitable1" className={classes.link}>
-                <ListItem button>
-                  <ListItemIcon>
-                    <HomeIcon />
-                  </ListItemIcon>
-                  <ListItemText primary={'Material Table 1'} />
-                </ListItem>
-              </Link>
-            </List>
-            <List>
-              <Link to="/bsttable" className={classes.link}>
-                <ListItem button>
-                  <ListItemIcon>
-                    <HomeIcon />
-                  </ListItemIcon>
-                  <ListItemText primary={'Baustellen'} />
-                </ListItem>
-              </Link>
-            </List>
-            <Divider />
-
-            <Divider />
-            <List>
-              <Link to="/formikpage1" className={classes.link}>
-                <ListItem button>
-                  <ListItemIcon>
-                    <HomeIcon />
-                  </ListItemIcon>
-                  <ListItemText primary={'Formik Page 1'} />
-                </ListItem>
-              </Link>
-            </List>
-            <Divider />
-
-            <List>
-              <Link to="/page404" className={classes.link}>
-                <ListItem button>
-                  <ListItemIcon>
-                    <HomeIcon />
-                  </ListItemIcon>
-                  <ListItemText primary={'Error'} />
-                </ListItem>
-              </Link>
-            </List>
-          </MenuList>
-        </div>
+        <DrawerContent />
         <br />
-      </Drawer>
+      </Drawer> */}
+
+      {/* <nav className={classes.drawer}> */}
+      {/* The implementation can be swapped with js to avoid SEO duplication of links. */}
+
+      <Hidden xsDown implementation="css">
+        <Drawer
+          className={classes.drawer}
+          variant="permanent"
+          anchor={theme.direction === 'rtl' ? 'right' : 'left'}
+          open={drawerOpen}
+          classes={{
+            paper: classes.drawerPaper,
+          }}
+          ModalProps={{
+            keepMounted: true, // Better open performance on mobile.
+          }}
+        >
+          <Toolbar />
+          <br />
+          <br />
+          <br />
+
+          {drawerOpen && <h3>Na halo</h3>}
+          <DrawerContent />
+        </Drawer>
+      </Hidden>
+      <Hidden smUp implementation="css">
+        <Drawer
+          className={classes.drawer}
+          variant="permanent"
+          open={drawerOpen}
+          onClose={setDrawerOpen}
+          classes={{
+            paper: classes.drawerPaper,
+          }}
+        >
+          <Toolbar />
+          <br />
+          <br />
+          <br />
+
+          {drawerOpen && <h3>Na halo 2</h3>}
+          <DrawerContent />
+        </Drawer>
+      </Hidden>
+      {/* </nav> */}
     </React.Fragment>
   );
 };
