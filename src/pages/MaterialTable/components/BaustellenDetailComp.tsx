@@ -3,7 +3,7 @@ import { AxiosError } from 'axios';
 import { useParams } from 'react-router-dom';
 import CircularProgress from '@material-ui/core/CircularProgress';
 import { useHistory } from 'react-router-dom';
-import { useGetBaustelleById } from '../../../hooks/datahooks/useBaustelle';
+import { useGetBaustelleById } from '../../../hooks/api/useBaustelle';
 import { Button } from '@material-ui/core';
 
 interface ParamTypes {
