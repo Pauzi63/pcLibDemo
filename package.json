@@ -42,6 +42,7 @@
   },
   "scripts": {
     "start": "env-cmd -f .env.localhost react-scripts start",
+    "startpc": "env-cmd -f .env.pc react-scripts start",
     "start:local": "env-cmd -f .env.localhost react-scripts start",
     "start:dev": "env-cmd -f .env.development react-scripts start",
     "start:test": "env-cmd -f .env.test react-scripts start",
