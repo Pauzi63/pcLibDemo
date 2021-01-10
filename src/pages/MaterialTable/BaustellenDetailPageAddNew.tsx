@@ -3,10 +3,7 @@ import { AxiosError } from 'axios';
 import React, { useEffect } from 'react';
 import { useMutation } from 'react-query';
 import { useHistory } from 'react-router-dom';
-import {
-  postBaustelle,
-  usePostBaustelle,
-} from '../../hooks/datahooks/useBaustelle';
+import { postBaustelle, usePostBaustelle } from '../../hooks/api/useBaustelle';
 import { IBaustelle } from '../../Interfaces/ResponseInterfaces';
 import FormikBstComp from './components/FormikBstComp';
 import Snackbar from '@material-ui/core/Snackbar';

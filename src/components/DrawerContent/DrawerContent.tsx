@@ -70,6 +70,16 @@ const DrawerContent = () => {
             </ListItem>
           </Link>
         </List>
+        <List>
+          <Link to="/page5" className={classes.link}>
+            <ListItem button>
+              <ListItemIcon>
+                <HomeIcon />
+              </ListItemIcon>
+              <ListItemText primary={'Page5'} />
+            </ListItem>
+          </Link>
+        </List>
         <Divider />
         <List>
           <Link to="/muitable1" className={classes.link}>

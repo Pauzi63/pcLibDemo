@@ -3,7 +3,7 @@ import MaterialTable from 'material-table';
 import { AxiosError } from 'axios';
 import { useHistory } from 'react-router-dom';
 import CircularProgress from '@material-ui/core/CircularProgress';
-import { useGetToDos } from '../../../hooks/datahooks/useDoTo';
+import { useGetToDos } from '../../../hooks/api/useDoTo';
 
 export default function MaterialTableListComp1() {
   const history = useHistory();

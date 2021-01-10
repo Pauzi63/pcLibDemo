@@ -8,7 +8,7 @@ import { useHistory, useParams } from 'react-router-dom';
 import {
   useGetBaustelleById,
   putBaustelle,
-} from '../../hooks/datahooks/useBaustelle';
+} from '../../hooks/api/useBaustelle';
 import { IBaustelle } from '../../Interfaces/ResponseInterfaces';
 import FormikBstComp from './components/FormikBstComp';
 

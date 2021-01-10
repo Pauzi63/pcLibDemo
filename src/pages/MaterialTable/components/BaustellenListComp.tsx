@@ -3,7 +3,7 @@ import MaterialTable from 'material-table';
 import { AxiosError } from 'axios';
 import { useHistory } from 'react-router-dom';
 import CircularProgress from '@material-ui/core/CircularProgress';
-import { useGetBaustellen } from '../../../hooks/datahooks/useBaustelle';
+import { useGetBaustellen } from '../../../hooks/api/useBaustelle';
 
 export default function BaustellenListComp() {
   const history = useHistory();
