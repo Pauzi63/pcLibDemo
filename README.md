@@ -13,14 +13,15 @@ yarn create react-app krmdemo --template typescript
 https://material-ui.com/getting-started/installation/
 yarn add @material-ui/core
 yarn add @material-ui/icons
-public/index.html
+
+## folgende 2 Einträge in "public/index.html" hinzufügen
 
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" />
 <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
 
 # react-query
 
-https://react-query.tanstack.com/installation
+https://react-query.tanstack.com
 yarn add react-query
 
 # react-router
@@ -35,6 +36,9 @@ yarn add axios
 
 # env
 
+https://www.npmjs.com/package/env-cmd
+yarn add env-cmd
+
 # MSAL
 
 yarn add msal
@@ -46,7 +50,13 @@ yarn add jwt-decode
 
 # Formik
 
+https://formik.org/
+yarn add formik
+
 # Material-table
+
+https://material-table.com/#/
+yarn add material-table
 
 # diverse libraries
 
@@ -64,7 +74,7 @@ C# to TypeScript
 
 json-webserver https://github.com/typicode/json-server
 Installation: npm install -g json-server
-Start im Verzeichnis vom db.json: json-server --watch db.json --port 3004
+Start im Verzeichnis vom db.json: json-server --watch db.json --port 3099
 
 # ---------------------------------------------------------------
 
