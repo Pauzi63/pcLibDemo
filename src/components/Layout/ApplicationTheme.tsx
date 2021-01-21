@@ -1,18 +1,18 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { ThemeProvider } from '@material-ui/core/styles';
 import useThemes from '../../styles/krmTheme';
 
 import { UserLayoutSettings } from '../../context/UserLayoutSettings';
 
 import useDarkMode from '../../hooks/useDarkMode';
-//import useLanguage from '../../hooks/useLanguage';
+import useLanguage from '../../hooks/useLanguage';
 
 const ApplicationTheme = (props: { children: any }) => {
   const { children } = props;
   const theme = useThemes();
 
   const { darkMode, setDarkMode } = useDarkMode();
-  const [language, setLanguage] = useState<string>('de');
+  const { language, setLanguage } = useLanguage();
 
   return (
     <UserLayoutSettings.Provider

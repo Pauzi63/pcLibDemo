@@ -11,6 +11,11 @@ import BaustellenListPage from '../pages/MaterialTable/BaustellenListPage';
 import BaustellenDetailPageEdit from '../pages/MaterialTable/BaustellenDetailPageEdit';
 import BaustellenDetailPageAddNew from '../pages/MaterialTable/BaustellenDetailPageAddNew';
 import FormikPage1 from '../pages/Formik/FormikPage1';
+import SnackbarPage from '../pages/Snackbar/SnackbarPage';
+import I18nextPage from '../pages/I18next/I18nextPage';
+import GeolocatedPage from '../pages/Geolocated/GeolocatedPage';
+import GoogleMapsPage from '../pages/GoogleMaps/GoogleMapsPage';
+import HighlightPage from '../pages/Highlight/HighlightPage';
 
 export default function Routes() {
   return (
@@ -23,6 +28,11 @@ export default function Routes() {
       <Route exact path="/muitable1" component={MaterialTableListPage1} />
       <Route path="/muitable1/:id" component={MaterialTableDetailPage1} />
       <Route exact path="/bsttable" component={BaustellenListPage} />
+      <Route exact path="/snackbar" component={SnackbarPage} />
+      <Route exact path="/i18next" component={I18nextPage} />
+      <Route exact path="/geolocated" component={GeolocatedPage} />
+      <Route exact path="/googlemaps" component={GoogleMapsPage} />
+      <Route exact path="/highlight" component={HighlightPage} />
       <Route
         exact
         path="/bsttable/edit/:id"
