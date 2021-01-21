@@ -1,16 +1,21 @@
 import React from 'react';
-// import { Localization } from './utils/Localization';
+
 import ApplicationTheme from './components/Layout/ApplicationTheme';
+import SnackbarProvider from './utils/SnackbarProvider'
 import MsalAuthentication from './authentication/MsalAuthentication';
 import Demo from './pages/DemoApplication/Demo';
 
+import Localization from './utils/Localization';
+
 function App() {
-  // Localization.initialize();
+  Localization.initialize();
   return (
     <ApplicationTheme>
-      <MsalAuthentication>
-        <Demo />
-      </MsalAuthentication>
+      <SnackbarProvider>
+        <MsalAuthentication>
+          <Demo />
+        </MsalAuthentication>
+      </SnackbarProvider>
     </ApplicationTheme>
   );
 }

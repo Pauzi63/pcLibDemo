@@ -4,6 +4,7 @@ import {
   ListItemIcon,
   ListItemText,
   MenuList,
+  MenuItem,
   List,
   Divider,
 } from '@material-ui/core';
@@ -123,6 +124,50 @@ const DrawerContent = () => {
                 <HomeIcon />
               </ListItemIcon>
               <ListItemText primary={'Error'} />
+            </ListItem>
+          </Link>
+        </List>
+
+        <Divider />
+        <List>
+          <Link to="/snackbar" className={classes.link}>
+            <ListItem button>
+              <ListItemIcon>
+                <HomeIcon />
+              </ListItemIcon>
+              <ListItemText primary={'Snackbar'} />
+            </ListItem>
+          </Link>
+          <Link to="/i18next" className={classes.link}>
+            <ListItem button>
+              <ListItemIcon>
+                <HomeIcon />
+              </ListItemIcon>
+              <ListItemText primary={'Localization'} />
+            </ListItem>
+          </Link>
+          <Link to="/geolocated" className={classes.link}>
+            <ListItem button>
+              <ListItemIcon>
+                <HomeIcon />
+              </ListItemIcon>
+              <ListItemText primary={'Geolocation'} />
+            </ListItem>
+          </Link>
+          <Link to="/googlemaps" className={classes.link}>
+            <ListItem button>
+              <ListItemIcon>
+                <HomeIcon />
+              </ListItemIcon>
+              <ListItemText primary={'Google-Maps'} />
+            </ListItem>
+          </Link>
+          <Link to="/highlight" className={classes.link}>
+            <ListItem button>
+              <ListItemIcon>
+                <HomeIcon />
+              </ListItemIcon>
+              <ListItemText primary={'Highlight'} />
             </ListItem>
           </Link>
         </List>

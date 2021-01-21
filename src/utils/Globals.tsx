@@ -14,6 +14,9 @@ const globals = {
   tenantId: '523e1eec-742c-4166-a6a6-d4d5fa678803',
   clientId: '8507e959-c1be-4f3a-93fb-b4cb8e2c0e3a',
 
+  // Google-API
+  googleMapsApiKey: '6Lfna9UZAAAAAJvR7SX4F5htPata_CXOJ4AWGMYd',
+
   // Theme
   darkModeKey: 'dark-mode-enabled',
 
