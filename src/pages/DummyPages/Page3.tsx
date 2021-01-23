@@ -1,42 +1,63 @@
 import React from 'react';
 import Button from '@material-ui/core/Button';
 import { useHistory } from 'react-router-dom';
-import { Typography } from '@material-ui/core';
+import { Box, Grid, Typography } from '@material-ui/core';
+import { TypographyProps } from '@material-ui/core/Typography';
+import { startCase } from 'lodash';
+
+const colors: Array<TypographyProps['color']> = [
+  'textPrimary',
+  'textSecondary',
+  'primary',
+  'error',
+];
+
+const variants: Array<TypographyProps['variant']> = [
+  'h1',
+  'h2',
+  'h3',
+  'h4',
+  'h5',
+  'h6',
+  'subtitle1',
+  'subtitle2',
+  'body1',
+  'body2',
+];
 
 const Page3 = () => {
   let history = useHistory();
   return (
     <React.Fragment>
       <Typography variant="h2" gutterBottom>
-        Page 3
+        Typography Demo
       </Typography>
-      <Typography variant="subtitle1" gutterBottom>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-        tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
-        veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
-        commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
-        velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint
-        occaecat cupidatat non proident, sunt in culpa qui officia deserunt
-        mollit anim id est laborum.
-        <br />
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-        tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
-        veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
-        commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
-        velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint
-        occaecat cupidatat non proident, sunt in culpa qui officia deserunt
-        mollit anim id est laborum.
-        <br />
-      </Typography>
-
       <br />
       <Button
         variant="outlined"
         color="primary"
         onClick={() => history.goBack()}
       >
-        Drück mich
+        zurück zur letzten Seite
       </Button>
+      <br />
+      <Box padding={2}>
+        <Grid container={true} spacing={1} direction="column">
+          {colors.map((color) => (
+            <Grid key={color} item={true}>
+              <Grid container={true} spacing={1}>
+                {variants.map((variant) => (
+                  <Grid key={variant} item={true} xs={12}>
+                    <Typography color={color} variant={variant}>
+                      <code>{variant}</code> {startCase(color)}
+                    </Typography>
+                  </Grid>
+                ))}
+              </Grid>
+            </Grid>
+          ))}
+        </Grid>
+      </Box>
     </React.Fragment>
   );
 };

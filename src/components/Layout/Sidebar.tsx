@@ -3,7 +3,7 @@ import Drawer from '@material-ui/core/Drawer';
 import SwipeableDrawer from '@material-ui/core/SwipeableDrawer';
 import Hidden from '@material-ui/core/Hidden';
 import { createStyles, Theme, makeStyles } from '@material-ui/core/styles';
-import DrawerContent from '../DrawerContent/DrawerContent';
+import AppMenu from '../DrawerContent/AppMenu';
 
 const drawerWidth = 240;
 
@@ -62,7 +62,7 @@ const Sidebar = (props: Props) => {
               paper: classes.drawerPaper,
             }}
           >
-            <DrawerContent />
+            <AppMenu />
           </SwipeableDrawer>
         </Hidden>
         <Hidden xsDown implementation="css">
@@ -74,7 +74,7 @@ const Sidebar = (props: Props) => {
             open={!drawerOpen}
           >
             <div className={classes.toolbar} />
-            <DrawerContent />
+            <AppMenu />
           </Drawer>
         </Hidden>
       </nav>
