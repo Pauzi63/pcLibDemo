@@ -3,6 +3,7 @@ const globals = {
   companyName: 'Kremsmüller Industrieanlagenbau GmbH',
   companyLink: 'https://www.kremsmueller.com/',
   companyColor: '#D20006',
+  companyIconColor: '#97c05c',
 
   // App
   appName: 'KrmDemo',
@@ -19,6 +20,9 @@ const globals = {
 
   // Theme
   darkModeKey: 'dark-mode-enabled',
+
+  // drawerWidth
+  drawerWidth: 240,
 
   // Localization
   languageKey: 'language',

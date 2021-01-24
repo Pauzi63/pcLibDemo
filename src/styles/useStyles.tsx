@@ -1,8 +1,9 @@
 import { makeStyles } from '@material-ui/core/styles';
+import globals from '../utils/Globals';
 
 import KrmTheme from './krmTheme';
 
-const drawerWidth = 240;
+const drawerWidth = globals.drawerWidth;
 
 const createStyles = makeStyles((theme) => ({
   root: {

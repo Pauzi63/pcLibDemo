@@ -14,6 +14,7 @@ import IconExpandLess from '@material-ui/icons/ExpandLess';
 import IconExpandMore from '@material-ui/icons/ExpandMore';
 
 import AppMenuItemComponent from './AppMenuItemComponent';
+import globals from '../../utils/Globals';
 
 // React runtime PropTypes
 export const AppMenuItemPropTypes = {
@@ -92,7 +93,7 @@ const useStyles = makeStyles((theme) =>
       },
     },
     menuItemIcon: {
-      color: '#97c05c',
+      color: globals.companyIconColor,
     },
   })
 );
