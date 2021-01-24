@@ -13,6 +13,25 @@ import IconError from '@material-ui/icons/Error';
 
 import AppMenuItem from './AppMenuItem';
 
+const drawerWidth = 240;
+
+const useStyles = makeStyles((theme) =>
+  createStyles({
+    appMenu: {
+      width: '100%',
+    },
+    navList: {
+      width: drawerWidth,
+    },
+    menuItem: {
+      width: drawerWidth,
+    },
+    menuItemIcon: {
+      color: '#97c05c',
+    },
+  })
+);
+
 const appMenuItems = [
   {
     name: 'Dashboard',
@@ -114,24 +133,5 @@ const AppMenu: React.FC = () => {
     </List>
   );
 };
-
-const drawerWidth = 240;
-
-const useStyles = makeStyles((theme) =>
-  createStyles({
-    appMenu: {
-      width: '100%',
-    },
-    navList: {
-      width: drawerWidth,
-    },
-    menuItem: {
-      width: drawerWidth,
-    },
-    menuItemIcon: {
-      color: '#97c05c',
-    },
-  })
-);
 
 export default AppMenu;
