@@ -63,5 +63,9 @@
       "nachname": "N33",
       "ort": "T4"
     }
-  ]
+  ],
+  "authentication": {
+    "networkId": "christian.pauzenberger@outlook.com",
+    "application": "KrmDemo"
+  }
 }

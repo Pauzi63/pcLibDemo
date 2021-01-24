@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { useQuery } from 'react-query';
 
-const endpoint = `${process.env.REACT_APP_API_URL}/ToDos`;
+const endpoint = `${process.env.REACT_APP_API_URL2}/ToDos`;
 
 export function useGetToDoById(toDoId: string) {
   async function fetchToDoById(toDoId: string) {

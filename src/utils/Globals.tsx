@@ -8,7 +8,7 @@ const globals = {
   // App
   appName: 'KrmDemo',
   appDisplayName: 'Demo Template Applikation',
-  appVersion: 'v 0.1 2020-12-23',
+  appVersion: 'v 0.2 2021-01-24',
 
   // MSAL Authentification
   loginUrl: 'https://login.microsoftonline.com/',
@@ -23,6 +23,11 @@ const globals = {
 
   // drawerWidth
   drawerWidth: 240,
+
+  // KrmCore Login
+  // true:      KrmCoreLogin NICHT notwendig
+  // undefined: KrmCoreLogin notwendig mit ApplicationID globals.appName
+  krmCoreLogin: true,
 
   // Localization
   languageKey: 'language',
