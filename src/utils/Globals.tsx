@@ -25,9 +25,9 @@ const globals = {
   drawerWidth: 240,
 
   // KrmCore Login
-  // true:      KrmCoreLogin NICHT notwendig
-  // undefined: KrmCoreLogin notwendig mit ApplicationID globals.appName
-  krmCoreLogin: true,
+  // true:  KrmCoreLogin IST notwendig
+  // false: KrmCoreLogin IST NICHT notwendig
+  krmCoreLogin: false,
 
   // Localization
   languageKey: 'language',

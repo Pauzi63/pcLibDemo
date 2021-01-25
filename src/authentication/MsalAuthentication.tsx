@@ -17,7 +17,7 @@ const MsalAuthentication = (props: { children: any }) => {
   const { children } = props;
   const [isAuthenticated, setIsAuthenticated] = React.useState<
     boolean | undefined
-  >(globals.krmCoreLogin);
+  >(globals.krmCoreLogin === true ? undefined : true);
   const [aadError, setAadError] = React.useState();
 
   async function loginToKrmCore(loginName: string, password: string) {
