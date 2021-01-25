@@ -2,7 +2,7 @@ import axios from 'axios';
 import { useMutation, useQuery } from 'react-query';
 import { IBaustelle } from '../../Interfaces/ResponseInterfaces';
 
-const endpoint = `${process.env.REACT_APP_API_URL2}/baustellen`;
+const endpoint = `${process.env.REACT_APP_API_URL}/baustellen`;
 
 export function useGetBaustelleById(id: number) {
   async function fetchBaustelleById(id: number) {

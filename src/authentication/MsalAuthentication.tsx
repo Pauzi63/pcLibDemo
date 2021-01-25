@@ -1,4 +1,5 @@
 import React from 'react';
+import globals from '../utils/Globals';
 
 import {
   AzureAD,
@@ -14,7 +15,9 @@ import BlankPage from '../pages/Common/BlankPage';
 
 const MsalAuthentication = (props: { children: any }) => {
   const { children } = props;
-  const [isAuthenticated, setIsAuthenticated] = React.useState<boolean>(true);
+  const [isAuthenticated, setIsAuthenticated] = React.useState<
+    boolean | undefined
+  >(globals.krmCoreLogin === true ? undefined : true);
   const [aadError, setAadError] = React.useState();
 
   async function loginToKrmCore(loginName: string, password: string) {

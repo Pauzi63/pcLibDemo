@@ -66,8 +66,8 @@ class JwtToken {
   }
 }
 
-const JWT_TOKEN_KEY = process.env.JWT_TOKEN_KEY
-  ? process.env.JWT_TOKEN_KEY
+const JWT_TOKEN_KEY = process.env.REACT_APP_JWT_TOKEN_KEY
+  ? process.env.REACT_APP_JWT_TOKEN_KEY
   : 'JWT_TOKEN_KEY';
 const getToken = () => {
   return window.sessionStorage.getItem(JWT_TOKEN_KEY);

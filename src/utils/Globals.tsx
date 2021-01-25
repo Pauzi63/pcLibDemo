@@ -3,11 +3,12 @@ const globals = {
   companyName: 'Kremsmüller Industrieanlagenbau GmbH',
   companyLink: 'https://www.kremsmueller.com/',
   companyColor: '#D20006',
+  companyIconColor: '#97c05c',
 
   // App
   appName: 'KrmDemo',
   appDisplayName: 'Demo Template Applikation',
-  appVersion: 'v 0.1 2020-12-23',
+  appVersion: 'v 0.2 2021-01-24',
 
   // MSAL Authentification
   loginUrl: 'https://login.microsoftonline.com/',
@@ -19,6 +20,14 @@ const globals = {
 
   // Theme
   darkModeKey: 'dark-mode-enabled',
+
+  // drawerWidth
+  drawerWidth: 240,
+
+  // KrmCore Login
+  // true:  KrmCoreLogin IST notwendig
+  // false: KrmCoreLogin IST NICHT notwendig
+  krmCoreLogin: false,
 
   // Localization
   languageKey: 'language',

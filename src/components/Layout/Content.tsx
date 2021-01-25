@@ -1,8 +1,9 @@
 import React from 'react';
 import { createStyles, Theme, makeStyles } from '@material-ui/core/styles';
 import classNames from 'classnames';
+import globals from '../../utils/Globals';
 
-const drawerWidth = 240;
+const drawerWidth = globals.drawerWidth;
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({

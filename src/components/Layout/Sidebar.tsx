@@ -4,8 +4,9 @@ import SwipeableDrawer from '@material-ui/core/SwipeableDrawer';
 import Hidden from '@material-ui/core/Hidden';
 import { createStyles, Theme, makeStyles } from '@material-ui/core/styles';
 import AppMenu from '../DrawerContent/AppMenu';
+import globals from '../../utils/Globals';
 
-const drawerWidth = 240;
+const drawerWidth = globals.drawerWidth;
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
