@@ -7,9 +7,11 @@ import Page4 from '../pages/DummyPages/Page4';
 import Page5 from '../pages/DummyPages/Page5';
 import MaterialTableListPage1 from '../pages/MaterialTable/MaterialTableListPage1';
 import MaterialTableDetailPage1 from '../pages/MaterialTable/MaterialTableDetailPage1';
-import BaustellenListPage from '../pages/MaterialTable/BaustellenListPage';
-import BaustellenDetailPageEdit from '../pages/MaterialTable/BaustellenDetailPageEdit';
-import BaustellenDetailPageAddNew from '../pages/MaterialTable/BaustellenDetailPageAddNew';
+import {
+  BaustelleListPage,
+  BaustelleEditPage,
+  BaustelleAddPage,
+} from '../pages/Baustelle';
 import FormikPage1 from '../pages/Formik/FormikPage1';
 import SnackbarPage from '../pages/Snackbar/SnackbarPage';
 import I18nextPage from '../pages/I18next/I18nextPage';
@@ -27,17 +29,9 @@ export default function Routes() {
       <Route path="/page5" component={Page5} />
       <Route exact path="/muitable1" component={MaterialTableListPage1} />
       <Route path="/muitable1/:id" component={MaterialTableDetailPage1} />
-      <Route exact path="/bsttable" component={BaustellenListPage} />
-      <Route
-        exact
-        path="/bsttable/addnew"
-        component={BaustellenDetailPageAddNew}
-      />
-      <Route
-        exact
-        path="/bsttable/edit/:id"
-        component={BaustellenDetailPageEdit}
-      />
+      <Route exact path="/baustelle" component={BaustelleListPage} />
+      <Route exact path="/baustelle/add" component={BaustelleAddPage} />
+      <Route exact path="/baustelle/edit/:id" component={BaustelleEditPage} />
       <Route exact path="/snackbar" component={SnackbarPage} />
       <Route exact path="/i18next" component={I18nextPage} />
       <Route exact path="/geolocated" component={GeolocatedPage} />

@@ -51,7 +51,7 @@ export const appMenuItems = [
       },
       {
         name: 'Baustellen',
-        link: '/bsttable',
+        link: '/baustelle',
         Icon: IconPeople,
       },
     ],

@@ -8,7 +8,7 @@ import ApplicationContextService from '../../context/ApplicatonContextService';
 
 const queryClient = new QueryClient();
 
-const Demo = () => {
+const DemoApplication = () => {
   const browserHistory = createBrowserHistory();
   return (
     <React.Fragment>
@@ -25,4 +25,4 @@ const Demo = () => {
   );
 };
 
-export default Demo;
+export default DemoApplication;

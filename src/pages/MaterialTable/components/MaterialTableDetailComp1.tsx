@@ -3,7 +3,7 @@ import { AxiosError } from 'axios';
 import { useParams } from 'react-router-dom';
 import CircularProgress from '@material-ui/core/CircularProgress';
 import { useHistory } from 'react-router-dom';
-import { useGetToDoById } from '../../../hooks/api/useDoTo';
+import { useGetToDoById } from '../../../api/useDoTo';
 import { Button } from '@material-ui/core';
 
 const apiURL = process.env.REACT_APP_API_URL;

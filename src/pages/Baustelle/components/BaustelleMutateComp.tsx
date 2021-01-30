@@ -1,6 +1,6 @@
 import * as React from 'react';
-import { Formik, Form, Field } from 'formik';
 import { Button, LinearProgress, Box } from '@material-ui/core';
+import { Formik, Form, Field } from 'formik';
 import { TextField } from 'formik-material-ui';
 import { IBaustelle } from '../../../Interfaces/ResponseInterfaces';
 
@@ -9,7 +9,7 @@ interface Props {
   onSubmitData: (payload: IBaustelle) => void;
 }
 
-const FormikBstComp = (props: Props) => {
+const BaustelleMutateComp = (props: Props) => {
   const { intialValues, onSubmitData } = props;
 
   const onSubmit = async (values: any) => {
@@ -89,4 +89,4 @@ const FormikBstComp = (props: Props) => {
   );
 };
 
-export default FormikBstComp;
+export default BaustelleMutateComp;

@@ -1,24 +1,24 @@
-import { Button, Snackbar } from '@material-ui/core';
-import { CircularProgress } from '@material-ui/core';
-import { Alert } from '@material-ui/lab';
+import React, { useEffect } from 'react';
+import { Button, CircularProgress } from '@material-ui/core';
 import { AxiosError } from 'axios';
 import { useMutation } from 'react-query';
-import React, { useEffect } from 'react';
 import { useHistory, useParams } from 'react-router-dom';
-import {
-  useGetBaustelleById,
-  putBaustelle,
-} from '../../hooks/api/useBaustelle';
+import { useSnackbar } from 'notistack';
+
+import { useGetBaustelleById, putBaustelle } from '../../api/useBaustelle';
 import { IBaustelle } from '../../Interfaces/ResponseInterfaces';
-import FormikBstComp from './components/FormikBstComp';
+import { BaustelleMutateComp } from './components';
 
 interface ParamTypes {
   id: string;
 }
 
-export default function BaustellenDetailPageEdit() {
+interface Props {}
+
+const BaustelleEditPage = (props: Props) => {
   const history = useHistory();
   const { id } = useParams<ParamTypes>();
+  const { enqueueSnackbar } = useSnackbar();
   const {
     data: payload,
     error: getError,
@@ -31,24 +31,26 @@ export default function BaustellenDetailPageEdit() {
     isError: mutateIsError,
     isLoading: mutateIsLoading,
   } = useMutation(putBaustelle, {});
-  const [openSnackbar, setOpenSnackbar] = React.useState(false);
-  const [fetchError, setFetchError] = React.useState('');
+  // const [openSnackbar, setOpenSnackbar] = React.useState(false);
+  // const [fetchError, setFetchError] = React.useState('');
   const axiosError = getError as AxiosError;
 
-  const handleCloseSnackbar = (
-    event?: React.SyntheticEvent,
-    reason?: string
-  ) => {
-    if (reason === 'clickaway') {
-      return;
-    }
-    setOpenSnackbar(false);
-  };
+  // const handleCloseSnackbar = (
+  //   event?: React.SyntheticEvent,
+  //   reason?: string
+  // ) => {
+  //   if (reason === 'clickaway') {
+  //     return;
+  //   }
+  //   setOpenSnackbar(false);
+  // };
 
   async function handleSubmitData(payload: IBaustelle) {
     console.log('Put Mutate ', payload);
     //const response = await mutateAsync(payload);
     const response = await putBaustelle(payload);
+    await enqueueSnackbar('Datensatz gespeichert!', { variant: 'success' });
+    history.push('/baustelle');
   }
 
   async function p1(payload: IBaustelle) {
@@ -63,10 +65,10 @@ export default function BaustellenDetailPageEdit() {
     });
   }
 
-  useEffect(() => {
-    setOpenSnackbar(getIsError);
-    setFetchError(axiosError?.message);
-  }, [getIsError]);
+  // useEffect(() => {
+  //   setOpenSnackbar(getIsError);
+  //   setFetchError(axiosError?.message);
+  // }, [getIsError]);
 
   if (getIsLoading || mutateIsLoading) {
     return <CircularProgress />;
@@ -86,11 +88,14 @@ export default function BaustellenDetailPageEdit() {
   return (
     <div>
       <h1>react-query Edit</h1>
-      <FormikBstComp intialValues={payload} onSubmitData={handleSubmitData} />
+      <BaustelleMutateComp
+        intialValues={payload}
+        onSubmitData={handleSubmitData}
+      />
       <br />
       <br />
       <Button onClick={() => history.goBack()}>zurück</Button>
-      <Snackbar
+      {/* <Snackbar
         open={openSnackbar}
         autoHideDuration={6000}
         onClose={handleCloseSnackbar}
@@ -98,7 +103,9 @@ export default function BaustellenDetailPageEdit() {
         <Alert onClose={handleCloseSnackbar} severity="error">
           {fetchError}
         </Alert>
-      </Snackbar>
+      </Snackbar> */}
     </div>
   );
-}
+};
+
+export default BaustelleEditPage;
