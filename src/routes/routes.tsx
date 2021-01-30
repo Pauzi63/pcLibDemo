@@ -28,21 +28,22 @@ export default function Routes() {
       <Route exact path="/muitable1" component={MaterialTableListPage1} />
       <Route path="/muitable1/:id" component={MaterialTableDetailPage1} />
       <Route exact path="/bsttable" component={BaustellenListPage} />
-      <Route exact path="/snackbar" component={SnackbarPage} />
-      <Route exact path="/i18next" component={I18nextPage} />
-      <Route exact path="/geolocated" component={GeolocatedPage} />
-      <Route exact path="/googlemaps" component={GoogleMapsPage} />
-      <Route exact path="/highlight" component={HighlightPage} />
-      <Route
-        exact
-        path="/bsttable/edit/:id"
-        component={BaustellenDetailPageEdit}
-      />
       <Route
         exact
         path="/bsttable/addnew"
         component={BaustellenDetailPageAddNew}
       />
+      <Route
+        exact
+        path="/bsttable/edit/:id"
+        component={BaustellenDetailPageEdit}
+      />
+      <Route exact path="/snackbar" component={SnackbarPage} />
+      <Route exact path="/i18next" component={I18nextPage} />
+      <Route exact path="/geolocated" component={GeolocatedPage} />
+      <Route exact path="/googlemaps" component={GoogleMapsPage} />
+      <Route exact path="/highlight" component={HighlightPage} />
+
       <Route path="/formikpage1" component={FormikPage1} />
       <Route component={NotFoundPage} />
     </Switch>

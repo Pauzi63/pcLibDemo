@@ -62,6 +62,13 @@
       "vorname": "T2",
       "nachname": "N33",
       "ort": "T4"
+    },
+    {
+      "id": 10,
+      "baustelle": "Baustelle 8",
+      "vorname": "2021",
+      "nachname": "01",
+      "ort": "30"
     }
   ],
   "authentication": {
