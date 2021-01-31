@@ -37,7 +37,6 @@ export default function Routes() {
       <Route exact path="/geolocated" component={GeolocatedPage} />
       <Route exact path="/googlemaps" component={GoogleMapsPage} />
       <Route exact path="/highlight" component={HighlightPage} />
-
       <Route path="/formikpage1" component={FormikPage1} />
       <Route component={NotFoundPage} />
     </Switch>

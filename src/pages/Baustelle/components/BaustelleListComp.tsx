@@ -1,6 +1,7 @@
 import React from 'react';
 import MaterialTable from 'material-table';
 import { useHistory } from 'react-router-dom';
+import { IBaustelle } from '../../../Interfaces/ResponseInterfaces';
 
 interface Props {
   data: any;

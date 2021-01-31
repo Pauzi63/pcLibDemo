@@ -5,13 +5,14 @@ import { TextField } from 'formik-material-ui';
 import { IBaustelle } from '../../../Interfaces/ResponseInterfaces';
 
 interface Props {
-  intialValues: any;
+  intialValues: IBaustelle | undefined;
   onSubmitData: (payload: IBaustelle) => void;
 }
 
 const BaustelleMutateComp = (props: Props) => {
   const { intialValues, onSubmitData } = props;
 
+  // "values" von Formik in payload umwandeln und an Parent übergeben
   const onSubmit = async (values: any) => {
     const payload: IBaustelle = {
       id: values.id,
@@ -25,67 +26,78 @@ const BaustelleMutateComp = (props: Props) => {
     await onSubmitData(payload);
   };
 
+  if (!intialValues) {
+    return null;
+  }
+
   return (
-    <React.Fragment>
-      <Formik
-        initialValues={{
-          id: intialValues && intialValues.id,
-          baustelle: intialValues && intialValues.baustelle,
-          vorname: intialValues && intialValues.vorname,
-          nachname: intialValues && intialValues.nachname,
-          ort: intialValues && intialValues.ort,
-        }}
-        onSubmit={onSubmit}
-        enableReinitialize={true}
-      >
-        {({ submitForm, isSubmitting, touched, errors }) => (
-          <Form>
-            <Box margin={1}>
-              <Field
-                component={TextField}
-                type="text"
-                label="Baustelle"
-                name="baustelle"
-              />
-            </Box>
-            <Box margin={1}>
-              <Field
-                component={TextField}
-                type="text"
-                label="Vorname"
-                name="vorname"
-              />
-            </Box>
-            <Box margin={1}>
-              <Field
-                component={TextField}
-                type="text"
-                label="Nachname"
-                name="nachname"
-              />
-            </Box>
-            <Box margin={1}>
-              <Field component={TextField} type="text" label="Ort" name="ort" />
-            </Box>
-            <br />
-            <br />
-            <Box margin={1}>
-              <Button
-                variant="contained"
-                color="primary"
-                disabled={isSubmitting}
-                onClick={submitForm}
-              >
-                Submit
-              </Button>
-            </Box>
-            <br />
-            <br />
-            {isSubmitting && <LinearProgress />}
-          </Form>
-        )}
-      </Formik>
-    </React.Fragment>
+    intialValues && (
+      <React.Fragment>
+        <Formik
+          initialValues={{
+            id: intialValues.id,
+            baustelle: intialValues.baustelle,
+            vorname: intialValues.vorname,
+            nachname: intialValues.nachname,
+            ort: intialValues.ort,
+          }}
+          onSubmit={onSubmit}
+          enableReinitialize={true}
+        >
+          {({ submitForm, isSubmitting, touched, errors }) => (
+            <Form>
+              <Box margin={1}>
+                <Field
+                  component={TextField}
+                  type="text"
+                  label="Baustelle"
+                  name="baustelle"
+                />
+              </Box>
+              <Box margin={1}>
+                <Field
+                  component={TextField}
+                  type="text"
+                  label="Vorname"
+                  name="vorname"
+                />
+              </Box>
+              <Box margin={1}>
+                <Field
+                  component={TextField}
+                  type="text"
+                  label="Nachname"
+                  name="nachname"
+                />
+              </Box>
+              <Box margin={1}>
+                <Field
+                  component={TextField}
+                  type="text"
+                  label="Ort"
+                  name="ort"
+                />
+              </Box>
+              <br />
+              <br />
+              <Box margin={1}>
+                <Button
+                  variant="contained"
+                  color="primary"
+                  disabled={isSubmitting}
+                  onClick={submitForm}
+                >
+                  Submit
+                </Button>
+              </Box>
+              <br />
+              <br />
+              {isSubmitting && <LinearProgress />}
+            </Form>
+          )}
+        </Formik>
+      </React.Fragment>
+    )
   );
 };
 

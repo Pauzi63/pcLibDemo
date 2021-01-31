@@ -22,7 +22,7 @@ export const appMenuItems = [
     Icon: IconShoppingCart,
     items: [
       {
-        name: 'Page2',
+        name: 'viel Text',
         link: '/page2',
       },
       {

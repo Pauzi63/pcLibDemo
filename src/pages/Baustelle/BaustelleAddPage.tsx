@@ -23,7 +23,7 @@ const BaustelleAddPage = (props: Props) => {
   const intialValues: IBaustelle = {
     id: 0,
     baustelle: '',
-    vorname: '',
+    vorname: 'default',
     nachname: '',
     ort: '',
   };

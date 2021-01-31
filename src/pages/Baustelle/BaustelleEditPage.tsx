@@ -31,19 +31,7 @@ const BaustelleEditPage = (props: Props) => {
     isError: mutateIsError,
     isLoading: mutateIsLoading,
   } = useMutation(putBaustelle, {});
-  // const [openSnackbar, setOpenSnackbar] = React.useState(false);
-  // const [fetchError, setFetchError] = React.useState('');
   const axiosError = getError as AxiosError;
-
-  // const handleCloseSnackbar = (
-  //   event?: React.SyntheticEvent,
-  //   reason?: string
-  // ) => {
-  //   if (reason === 'clickaway') {
-  //     return;
-  //   }
-  //   setOpenSnackbar(false);
-  // };
 
   async function handleSubmitData(payload: IBaustelle) {
     console.log('Put Mutate ', payload);
@@ -65,11 +53,6 @@ const BaustelleEditPage = (props: Props) => {
     });
   }
 
-  // useEffect(() => {
-  //   setOpenSnackbar(getIsError);
-  //   setFetchError(axiosError?.message);
-  // }, [getIsError]);
-
   if (getIsLoading || mutateIsLoading) {
     return <CircularProgress />;
   }
@@ -85,6 +68,11 @@ const BaustelleEditPage = (props: Props) => {
       );
     }
   }
+
+  // if (!payload) {
+  //   return null;
+  // }
+
   return (
     <div>
       <h1>react-query Edit</h1>
@@ -95,15 +83,6 @@ const BaustelleEditPage = (props: Props) => {
       <br />
       <br />
       <Button onClick={() => history.goBack()}>zurück</Button>
-      {/* <Snackbar
-        open={openSnackbar}
-        autoHideDuration={6000}
-        onClose={handleCloseSnackbar}
-      >
-        <Alert onClose={handleCloseSnackbar} severity="error">
-          {fetchError}
-        </Alert>
-      </Snackbar> */}
     </div>
   );
 };

@@ -28,7 +28,7 @@ const BaustelleListPage = (props: Props) => {
     }
   }
 
-  if (data === undefined) {
+  if (!data) {
     return null;
   }
 
