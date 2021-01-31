@@ -8,7 +8,7 @@ import Page5 from '../pages/DummyPages/Page5';
 import MaterialTableListPage1 from '../pages/MaterialTable/MaterialTableListPage1';
 import MaterialTableDetailPage1 from '../pages/MaterialTable/MaterialTableDetailPage1';
 import {
-  BaustelleListPage,
+  BaustellePage,
   BaustelleEditPage,
   BaustelleAddPage,
 } from '../pages/Baustelle';
@@ -29,7 +29,7 @@ export default function Routes() {
       <Route path="/page5" component={Page5} />
       <Route exact path="/muitable1" component={MaterialTableListPage1} />
       <Route path="/muitable1/:id" component={MaterialTableDetailPage1} />
-      <Route exact path="/baustelle" component={BaustelleListPage} />
+      <Route exact path="/baustelle" component={BaustellePage} />
       <Route exact path="/baustelle/add" component={BaustelleAddPage} />
       <Route exact path="/baustelle/edit/:id" component={BaustelleEditPage} />
       <Route exact path="/snackbar" component={SnackbarPage} />

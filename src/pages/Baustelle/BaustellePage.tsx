@@ -8,7 +8,7 @@ import { useGetBaustellen } from '../../api/useBaustelle';
 
 interface Props {}
 
-const BaustelleListPage = (props: Props) => {
+const BaustellePage = (props: Props) => {
   const history = useHistory();
   const { data, error, isLoading, isError } = useGetBaustellen();
 
@@ -51,4 +51,4 @@ const BaustelleListPage = (props: Props) => {
   );
 };
 
-export default BaustelleListPage;
+export default BaustellePage;
