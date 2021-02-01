@@ -1,7 +1,7 @@
-import React from 'react';
-import MaterialTable from 'material-table';
-import { useHistory } from 'react-router-dom';
-import { IBaustelle } from '../../../Interfaces/ResponseInterfaces';
+import React from "react";
+import MaterialTable from "material-table";
+import { useHistory } from "react-router-dom";
+import { IBaustelle } from "../../../interfaces/ResponseInterfaces";
 
 interface Props {
   data: any;
@@ -16,16 +16,16 @@ const BaustelleListComp = (props: Props) => {
       <MaterialTable
         title="Baustellen"
         columns={[
-          { title: 'Id', field: 'id', type: 'numeric', hidden: false },
+          { title: "Id", field: "id", type: "numeric", hidden: false },
           {
-            title: 'Baustelle',
-            field: 'baustelle',
+            title: "Baustelle",
+            field: "baustelle",
             removable: false,
-            type: 'string',
+            type: "string",
           },
-          { title: 'Vorname', field: 'vorname', type: 'string' },
-          { title: 'Nachname', field: 'nachname', type: 'string' },
-          { title: 'Ort', field: 'ort', type: 'string' },
+          { title: "Vorname", field: "vorname", type: "string" },
+          { title: "Nachname", field: "nachname", type: "string" },
+          { title: "Ort", field: "ort", type: "string" },
         ]}
         data={data}
         options={{
@@ -34,11 +34,11 @@ const BaustelleListComp = (props: Props) => {
           selection: false,
           columnsButton: true,
           exportButton: true,
-          detailPanelType: 'single',
+          detailPanelType: "single",
           toolbar: true,
         }}
         onRowClick={(event, rowData) => {
-          history.push('baustelle/edit/' + rowData?.id);
+          history.push("baustelle/edit/" + rowData?.id);
         }}
       />
     </React.Fragment>

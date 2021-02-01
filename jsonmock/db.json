@@ -10,7 +10,7 @@
     {
       "id": 2,
       "baustelle": "Baustelle 2",
-      "vorname": "Christian Aloisia",
+      "vorname": "Christian Alois",
       "nachname": "Pauzenberger",
       "ort": "Schlüßlberg 4707"
     },
@@ -123,6 +123,13 @@
       "id": 18,
       "baustelle": "",
       "vorname": "default",
+      "nachname": "",
+      "ort": ""
+    },
+    {
+      "id": 19,
+      "baustelle": "",
+      "vorname": "Tobias",
       "nachname": "",
       "ort": ""
     }

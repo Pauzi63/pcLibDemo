@@ -1,13 +1,13 @@
-import React, { useEffect } from 'react';
-import { Button, CircularProgress } from '@material-ui/core';
-import { AxiosError } from 'axios';
-import { useMutation } from 'react-query';
-import { useHistory, useParams } from 'react-router-dom';
-import { useSnackbar } from 'notistack';
+import React, { useEffect } from "react";
+import { Button, CircularProgress } from "@material-ui/core";
+import { AxiosError } from "axios";
+import { useMutation } from "react-query";
+import { useHistory, useParams } from "react-router-dom";
+import { useSnackbar } from "notistack";
 
-import { useGetBaustelleById, putBaustelle } from '../../api/useBaustelle';
-import { IBaustelle } from '../../Interfaces/ResponseInterfaces';
-import { BaustelleMutateComp } from './components';
+import { useGetBaustelleById, putBaustelle } from "../../api/useBaustelle";
+import { IBaustelle } from "../../interfaces/ResponseInterfaces";
+import { BaustelleMutateComp } from "./components";
 
 interface ParamTypes {
   id: string;
@@ -34,19 +34,19 @@ const BaustelleEditPage = (props: Props) => {
   const axiosError = getError as AxiosError;
 
   async function handleSubmitData(payload: IBaustelle) {
-    console.log('Put Mutate ', payload);
+    console.log("Put Mutate ", payload);
     //const response = await mutateAsync(payload);
     const response = await putBaustelle(payload);
-    await enqueueSnackbar('Datensatz gespeichert!', { variant: 'success' });
-    history.push('/baustelle');
+    await enqueueSnackbar("Datensatz gespeichert!", { variant: "success" });
+    history.push("/baustelle");
   }
 
   async function p1(payload: IBaustelle) {
     return new Promise((resolve, reject) => {
-      console.log('Put Mutate ', payload);
+      console.log("Put Mutate ", payload);
       const response = mutateAsync(payload);
       if (!mutateIsError) {
-        resolve('OK');
+        resolve("OK");
       } else {
         reject();
       }
@@ -59,10 +59,10 @@ const BaustelleEditPage = (props: Props) => {
 
   if (getError) {
     const axiosError = getError as AxiosError;
-    if (getError && typeof getError == 'object') {
+    if (getError && typeof getError == "object") {
       return (
         <div>
-          Es ist ein Fehler aufgetreten: {axiosError.response?.statusText}{' '}
+          Es ist ein Fehler aufgetreten: {axiosError.response?.statusText}{" "}
           {axiosError.message}
         </div>
       );

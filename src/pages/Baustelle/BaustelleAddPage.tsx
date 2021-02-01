@@ -1,13 +1,13 @@
-import React, { useEffect } from 'react';
-import { Button, CircularProgress, Snackbar } from '@material-ui/core';
-import { useMutation } from 'react-query';
-import { useHistory } from 'react-router-dom';
-import { AxiosError } from 'axios';
-import { useSnackbar } from 'notistack';
+import React, { useEffect } from "react";
+import { Button, CircularProgress, Snackbar } from "@material-ui/core";
+import { useMutation } from "react-query";
+import { useHistory } from "react-router-dom";
+import { AxiosError } from "axios";
+import { useSnackbar } from "notistack";
 
-import { postBaustelle, usePostBaustelle } from '../../api/useBaustelle';
-import { IBaustelle } from '../../Interfaces/ResponseInterfaces';
-import { BaustelleMutateComp } from './components';
+import { postBaustelle, usePostBaustelle } from "../../api/useBaustelle";
+import { IBaustelle } from "../../interfaces/ResponseInterfaces";
+import { BaustelleMutateComp } from "./components";
 
 interface Props {}
 
@@ -22,23 +22,23 @@ const BaustelleAddPage = (props: Props) => {
 
   const intialValues: IBaustelle = {
     id: 0,
-    baustelle: '',
-    vorname: 'default',
-    nachname: '',
-    ort: '',
+    baustelle: "",
+    vorname: "Tobias",
+    nachname: "",
+    ort: "",
   };
 
   async function handleSubmitData(payload: IBaustelle) {
     const response = await mutateAsync(payload);
-    await enqueueSnackbar('Datensatz gespeichert!', { variant: 'success' });
+    await enqueueSnackbar("Datensatz gespeichert!", { variant: "success" });
     // intialValues.id = response.id;
-    history.push('/baustelle');
+    history.push("/baustelle");
   }
 
   if (isError) {
     enqueueSnackbar(
-      'Es ist folgender Fehler aufgetreten: ' + axiosError?.message,
-      { variant: 'error' }
+      "Es ist folgender Fehler aufgetreten: " + axiosError?.message,
+      { variant: "error" }
     );
   }
 

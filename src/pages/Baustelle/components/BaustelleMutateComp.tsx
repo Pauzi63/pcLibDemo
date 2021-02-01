@@ -1,8 +1,8 @@
-import * as React from 'react';
-import { Button, LinearProgress, Box } from '@material-ui/core';
-import { Formik, Form, Field } from 'formik';
-import { TextField } from 'formik-material-ui';
-import { IBaustelle } from '../../../Interfaces/ResponseInterfaces';
+import * as React from "react";
+import { Button, LinearProgress, Box } from "@material-ui/core";
+import { Formik, Form, Field } from "formik";
+import { TextField } from "formik-material-ui";
+import { IBaustelle } from "../../../interfaces/ResponseInterfaces";
 
 interface Props {
   intialValues: IBaustelle | undefined;
@@ -22,7 +22,7 @@ const BaustelleMutateComp = (props: Props) => {
       ort: values.ort,
     };
     // data.baustelle = values.baustelle;
-    console.log('payload: ', payload);
+    console.log("payload: ", payload);
     await onSubmitData(payload);
   };
 
