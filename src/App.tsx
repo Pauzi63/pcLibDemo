@@ -1,9 +1,9 @@
 import React from 'react';
 
 import ApplicationTheme from './components/Layout/ApplicationTheme';
-import SnackbarProvider from './utils/SnackbarProvider'
+import SnackbarProvider from './utils/SnackbarProvider';
 import MsalAuthentication from './authentication/MsalAuthentication';
-import Demo from './pages/DemoApplication/Demo';
+import DemoApplication from './pages/DemoApplication/DemoApplication';
 
 import Localization from './utils/Localization';
 
@@ -13,7 +13,7 @@ function App() {
     <ApplicationTheme>
       <SnackbarProvider>
         <MsalAuthentication>
-          <Demo />
+          <DemoApplication />
         </MsalAuthentication>
       </SnackbarProvider>
     </ApplicationTheme>

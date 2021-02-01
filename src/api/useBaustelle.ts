@@ -1,6 +1,6 @@
 import axios from 'axios';
 import { useMutation, useQuery } from 'react-query';
-import { IBaustelle } from '../../Interfaces/ResponseInterfaces';
+import { IBaustelle } from '../Interfaces/ResponseInterfaces';
 
 const endpoint = `${process.env.REACT_APP_API_URL}/baustellen`;
 

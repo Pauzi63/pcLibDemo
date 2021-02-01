@@ -22,7 +22,7 @@ export const appMenuItems = [
     Icon: IconShoppingCart,
     items: [
       {
-        name: 'Page2',
+        name: 'viel Text',
         link: '/page2',
       },
       {
@@ -51,7 +51,7 @@ export const appMenuItems = [
       },
       {
         name: 'Baustellen',
-        link: '/bsttable',
+        link: '/baustelle',
         Icon: IconPeople,
       },
     ],

@@ -1,29 +1,15 @@
 import React from 'react';
 import MaterialTable from 'material-table';
-import { AxiosError } from 'axios';
 import { useHistory } from 'react-router-dom';
-import CircularProgress from '@material-ui/core/CircularProgress';
-import { useGetBaustellen } from '../../../hooks/api/useBaustelle';
+import { IBaustelle } from '../../../Interfaces/ResponseInterfaces';
 
-export default function BaustellenListComp() {
+interface Props {
+  data: any;
+}
+
+const BaustelleListComp = (props: Props) => {
+  const { data } = props;
   const history = useHistory();
-  const { data, error, isLoading, isError } = useGetBaustellen();
-
-  if (isLoading) {
-    return <CircularProgress />;
-  }
-
-  if (error) {
-    const axiosError = error as AxiosError;
-    if (error && typeof error == 'object') {
-      return (
-        <div>
-          Es ist ein Fehler aufgetreten: {axiosError.response?.statusText}{' '}
-          {axiosError.message}
-        </div>
-      );
-    }
-  }
 
   return (
     <React.Fragment>
@@ -52,12 +38,11 @@ export default function BaustellenListComp() {
           toolbar: true,
         }}
         onRowClick={(event, rowData) => {
-          console.log('RowData ', rowData);
-          console.log('Event ', event);
-          history.push('bsttable/edit/' + rowData?.id);
-          // alert(rowData.accountTypeId);
+          history.push('baustelle/edit/' + rowData?.id);
         }}
       />
     </React.Fragment>
   );
-}
+};
+
+export default BaustelleListComp;

@@ -38,8 +38,8 @@ import FormatAlignLeftIcon from '@material-ui/icons/FormatAlignLeft';
 import FormatAlignCenterIcon from '@material-ui/icons/FormatAlignCenter';
 import FormatAlignRightIcon from '@material-ui/icons/FormatAlignRight';
 import FormatAlignJustifyIcon from '@material-ui/icons/FormatAlignJustify';
-import { useGetToDos } from '../../hooks/api/useDoTo';
-import { useGetBaustellen } from '../../hooks/api/useBaustelle';
+import { useGetToDos } from '../../api/useDoTo';
+import { useGetBaustellen } from '../../api/useBaustelle';
 import { IBaustelle } from '../../Interfaces/ResponseInterfaces';
 import { AxiosError } from 'axios';
 
