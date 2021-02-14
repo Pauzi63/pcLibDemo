@@ -1,8 +1,9 @@
-import axios from "axios";
-import { useMutation, useQuery } from "react-query";
-import { IBaustelle } from "../interfaces/ResponseInterfaces";
+import axios from 'axios';
+import { useMutation, useQuery, useQueryClient } from 'react-query';
+import { IBaustelle } from '../interfaces/ResponseInterfaces';
 
 const endpoint = `${process.env.REACT_APP_API_URL}/baustellen`;
+// const queryClient = useQueryClient();
 
 export function useGetBaustelleById(id: number) {
   async function fetchBaustelleById(id: number) {
@@ -11,7 +12,7 @@ export function useGetBaustelleById(id: number) {
   }
 
   return useQuery(
-    ["GetBaustelleWithId", id],
+    ['GetBaustelleWithId', id],
     async () => fetchBaustelleById(id),
     {
       retry: 0,
@@ -21,12 +22,12 @@ export function useGetBaustelleById(id: number) {
 
 export function useGetBaustellen() {
   async function fetchBaustellen() {
-    // const { data } = await axios.get<IBaustelle[]>(endpoint); // funktioniert nicht mit material-table {data}
-    const { data } = await axios.get(endpoint);
+    const { data } = await axios.get<IBaustelle[]>(endpoint); // funktioniert nicht mit material-table {data}
+    // const { data } = await axios.get(endpoint);
     return data;
   }
 
-  return useQuery(["GetBaustellen"], async () => fetchBaustellen(), {
+  return useQuery(['GetBaustellen'], async () => fetchBaustellen(), {
     retry: 0,
   });
 }
@@ -48,6 +49,7 @@ export function usePostBaustelle(payload: IBaustelle) {
 
 export async function putBaustelle(payload: IBaustelle) {
   const response = await axios.put(`${endpoint}/${payload.id}`, payload);
+  // await queryClient.invalidateQueries('GetBaustelleWithId');
   return response.data;
 }
 
