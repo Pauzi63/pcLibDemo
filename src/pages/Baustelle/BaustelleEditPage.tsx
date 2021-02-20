@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { Button, CircularProgress } from '@material-ui/core';
+import { Button, ButtonGroup, CircularProgress } from '@material-ui/core';
 import { AxiosError } from 'axios';
 import { useMutation, useQueryClient } from 'react-query';
 import { useHistory, useParams } from 'react-router-dom';
@@ -19,6 +19,7 @@ const BaustelleEditPage = (props: Props) => {
   const history = useHistory();
   const { id } = useParams<ParamTypes>();
   const { enqueueSnackbar } = useSnackbar();
+  const queryClient = useQueryClient();
 
   const {
     data: payload,
@@ -27,28 +28,30 @@ const BaustelleEditPage = (props: Props) => {
     isError: getIsError,
   } = useGetBaustelleById(parseInt(id));
 
-  const { mutateAsync, isLoading: mutateIsLoading } = useMutation(
-    putBaustelle,
-    {
-      onSuccess: (data, variables, context) => {
-        enqueueSnackbar('Datensatz gespeichert!', { variant: 'success' });
-        history.push('/baustelle');
-      },
-      onError: (error, variables, context) => {
-        const axiosError = error as AxiosError;
-        enqueueSnackbar(
-          `Folgender Fehler ist aufgetreten! ${axiosError.message} Status: ${axiosError.response?.statusText}  
+  const {
+    mutateAsync: mutateAsyncUpdate,
+    isLoading: mutateIsLoading,
+  } = useMutation(putBaustelle, {
+    onSuccess: (data, variables, context) => {
+      enqueueSnackbar('Datensatz gespeichert!', { variant: 'success' });
+    },
+    onError: (error, variables, context) => {
+      const axiosError = error as AxiosError;
+      enqueueSnackbar(
+        `Folgender Fehler ist aufgetreten! ${axiosError.message} Status: ${axiosError.response?.statusText}  
     `,
-          { variant: 'error' }
-        );
-      },
-      onSettled: (data, error, variables, context) => {},
-      retry: 0,
-    }
-  );
+        { variant: 'error' }
+      );
+    },
+    onSettled: (data, error, variables, context) => {
+      queryClient.invalidateQueries(['GetBaustelle', id]); // Liste muss neu gelesen werden
+    },
+    retry: 0,
+  });
 
   async function handleSubmitData(payload: IBaustelle) {
-    await mutateAsync(payload);
+    await mutateAsyncUpdate(payload);
+    history.push('/baustelle');
   }
 
   if (getIsLoading || mutateIsLoading) {
@@ -76,7 +79,14 @@ const BaustelleEditPage = (props: Props) => {
       />
       <br />
       <br />
-      <Button onClick={() => history.push('/baustelle')}>zur Übersicht</Button>
+      <ButtonGroup>
+        <Button onClick={() => history.push('/baustelle')}>
+          zur Übersicht
+        </Button>
+        <Button onClick={() => history.push(`/baustelle/delete/${id}`)}>
+          Löschen
+        </Button>
+      </ButtonGroup>
     </div>
   );
 };
