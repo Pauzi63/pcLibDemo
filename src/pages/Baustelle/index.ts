@@ -1,5 +1,11 @@
+import BaustellePage from './BaustellePage';
 import BaustelleAddPage from './BaustelleAddPage';
 import BaustelleEditPage from './BaustelleEditPage';
-import BaustellePage from './BaustellePage';
+import BaustelleDeletePage from './BaustelleDeletePage';
 
-export { BaustelleAddPage, BaustelleEditPage, BaustellePage };
+export {
+  BaustellePage,
+  BaustelleAddPage,
+  BaustelleEditPage,
+  BaustelleDeletePage,
+};

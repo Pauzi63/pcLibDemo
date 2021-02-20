@@ -153,7 +153,7 @@ const Header = (props: Props) => {
             color="inherit"
             noWrap
           >
-            {'title'}
+            {globals.appDisplayName}
           </Typography>
           <div className={classes.grow} />
           {/* <Hidden xsDown implementation="css">

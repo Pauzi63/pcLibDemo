@@ -5,7 +5,7 @@ import { useHistory } from 'react-router-dom';
 import { AxiosError } from 'axios';
 import { useSnackbar } from 'notistack';
 
-import { postBaustelle, usePostBaustelle } from '../../api/useBaustelle';
+import { postBaustelle } from '../../api/useBaustelle';
 import { IBaustelle } from '../../interfaces/ResponseInterfaces';
 import { BaustelleMutateComp } from './components';
 
@@ -14,27 +14,29 @@ interface Props {}
 const BaustelleAddPage = (props: Props) => {
   const history = useHistory();
   const { enqueueSnackbar } = useSnackbar();
-  const { mutateAsync, error, isError, isLoading } = useMutation(
-    postBaustelle,
-    {
-      onSuccess: (data, variables, context) => {
-        enqueueSnackbar(`Datensatz ${data.id} gespeichert!`, {
-          variant: 'success',
-        });
-        history.push('/baustelle');
-      },
-      onError: (error, variables, context) => {
-        const axiosError = error as AxiosError;
-        enqueueSnackbar(
-          `Folgender Fehler ist aufgetreten! ${axiosError.message} Status: ${axiosError.response?.statusText}  
+  const {
+    mutateAsync: mutateAsyncPost,
+    error,
+    isError,
+    isLoading,
+  } = useMutation(postBaustelle, {
+    onSuccess: (data, variables, context) => {
+      enqueueSnackbar(`Datensatz ${data.id} gespeichert!`, {
+        variant: 'success',
+      });
+      history.push('/baustelle');
+    },
+    onError: (error, variables, context) => {
+      const axiosError = error as AxiosError;
+      enqueueSnackbar(
+        `Folgender Fehler ist aufgetreten! ${axiosError.message} Status: ${axiosError.response?.statusText}  
   `,
-          { variant: 'error' }
-        );
-      },
-      onSettled: (data, error, variables, context) => {},
-      retry: 0,
-    }
-  );
+        { variant: 'error' }
+      );
+    },
+    onSettled: (data, error, variables, context) => {},
+    retry: 0,
+  });
   const axiosError = error as AxiosError;
 
   const intialValues: IBaustelle = {
@@ -46,7 +48,7 @@ const BaustelleAddPage = (props: Props) => {
   };
 
   async function handleSubmitData(payload: IBaustelle) {
-    await mutateAsync(payload);
+    await mutateAsyncPost(payload);
   }
 
   if (isLoading) {

@@ -3,8 +3,21 @@ import { useMutation, useQuery, useQueryClient } from 'react-query';
 import { IBaustelle } from '../interfaces/ResponseInterfaces';
 
 const endpoint = `${process.env.REACT_APP_API_URL}/baustellen`;
-// const queryClient = useQueryClient();
 
+// alle Records lesen
+export function useGetBaustellen() {
+  async function fetchBaustellen() {
+    const { data } = await axios.get<IBaustelle[]>(endpoint); // funktioniert nicht mit material-table {data}
+    // const { data } = await axios.get(endpoint);
+    return data;
+  }
+
+  return useQuery(['GetBaustellen'], async () => fetchBaustellen(), {
+    retry: 0,
+  });
+}
+
+// bestimmten Record lesen
 export function useGetBaustelleById(id: number) {
   async function fetchBaustelleById(id: number) {
     const { data } = await axios.get<IBaustelle>(`${endpoint}/${id}`);
@@ -20,40 +33,20 @@ export function useGetBaustelleById(id: number) {
   );
 }
 
-export function useGetBaustellen() {
-  async function fetchBaustellen() {
-    const { data } = await axios.get<IBaustelle[]>(endpoint); // funktioniert nicht mit material-table {data}
-    // const { data } = await axios.get(endpoint);
-    return data;
-  }
-
-  return useQuery(['GetBaustellen'], async () => fetchBaustellen(), {
-    retry: 0,
-  });
-}
-
-// export function usePutBaustelle(payload: IBaustelle) {
-//   async function putBaustelle(payload: IBaustelle) {
-//     const response = await axios.put(`${endpoint}/${payload.id}`, payload);
-//     return response.data;
-//   }
-//   const mutation = useMutation((payload) => putBaustelle(payload));
-//   return mutation;
-// }
-
-export function usePostBaustelle(payload: IBaustelle) {
-  const { mutateAsync } = useMutation((p) => postBaustelle(payload), {});
-  return mutateAsync;
-}
-// const mutation = useMutation(newTodo => axios.post('/todos', newTodo))
-
-export async function putBaustelle(payload: IBaustelle) {
-  const response = await axios.put(`${endpoint}/${payload.id}`, payload);
-  // await queryClient.invalidateQueries('GetBaustelleWithId');
+// Datensatz einfügen
+export async function postBaustelle(payload: IBaustelle) {
+  const response = await axios.post(`${endpoint}`, payload);
   return response.data;
 }
 
-export async function postBaustelle(payload: IBaustelle) {
-  const response = await axios.post(`${endpoint}`, payload);
+// Datensatz updaten
+export async function putBaustelle(payload: IBaustelle) {
+  const response = await axios.put(`${endpoint}/${payload.id}`, payload);
+  return response.data;
+}
+
+// Datensatz löschen
+export async function deleteBaustelle(id: number) {
+  const response = await axios.delete(`${endpoint}/${id}`);
   return response.data;
 }

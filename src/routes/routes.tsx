@@ -11,6 +11,7 @@ import {
   BaustellePage,
   BaustelleEditPage,
   BaustelleAddPage,
+  BaustelleDeletePage,
 } from '../pages/Baustelle';
 import FormikPage1 from '../pages/Formik/FormikPage1';
 import SnackbarPage from '../pages/Snackbar/SnackbarPage';
@@ -32,6 +33,11 @@ export default function Routes() {
       <Route exact path="/baustelle" component={BaustellePage} />
       <Route exact path="/baustelle/add" component={BaustelleAddPage} />
       <Route exact path="/baustelle/edit/:id" component={BaustelleEditPage} />
+      <Route
+        exact
+        path="/baustelle/delete/:id"
+        component={BaustelleDeletePage}
+      />
       <Route exact path="/snackbar" component={SnackbarPage} />
       <Route exact path="/i18next" component={I18nextPage} />
       <Route exact path="/geolocated" component={GeolocatedPage} />
