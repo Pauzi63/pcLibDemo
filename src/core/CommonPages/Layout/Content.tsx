@@ -1,7 +1,7 @@
-import React from 'react';
-import { createStyles, Theme, makeStyles } from '@material-ui/core/styles';
-import classNames from 'classnames';
-import globals from '../../utils/Globals';
+import React from "react";
+import { createStyles, Theme, makeStyles } from "@material-ui/core/styles";
+import classNames from "classnames";
+import globals from "../../../globals";
 
 const drawerWidth = globals.drawerWidth;
 
@@ -10,14 +10,14 @@ const useStyles = makeStyles((theme: Theme) =>
     content: {
       flexGrow: 1,
       padding: theme.spacing(3),
-      transition: theme.transitions.create('margin', {
+      transition: theme.transitions.create("margin", {
         easing: theme.transitions.easing.sharp,
         duration: theme.transitions.duration.leavingScreen,
       }),
       marginLeft: -drawerWidth,
     },
     contentShift: {
-      transition: theme.transitions.create('margin', {
+      transition: theme.transitions.create("margin", {
         easing: theme.transitions.easing.easeOut,
         duration: theme.transitions.duration.enteringScreen,
       }),

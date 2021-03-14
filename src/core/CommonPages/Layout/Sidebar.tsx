@@ -1,20 +1,20 @@
-import React from 'react';
-import Drawer from '@material-ui/core/Drawer';
-import SwipeableDrawer from '@material-ui/core/SwipeableDrawer';
-import Hidden from '@material-ui/core/Hidden';
-import { createStyles, Theme, makeStyles } from '@material-ui/core/styles';
-import AppMenu from '../DrawerContent/AppMenu';
-import globals from '../../utils/Globals';
+import React from "react";
+import Drawer from "@material-ui/core/Drawer";
+import SwipeableDrawer from "@material-ui/core/SwipeableDrawer";
+import Hidden from "@material-ui/core/Hidden";
+import { createStyles, Theme, makeStyles } from "@material-ui/core/styles";
+import AppMenu from "../DrawerContent/AppMenu";
+import globals from "../../../globals";
 
 const drawerWidth = globals.drawerWidth;
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     root: {
-      display: 'flex',
+      display: "flex",
     },
     drawer: {
-      [theme.breakpoints.up('sm')]: {
+      [theme.breakpoints.up("sm")]: {
         width: drawerWidth,
         flexShrink: 0,
       },
@@ -24,7 +24,7 @@ const useStyles = makeStyles((theme: Theme) =>
       width: drawerWidth,
     },
     drawerContainer: {
-      overflow: 'auto',
+      overflow: "auto",
     },
   })
 );
@@ -55,7 +55,7 @@ const Sidebar = (props: Props) => {
         <Hidden smUp implementation="css">
           <SwipeableDrawer
             variant="temporary"
-            anchor={'left'} //{theme.direction === 'rtl' ? 'right' : 'left'}
+            anchor={"left"} //{theme.direction === 'rtl' ? 'right' : 'left'}
             open={mobileOpen}
             onOpen={handleMobileDrawerOpen}
             onClose={handleDrawerToggle}

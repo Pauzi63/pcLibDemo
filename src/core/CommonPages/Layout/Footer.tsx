@@ -1,21 +1,21 @@
-import React from 'react';
-import { makeStyles } from '@material-ui/core/styles';
-import { Link, Typography } from '@material-ui/core/';
+import React from "react";
+import { makeStyles } from "@material-ui/core/styles";
+import { Link, Typography } from "@material-ui/core/";
 
-import globals from '../../utils/Globals';
+import globals from "../../../globals";
 
 const useStyles = makeStyles({
   typography: {
-    marginBottom: '24px',
+    marginBottom: "24px",
   },
   footer: {
-    position: 'fixed',
+    position: "fixed",
     left: 0,
     bottom: 0,
-    width: '100%',
+    width: "100%",
     // background-color: red,
     // color: white,
-    textAlign: 'center',
+    textAlign: "center",
   },
 });
 
@@ -29,7 +29,7 @@ const Footer = () => {
       align="center"
       className={classes.footer}
     >
-      {'© '}
+      {"© "}
       <Link color="inherit" href={globals.companyLink}>
         {globals.companyName}
       </Link>

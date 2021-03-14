@@ -1,20 +1,20 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import { makeStyles, createStyles } from '@material-ui/core/styles';
+import React from "react";
+import PropTypes from "prop-types";
+import { makeStyles, createStyles } from "@material-ui/core/styles";
 // import { SvgIconProps } from '@material-ui/core/SvgIcon'
 
-import List from '@material-ui/core/List';
+import List from "@material-ui/core/List";
 
-import ListItemIcon from '@material-ui/core/ListItemIcon';
-import ListItemText from '@material-ui/core/ListItemText';
-import Divider from '@material-ui/core/Divider';
-import Collapse from '@material-ui/core/Collapse';
+import ListItemIcon from "@material-ui/core/ListItemIcon";
+import ListItemText from "@material-ui/core/ListItemText";
+import Divider from "@material-ui/core/Divider";
+import Collapse from "@material-ui/core/Collapse";
 
-import IconExpandLess from '@material-ui/icons/ExpandLess';
-import IconExpandMore from '@material-ui/icons/ExpandMore';
+import IconExpandLess from "@material-ui/icons/ExpandLess";
+import IconExpandMore from "@material-ui/icons/ExpandMore";
 
-import AppMenuItemComponent from './AppMenuItemComponent';
-import globals from '../../utils/Globals';
+import AppMenuItemComponent from "./AppMenuItemComponent";
+import globals from "../../../globals";
 
 // React runtime PropTypes
 export const AppMenuItemPropTypes = {
@@ -27,7 +27,7 @@ export const AppMenuItemPropTypes = {
 // TypeScript compile-time props type, infered from propTypes
 // https://dev.to/busypeoples/notes-on-typescript-inferring-react-proptypes-1g88
 type AppMenuItemPropTypes = PropTypes.InferProps<typeof AppMenuItemPropTypes>;
-type AppMenuItemPropsWithoutItems = Omit<AppMenuItemPropTypes, 'items'>;
+type AppMenuItemPropsWithoutItems = Omit<AppMenuItemPropTypes, "items">;
 
 // Improve child items declaration
 export type AppMenuItemProps = AppMenuItemPropsWithoutItems & {
@@ -85,10 +85,10 @@ const AppMenuItem: React.FC<AppMenuItemProps> = (props) => {
 const useStyles = makeStyles((theme) =>
   createStyles({
     menuItem: {
-      '&.active': {
-        background: 'rgba(0, 0, 0, 0.08)',
-        '& .MuiListItemIcon-root': {
-          color: '#fff',
+      "&.active": {
+        background: "rgba(0, 0, 0, 0.08)",
+        "& .MuiListItemIcon-root": {
+          color: "#fff",
         },
       },
     },

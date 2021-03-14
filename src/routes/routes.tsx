@@ -1,24 +1,24 @@
-import { Switch, Route } from 'react-router-dom';
-import NotFoundPage from '../pages/Common/NotFoundPage';
-import Page1 from '../pages/DummyPages/Page1';
-import Page2 from '../pages/DummyPages/Page2';
-import Page3 from '../pages/DummyPages/Page3';
-import Page4 from '../pages/DummyPages/Page4';
-import Page5 from '../pages/DummyPages/Page5';
-import MaterialTableListPage1 from '../pages/MaterialTable/MaterialTableListPage1';
-import MaterialTableDetailPage1 from '../pages/MaterialTable/MaterialTableDetailPage1';
+import { Switch, Route } from "react-router-dom";
+import NotFoundPage from "../core/CommonPages/NotFoundPage";
+import Page1 from "../pages/DummyPages/Page1";
+import Page2 from "../pages/DummyPages/Page2";
+import Page3 from "../pages/DummyPages/Page3";
+import Page4 from "../pages/DummyPages/Page4";
+import Page5 from "../pages/DummyPages/Page5";
+import MaterialTableListPage1 from "../pages/MaterialTable/MaterialTableListPage1";
+import MaterialTableDetailPage1 from "../pages/MaterialTable/MaterialTableDetailPage1";
 import {
   BaustellePage,
   BaustelleEditPage,
   BaustelleAddPage,
   BaustelleDeletePage,
-} from '../pages/Baustelle';
-import FormikPage1 from '../pages/Formik/FormikPage1';
-import SnackbarPage from '../pages/Snackbar/SnackbarPage';
-import I18nextPage from '../pages/I18next/I18nextPage';
-import GeolocatedPage from '../pages/Geolocated/GeolocatedPage';
-import GoogleMapsPage from '../pages/GoogleMaps/GoogleMapsPage';
-import HighlightPage from '../pages/Highlight/HighlightPage';
+} from "../pages/Baustelle";
+import FormikPage1 from "../pages/Formik/FormikPage1";
+import SnackbarPage from "../pages/Snackbar/SnackbarPage";
+import I18nextPage from "../pages/I18next/I18nextPage";
+import GeolocatedPage from "../pages/Geolocated/GeolocatedPage";
+import GoogleMapsPage from "../pages/GoogleMaps/GoogleMapsPage";
+import HighlightPage from "../pages/Highlight/HighlightPage";
 
 export default function Routes() {
   return (

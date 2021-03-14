@@ -1,17 +1,17 @@
-import React from 'react';
-import globals from '../utils/Globals';
+import React, { useEffect } from "react";
+import globals from "../../globals";
 
 import {
   AzureAD,
   IAzureADFunctionProps,
   AuthenticationState,
-} from 'react-aad-msal';
-import { JwtAuthentication } from './JwtAuthentication';
-import { AuthProvider } from './MsalAuthProvider';
+} from "react-aad-msal";
+import { JwtAuthentication } from "./JwtAuthentication";
+import { AuthProvider } from "./MsalAuthProvider";
 
-import ErrorPage from '../pages/Common/ErrorPage';
-import LoadingPage from '../pages/Common/LoadingPage';
-import BlankPage from '../pages/Common/BlankPage';
+import ErrorPage from "../CommonPages/ErrorPage";
+import LoadingPage from "../CommonPages/LoadingPage";
+import BlankPage from "../CommonPages/BlankPage";
 
 const MsalAuthentication = (props: { children: any }) => {
   const { children } = props;
@@ -36,6 +36,10 @@ const MsalAuthentication = (props: { children: any }) => {
       });
   }
 
+  const timeout = useEffect(() => {
+    return () => clearTimeout(setTimeout(() => {}, 2000));
+  }, []);
+
   return (
     <AzureAD provider={AuthProvider} forceLogin={true}>
       {({ accountInfo, authenticationState, error }: IAzureADFunctionProps) => {
@@ -43,7 +47,7 @@ const MsalAuthentication = (props: { children: any }) => {
           authenticationState === AuthenticationState.Authenticated &&
           isAuthenticated === undefined
         ) {
-          loginToKrmCore(accountInfo?.account.userName ?? '', '');
+          loginToKrmCore(accountInfo?.account.userName ?? "", "");
         }
         return (
           <React.Fragment>
@@ -59,7 +63,7 @@ const MsalAuthentication = (props: { children: any }) => {
               isAuthenticated === false && (
                 <ErrorPage code="KrmCore Error" message={aadError} />
               )}
-            {error && (
+            {error && timeout && (
               <ErrorPage code={error.errorCode} message={error.errorMessage} />
             )}
           </React.Fragment>

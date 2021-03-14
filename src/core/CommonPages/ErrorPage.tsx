@@ -1,8 +1,8 @@
-import React from 'react';
-import { createStyles, makeStyles, Theme } from '@material-ui/core/styles';
-import { Grid, Container, Typography } from '@material-ui/core';
+import React from "react";
+import { createStyles, makeStyles, Theme } from "@material-ui/core/styles";
+import { Grid, Container, Typography } from "@material-ui/core";
 
-import globals from '../../utils/Globals';
+import globals from "../../globals";
 //import strings from '../../utils/Localization';
 
 const useStyles = makeStyles((theme: Theme) =>
@@ -11,7 +11,7 @@ const useStyles = makeStyles((theme: Theme) =>
       backgroundColor: globals.companyColor,
     },
     grid: {
-      minHeight: '100vh',
+      minHeight: "100vh",
     },
     container: {
       width: 800,
@@ -21,11 +21,11 @@ const useStyles = makeStyles((theme: Theme) =>
     },
     errorCaption: {
       marginTop: 30,
-      fontWeight: 'bold',
+      fontWeight: "bold",
     },
     errorText: {
-      color: 'white',
-      textAlign: 'center',
+      color: "white",
+      textAlign: "center",
     },
   })
 );
@@ -49,15 +49,15 @@ const ErrorPage = (props: { code: string; message: any }) => {
             variant="h1"
             className={`${classes.errorText} ${classes.errorTitle}`}
           >
-            {'errorPageTitle'}
+            {"errorPageTitle"}
           </Typography>
-          {code !== '' && (
+          {code !== "" && (
             <div>
               <Typography
                 variant="h5"
                 className={`${classes.errorText} ${classes.errorCaption}`}
               >
-                {'errorCode'}:
+                {"errorCode"}:
               </Typography>
               <Typography variant="h6" className={classes.errorText}>
                 {code}
@@ -70,7 +70,7 @@ const ErrorPage = (props: { code: string; message: any }) => {
                 variant="h5"
                 className={`${classes.errorText} ${classes.errorCaption}`}
               >
-                {'errorMessage'}:
+                {"errorMessage"}:
               </Typography>
               <Typography variant="h6" className={classes.errorText}>
                 {message}

@@ -1,0 +1,30 @@
+import React from "react";
+import { Router } from "react-router-dom";
+import { QueryClientProvider, QueryClient } from "react-query";
+import { ReactQueryDevtools } from "react-query/devtools";
+import Routes from "./routes/routes";
+import { createBrowserHistory } from "history";
+import MuiLayout from "./core/CommonPages/Layout/MuiLayout";
+import ApplicationContextService from "./core/context/ApplicatonContextService";
+
+const queryClient = new QueryClient();
+
+const Root = () => {
+  const browserHistory = createBrowserHistory();
+  return (
+    <React.Fragment>
+      <ApplicationContextService>
+        <QueryClientProvider client={queryClient}>
+          <ReactQueryDevtools initialIsOpen={false} />
+          <Router history={browserHistory}>
+            <MuiLayout>
+              <Routes />
+            </MuiLayout>
+          </Router>
+        </QueryClientProvider>
+      </ApplicationContextService>
+    </React.Fragment>
+  );
+};
+
+export default Root;
