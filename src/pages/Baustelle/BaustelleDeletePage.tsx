@@ -1,11 +1,11 @@
-import React from 'react';
-import { Button, ButtonGroup, CircularProgress } from '@material-ui/core';
-import { AxiosError } from 'axios';
-import { useHistory, useParams } from 'react-router-dom';
-import { useSnackbar } from 'notistack';
-import BlankPage from '../Common/BlankPage';
-import { useGetBaustelleById, deleteBaustelle } from '../../api/useBaustelle';
-import { useMutation, useQueryClient } from 'react-query';
+import React from "react";
+import { Button, ButtonGroup, CircularProgress } from "@material-ui/core";
+import { AxiosError } from "axios";
+import { useHistory, useParams } from "react-router-dom";
+import { useSnackbar } from "notistack";
+import BlankPage from "../../core/CommonPages/BlankPage";
+import { useGetBaustelleById, deleteBaustelle } from "../../api/useBaustelle";
+import { useMutation, useQueryClient } from "react-query";
 
 interface ParamTypes {
   id: string;
@@ -20,18 +20,18 @@ const BaustelleDeletePage = (props: Props) => {
   const { data, error, isLoading, isError } = useGetBaustelleById(parseInt(id));
   const { mutateAsync: mutateAsyncDelete } = useMutation(deleteBaustelle, {
     onSuccess: (data, variables, context) => {
-      enqueueSnackbar('Datensatz gelöscht!', { variant: 'success' });
+      enqueueSnackbar("Datensatz gelöscht!", { variant: "success" });
     },
     onError: (error, variables, context) => {
       const axiosError = error as AxiosError;
       enqueueSnackbar(
         `Folgender Fehler ist aufgetreten! ${axiosError.message} Status: ${axiosError.response?.statusText}
     `,
-        { variant: 'error' }
+        { variant: "error" }
       );
     },
     onSettled: (data, error, variables, context) => {
-      queryClient.invalidateQueries('GetBaustellen'); // Liste muss neu gelesen werden
+      queryClient.invalidateQueries("GetBaustellen"); // Liste muss neu gelesen werden
     },
     retry: 0,
   });
@@ -47,13 +47,13 @@ const BaustelleDeletePage = (props: Props) => {
 
   if (isError) {
     const axiosError = error as AxiosError;
-    console.log('Axios Error: ', axiosError);
-    if (error && typeof error == 'object') {
+    console.log("Axios Error: ", axiosError);
+    if (error && typeof error == "object") {
       return (
         <div>
           Es ist ein Fehler aufgetreten: {axiosError.message}
           <br />
-          {axiosError.response?.statusText}{' '}
+          {axiosError.response?.statusText}{" "}
         </div>
       );
     }
@@ -61,7 +61,7 @@ const BaustelleDeletePage = (props: Props) => {
 
   async function handleDelete(id: number) {
     mutateAsyncDelete(id);
-    history.push('/baustelle');
+    history.push("/baustelle");
   }
 
   return (
@@ -79,7 +79,7 @@ const BaustelleDeletePage = (props: Props) => {
           <Button
             variant="outlined"
             color="primary"
-            onClick={() => history.push('/baustelle')}
+            onClick={() => history.push("/baustelle")}
           >
             zurück
           </Button>

@@ -1,7 +1,7 @@
-import { useState } from 'react';
+import { useState } from "react";
 import { useTranslation } from "react-i18next";
 
-import globals from '../utils/Globals';
+import globals from "../../globals";
 
 const useLanguage = () => {
   const { i18n } = useTranslation();
@@ -11,8 +11,8 @@ const useLanguage = () => {
     window.localStorage.setItem(globals.languageKey, language);
     i18n.changeLanguage(language);
     setSate(language);
-  }
+  };
   return { language, setLanguage };
-}
+};
 
 export default useLanguage;

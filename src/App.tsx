@@ -1,11 +1,11 @@
-import React from 'react';
+import React from "react";
 
-import ApplicationTheme from './components/Layout/ApplicationTheme';
-import SnackbarProvider from './utils/SnackbarProvider';
-import MsalAuthentication from './authentication/MsalAuthentication';
-import DemoApplication from './pages/DemoApplication/DemoApplication';
+import ApplicationTheme from "./core/CommonPages/Layout/ApplicationTheme";
+import SnackbarProvider from "./core/utils/SnackbarProvider";
+import MsalAuthentication from "./core/authentication/MsalAuthentication";
+import Root from "./Root";
 
-import Localization from './utils/Localization';
+import Localization from "./core/utils/localization";
 
 function App() {
   Localization.initialize();
@@ -13,7 +13,7 @@ function App() {
     <ApplicationTheme>
       <SnackbarProvider>
         <MsalAuthentication>
-          <DemoApplication />
+          <Root />
         </MsalAuthentication>
       </SnackbarProvider>
     </ApplicationTheme>

@@ -1,7 +1,7 @@
-import React, { useContext } from 'react';
-import Button from '@material-ui/core/Button';
-import { ApplicationContext } from '../../context/ApplicationContext';
-import { Typography } from '@material-ui/core';
+import React, { useContext } from "react";
+import Button from "@material-ui/core/Button";
+import { ApplicationContext } from "../../core/context/ApplicationContext";
+import { Typography } from "@material-ui/core";
 
 const Page2 = () => {
   const { messageCount, setMessageCount } = React.useContext(

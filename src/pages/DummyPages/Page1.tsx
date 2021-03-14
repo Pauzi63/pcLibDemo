@@ -1,6 +1,6 @@
-import React, { useContext } from 'react';
-import { Button } from '@material-ui/core';
-import { ApplicationContext } from '../../context/ApplicationContext';
+import React, { useContext } from "react";
+import { Button } from "@material-ui/core";
+import { ApplicationContext } from "../../core/context/ApplicationContext";
 
 const Page1 = () => {
   const { messageCount, setMessageCount } = useContext(ApplicationContext);

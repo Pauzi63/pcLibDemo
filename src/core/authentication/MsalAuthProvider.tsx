@@ -1,7 +1,5 @@
-import { MsalAuthProvider, LoginType } from 'react-aad-msal';
-import { Configuration } from 'msal';
-
-import globals from '../utils/Globals';
+import { MsalAuthProvider, LoginType } from "react-aad-msal";
+import { Configuration } from "msal";
 
 const config: Configuration = {
   auth: {
@@ -14,18 +12,18 @@ const config: Configuration = {
     postLogoutRedirectUri: window.location.origin,
   },
   cache: {
-    cacheLocation: 'localStorage',
+    cacheLocation: "localStorage",
     storeAuthStateInCookie: true,
   },
 };
 
 const authenticationParameters = {
-  scopes: ['User.Read', 'OpenId', 'profile'],
+  scopes: ["User.Read", "OpenId", "profile"],
 };
 
 const options = {
   loginType: LoginType.Redirect,
-  tokenRefreshUri: window.location.origin + '/auth.html',
+  tokenRefreshUri: window.location.origin + "/auth.html",
 };
 
 export const AuthProvider = new MsalAuthProvider(

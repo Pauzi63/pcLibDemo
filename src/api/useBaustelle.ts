@@ -1,8 +1,8 @@
-import axios from 'axios';
-import { useMutation, useQuery, useQueryClient } from 'react-query';
-import { IBaustelle } from '../interfaces/ResponseInterfaces';
+import axios from "axios";
+import { useMutation, useQuery, useQueryClient } from "react-query";
+import { IBaustelle } from "../interfaces/ResponseInterfaces";
 
-const endpoint = `${process.env.REACT_APP_API_URL}/baustellen`;
+const endpoint = `${process.env.REACT_APP_API_URL_FAKE}/baustellen`;
 
 // alle Records lesen
 export function useGetBaustellen() {
@@ -12,7 +12,7 @@ export function useGetBaustellen() {
     return data;
   }
 
-  return useQuery(['GetBaustellen'], async () => fetchBaustellen(), {
+  return useQuery(["GetBaustellen"], async () => fetchBaustellen(), {
     retry: 0,
   });
 }
@@ -25,7 +25,7 @@ export function useGetBaustelleById(id: number) {
   }
 
   return useQuery(
-    ['GetBaustelleWithId', id],
+    ["GetBaustelleWithId", id],
     async () => fetchBaustelleById(id),
     {
       retry: 0,

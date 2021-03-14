@@ -1,16 +1,16 @@
-import React from 'react';
-import { makeStyles, createStyles } from '@material-ui/core/styles';
-import List from '@material-ui/core/List';
-import AppMenuItem from './AppMenuItem';
-import { appMenuItems } from '../../routes/appMenuItems';
-import globals from '../../utils/Globals';
+import React from "react";
+import { makeStyles, createStyles } from "@material-ui/core/styles";
+import List from "@material-ui/core/List";
+import AppMenuItem from "./AppMenuItem";
+import { appMenuItems } from "../../../routes/appMenuItems";
+import globals from "../../../globals";
 
 const drawerWidth = globals.drawerWidth;
 
 const useStyles = makeStyles((theme) =>
   createStyles({
     appMenu: {
-      width: '100%',
+      width: "100%",
     },
     navList: {
       width: drawerWidth,

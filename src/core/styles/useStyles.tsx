@@ -1,20 +1,20 @@
-import { makeStyles } from '@material-ui/core/styles';
-import globals from '../utils/Globals';
+import { makeStyles } from "@material-ui/core/styles";
+import globals from "../../globals";
 
-import KrmTheme from './krmTheme';
+import KrmTheme from "./krmTheme";
 
 const drawerWidth = globals.drawerWidth;
 
 const createStyles = makeStyles((theme) => ({
   root: {
-    display: 'flex',
-    width: 'auto',
+    display: "flex",
+    width: "auto",
     marginLeft: theme.spacing(2),
     marginRight: theme.spacing(2),
     [theme.breakpoints.up(1600 + theme.spacing(2) * 2)]: {
       width: 1600,
-      marginLeft: 'auto',
-      marginRight: 'auto',
+      marginLeft: "auto",
+      marginRight: "auto",
     },
     color: theme.palette.text.primary,
   },
@@ -50,12 +50,12 @@ const createStyles = makeStyles((theme) => ({
   },
   title: {
     flexGrow: 1,
-    color: '#ffffff',
+    color: "#ffffff",
   },
   imgFlag: {
     height: 22,
     width: 42,
-    border: '1px solid #ffffff',
+    border: "1px solid #ffffff",
     marginRight: 15,
   },
 }));

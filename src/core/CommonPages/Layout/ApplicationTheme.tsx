@@ -1,11 +1,11 @@
-import React from 'react';
-import { ThemeProvider } from '@material-ui/core/styles';
-import useThemes from '../../styles/krmTheme';
+import React from "react";
+import { ThemeProvider } from "@material-ui/core/styles";
+import useThemes from "../../styles/krmTheme";
 
-import { UserLayoutSettings } from '../../context/UserLayoutSettings';
+import { UserLayoutSettings } from "../../context/UserLayoutSettings";
 
-import useDarkMode from '../../hooks/useDarkMode';
-import useLanguage from '../../hooks/useLanguage';
+import useDarkMode from "../../utils/useDarkMode";
+import useLanguage from "../../utils/useLanguage";
 
 const ApplicationTheme = (props: { children: any }) => {
   const { children } = props;
