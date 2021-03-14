@@ -141,13 +141,6 @@
       "ort": "x"
     },
     {
-      "id": 21,
-      "baustelle": "09:24",
-      "vorname": "Tobias",
-      "nachname": "",
-      "ort": ""
-    },
-    {
       "id": 22,
       "baustelle": "09:25",
       "vorname": "Tobias",
@@ -155,17 +148,10 @@
       "ort": ""
     },
     {
-      "id": 23,
-      "baustelle": "09:32",
-      "vorname": "",
-      "nachname": "",
-      "ort": ""
-    },
-    {
-      "id": 24,
-      "baustelle": "",
-      "vorname": "",
-      "nachname": "",
+      "id": 25,
+      "baustelle": "2021",
+      "vorname": "02-21",
+      "nachname": "07:35",
       "ort": ""
     }
   ],

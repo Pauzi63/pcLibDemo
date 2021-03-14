@@ -1,7 +1,7 @@
 // https://stackworx.github.io/formik-material-ui/
 // https://www.youtube.com/watch?v=wAvkbSYdyRU&feature=emb_logo
-import * as React from "react";
-import { Formik, Form, Field } from "formik";
+import * as React from 'react';
+import { Formik, Form, Field, useField } from 'formik';
 import {
   Button,
   LinearProgress,
@@ -11,44 +11,37 @@ import {
   FormControlLabel,
   Typography,
   CircularProgress,
-} from "@material-ui/core";
-import MuiTextField from "@material-ui/core/TextField";
+} from '@material-ui/core';
+import MuiTextField from '@material-ui/core/TextField';
 import {
   fieldToTextField,
   TextField,
   TextFieldProps,
   Select,
   Switch,
-} from "formik-material-ui";
+} from 'formik-material-ui';
 import {
   TimePicker,
   DatePicker,
   DateTimePicker,
-} from "formik-material-ui-pickers";
-import { MuiPickersUtilsProvider } from "@material-ui/pickers";
-import DateFnsUtils from "@date-io/date-fns";
+} from 'formik-material-ui-pickers';
+import { MuiPickersUtilsProvider } from '@material-ui/pickers';
+import DateFnsUtils from '@date-io/date-fns';
 import {
   Autocomplete,
   ToggleButtonGroup,
   AutocompleteRenderInputParams,
-} from "formik-material-ui-lab";
-import Box from "@material-ui/core/Box";
-import ToggleButton from "@material-ui/lab/ToggleButton";
-import FormatAlignLeftIcon from "@material-ui/icons/FormatAlignLeft";
-import FormatAlignCenterIcon from "@material-ui/icons/FormatAlignCenter";
-import FormatAlignRightIcon from "@material-ui/icons/FormatAlignRight";
-import FormatAlignJustifyIcon from "@material-ui/icons/FormatAlignJustify";
-import { useGetToDos } from "../../api/useDoTo";
-import { useGetBaustellen } from "../../api/useBaustelle";
-import { IBaustelle } from "../../interfaces/ResponseInterfaces";
-import { AxiosError } from "axios";
-
-const top100Films = [
-  { title: "The Shawshank Redemption", year: 1994 },
-  { title: "The Godfather", year: 1972 },
-  { title: "The Godfather: Part II", year: 1974 },
-  { title: "The Dark Knight", year: 2008 },
-];
+} from 'formik-material-ui-lab';
+import Box from '@material-ui/core/Box';
+import ToggleButton from '@material-ui/lab/ToggleButton';
+import FormatAlignLeftIcon from '@material-ui/icons/FormatAlignLeft';
+import FormatAlignCenterIcon from '@material-ui/icons/FormatAlignCenter';
+import FormatAlignRightIcon from '@material-ui/icons/FormatAlignRight';
+import FormatAlignJustifyIcon from '@material-ui/icons/FormatAlignJustify';
+import { useGetToDos } from '../../api/useDoTo';
+import { useGetBaustellen, useGetBaustelleById } from '../../api/useBaustelle';
+import { IBaustelle } from '../../interfaces/ResponseInterfaces';
+import { AxiosError } from 'axios';
 
 interface Values {
   email: string;
@@ -56,20 +49,20 @@ interface Values {
 
 const ranges = [
   {
-    value: "none",
-    label: "None",
+    value: 'none',
+    label: 'None',
   },
   {
-    value: "0-20",
-    label: "0 to 20",
+    value: '0-20',
+    label: '0 to 20',
   },
   {
-    value: "21-50",
-    label: "21 to 50",
+    value: '21-50',
+    label: '21 to 50',
   },
   {
-    value: "51-100",
-    label: "51 to 100",
+    value: '51-100',
+    label: '51 to 100',
   },
 ];
 
@@ -81,12 +74,33 @@ function UpperCasingTextField(props: TextFieldProps) {
   const onChange = React.useCallback(
     (event) => {
       const { value } = event.target;
-      setFieldValue(name, value ? value.toUpperCase() : "");
+      setFieldValue(name, value ? value.toUpperCase() : '');
     },
     [setFieldValue, name]
   );
   return <MuiTextField {...fieldToTextField(props)} onChange={onChange} />;
 }
+
+async function handleGetBaustelleById(
+  event: React.FocusEvent<HTMLInputElement>,
+  setFieldValue: () => void
+) {
+  event.preventDefault();
+  let currentInput = event.target.value;
+  alert(currentInput);
+  return '0';
+}
+
+const MyTextField = (props: FieldHookConfig<string>) => {
+  const [field] = useField(props);
+  return (
+    <div>
+      {/* no need to pass the name field because Formik will accept
+      that prop internally and pass it to the field variable */}
+      <input {...field} placeholder={props.placeholder} type={props.type} />
+    </div>
+  );
+};
 
 const FormikPage1 = () => {
   const { data, error, isLoading, isError } = useGetToDos();
@@ -103,10 +117,10 @@ const FormikPage1 = () => {
 
   if (error) {
     const axiosError = error as AxiosError;
-    if (error && typeof error == "object") {
+    if (error && typeof error == 'object') {
       return (
         <div>
-          Es ist ein Fehler aufgetreten: {axiosError.response?.statusText}{" "}
+          Es ist ein Fehler aufgetreten: {axiosError.response?.statusText}{' '}
         </div>
       );
     }
@@ -115,10 +129,11 @@ const FormikPage1 = () => {
   return (
     <Formik
       initialValues={{
-        email: "",
-        password: "",
-        select: "none",
-        baustelle: "",
+        email: '',
+        password: '',
+        select: 'none',
+        baustelle: '',
+        baustelleById: '',
         tags: [],
         rememberMe: true,
         date: new Date(),
@@ -131,11 +146,11 @@ const FormikPage1 = () => {
       validate={(values) => {
         const errors: Partial<Values> = {};
         if (!values.email) {
-          errors.email = "Required";
+          errors.email = 'Required';
         } else if (
           !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(values.email)
         ) {
-          errors.email = "Invalid email address";
+          errors.email = 'Invalid email address';
         }
         return errors;
       }}
@@ -146,7 +161,14 @@ const FormikPage1 = () => {
         }, 500);
       }}
     >
-      {({ submitForm, isSubmitting, touched, errors }) => (
+      {({
+        submitForm,
+        setFieldValue,
+        setFieldError,
+        isSubmitting,
+        touched,
+        errors,
+      }) => (
         <MuiPickersUtilsProvider utils={DateFnsUtils}>
           <Form>
             <Box margin={1}>
@@ -220,6 +242,18 @@ const FormikPage1 = () => {
             </Box>
 
             <Box margin={1}>
+              <Field
+                component={TextField}
+                type="text"
+                label="Baustelle Id"
+                name="baustelleById"
+                onBlur={(event: React.FocusEvent<HTMLInputElement>) => {
+                  handleGetBaustelleById(event, setFieldValue);
+                }}
+              />
+            </Box>
+
+            <Box margin={1}>
               <FormControl>
                 <InputLabel shrink={true} htmlFor="tags">
                   Tags
@@ -229,7 +263,7 @@ const FormikPage1 = () => {
                   type="text"
                   name="tags"
                   multiple={true}
-                  inputProps={{ name: "tags", id: "tags" }}
+                  inputProps={{ name: 'tags', id: 'tags' }}
                 >
                   <MenuItem value="dogs">Dogs</MenuItem>
                   <MenuItem value="cats">Cats</MenuItem>
@@ -283,9 +317,9 @@ const FormikPage1 = () => {
                 renderInput={(params: AutocompleteRenderInputParams) => (
                   <MuiTextField
                     {...params}
-                    error={touched["autocomplete"] && !!errors["autocomplete"]}
+                    error={touched['autocomplete'] && !!errors['autocomplete']}
                     helperText={
-                      touched["autocomplete"] && errors["autocomplete"]
+                      touched['autocomplete'] && errors['autocomplete']
                     }
                     label="Autocomplete"
                     variant="outlined"
