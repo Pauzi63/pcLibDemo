@@ -21,7 +21,6 @@ const BaustelleMutateComp = (props: Props) => {
       nachname: values.nachname,
       ort: values.ort,
     };
-    // data.baustelle = values.baustelle;
     console.log("payload: ", payload);
     await onSubmitData(payload);
   };
