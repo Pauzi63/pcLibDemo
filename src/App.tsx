@@ -12,9 +12,9 @@ function App() {
   return (
     <ApplicationTheme>
       <SnackbarProvider>
-        <MsalAuthentication>
-          <Root />
-        </MsalAuthentication>
+        {/* <MsalAuthentication> */} // Azure AD Login deaktiviert
+        <Root />
+        {/* </MsalAuthentication> */}
       </SnackbarProvider>
     </ApplicationTheme>
   );
