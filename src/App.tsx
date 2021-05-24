@@ -1,11 +1,11 @@
 import React from "react";
 
-import ApplicationTheme from "./core/CommonPages/Layout/ApplicationTheme";
-import SnackbarProvider from "./core/utils/SnackbarProvider";
-import MsalAuthentication from "./core/authentication/MsalAuthentication";
+import ApplicationTheme from "./p5coreLib/CommonPages/Layout/ApplicationTheme";
+import SnackbarProvider from "./p5coreLib/components/SnackbarProvider";
+import MsalAuthentication from "./p5coreLib/authentication/MsalAuthentication";
 import Root from "./Root";
 
-import Localization from "./core/utils/localization";
+import Localization from "./p5coreLib/utils/localization";
 
 function App() {
   Localization.initialize();

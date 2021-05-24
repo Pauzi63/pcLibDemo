@@ -3,7 +3,7 @@ import { Button, ButtonGroup, CircularProgress } from "@material-ui/core";
 import { AxiosError } from "axios";
 import { useHistory, useParams } from "react-router-dom";
 import { useSnackbar } from "notistack";
-import BlankPage from "../../core/CommonPages/BlankPage";
+import BlankPage from "../../p5coreLib/CommonPages/BlankPage";
 import { useGetBaustelleById, deleteBaustelle } from "../../api/useBaustelle";
 import { useMutation, useQueryClient } from "react-query";
 
