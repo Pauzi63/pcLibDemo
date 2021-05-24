@@ -1,12 +1,11 @@
 import React, { useContext } from "react";
 import Button from "@material-ui/core/Button";
-import { ApplicationContext } from "../../core/context/ApplicationContext";
+import { ApplicationContext } from "../../p5coreLib/context/ApplicationContext";
 import { Typography } from "@material-ui/core";
 
 const Page2 = () => {
-  const { messageCount, setMessageCount } = React.useContext(
-    ApplicationContext
-  );
+  const { messageCount, setMessageCount } =
+    React.useContext(ApplicationContext);
   return (
     <React.Fragment>
       <h2>Das ist die 1. Zeile der Page 2</h2>

@@ -8,7 +8,7 @@ import {
 } from "react-google-maps";
 
 import DemoComp from "../Templates/DemoComp";
-import globals from "../../globals";
+import globals from "../../p5Lib/globals";
 
 const MyMapComponent = compose(
   withProps({

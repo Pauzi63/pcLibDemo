@@ -1,5 +1,7 @@
 import { Switch, Route } from "react-router-dom";
-import NotFoundPage from "../core/CommonPages/NotFoundPage";
+import NotFoundPage from "../p5coreLib/CommonPages/NotFoundPage";
+import NotificationPage from "../p5coreLib/CommonPages/NotificationPage";
+
 import Page1 from "../pages/DummyPages/Page1";
 import Page2 from "../pages/DummyPages/Page2";
 import Page3 from "../pages/DummyPages/Page3";
@@ -46,6 +48,7 @@ export default function Routes() {
       <Route exact path="/googlemaps" component={GoogleMapsPage} />
       <Route exact path="/highlight" component={HighlightPage} />
       <Route path="/formikpage1" component={FormikPage1} />
+      <Route exact path="/notification" component={NotificationPage} />
       <Route component={NotFoundPage} />
     </Switch>
   );
