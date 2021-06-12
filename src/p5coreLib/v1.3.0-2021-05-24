@@ -1,0 +1,12 @@
+v1.3.0-2021-05-24
+Umbenennung von core auf p5coreLib
+Neu: Folder p5Lib mit den 2 Files globals.ts und p5LibNotification.ts
+Neu: Permissions.ts
+
+v1.2.0-2021-05-18
+ConfirmationDialog hinzugefügt
+utils/format.ts hinzugefügt (benötigt yarn add numeral, @types/numeral)
+globals.ts: numeralLocale: "de" hinzugefügt
+
+v1.1.0-2021-04-20
+Notification hinzugefügt
