@@ -2,7 +2,7 @@ import * as React from "react";
 import { Button, LinearProgress, Box } from "@material-ui/core";
 import { Formik, Form, Field } from "formik";
 import { TextField } from "formik-material-ui";
-import { IBaustelle } from "../../../interfaces/ResponseInterfaces";
+import { IBaustelle } from "../../../interfaces/responseInterfaces";
 
 interface Props {
   intialValues: IBaustelle | undefined;

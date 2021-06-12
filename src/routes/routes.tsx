@@ -1,12 +1,13 @@
 import { Switch, Route } from "react-router-dom";
-import NotFoundPage from "../p5coreLib/CommonPages/NotFoundPage";
-import NotificationPage from "../p5coreLib/CommonPages/NotificationPage";
+import NotFoundPage from "../p5coreLib/commonPages/NotFoundPage";
+import NotificationPage from "../p5coreLib/commonPages/NotificationPage";
 
 import Page1 from "../pages/DummyPages/Page1";
 import Page2 from "../pages/DummyPages/Page2";
 import Page3 from "../pages/DummyPages/Page3";
 import Page4 from "../pages/DummyPages/Page4";
 import Page5 from "../pages/DummyPages/Page5";
+import MsGraph from "../pages/DummyPages/MsGraph";
 import FilePondPage from "../pages/DummyPages/FilePondDemo";
 import MaterialTableListPage1 from "../pages/MaterialTable/MaterialTableListPage1";
 import MaterialTableDetailPage1 from "../pages/MaterialTable/MaterialTableDetailPage1";
@@ -31,6 +32,7 @@ export default function Routes() {
       <Route path="/page3" component={Page3} />
       <Route path="/page4" component={Page4} />
       <Route path="/page5" component={Page5} />
+      <Route path="/msgraph" component={MsGraph} />
       <Route path="/filepond" component={FilePondPage} />
       <Route exact path="/muitable1" component={MaterialTableListPage1} />
       <Route path="/muitable1/:id" component={MaterialTableDetailPage1} />

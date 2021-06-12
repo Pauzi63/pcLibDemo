@@ -4,7 +4,7 @@ import { QueryClientProvider, QueryClient } from "react-query";
 import { ReactQueryDevtools } from "react-query/devtools";
 import Routes from "./routes/routes";
 import { createBrowserHistory } from "history";
-import MuiLayout from "./p5coreLib/CommonPages/Layout/MuiLayout";
+import MuiLayout from "./p5coreLib/commonPages/Layout/MuiLayout";
 import ApplicationContextService from "./p5coreLib/context/ApplicatonContextService";
 
 const queryClient = new QueryClient();

@@ -1,13 +1,13 @@
-import React, { useEffect } from 'react';
-import { Button, ButtonGroup, CircularProgress } from '@material-ui/core';
-import { AxiosError } from 'axios';
-import { useMutation, useQueryClient } from 'react-query';
-import { useHistory, useParams } from 'react-router-dom';
-import { useSnackbar } from 'notistack';
+import React, { useEffect } from "react";
+import { Button, ButtonGroup, CircularProgress } from "@material-ui/core";
+import { AxiosError } from "axios";
+import { useMutation, useQueryClient } from "react-query";
+import { useHistory, useParams } from "react-router-dom";
+import { useSnackbar } from "notistack";
 
-import { useGetBaustelleById, putBaustelle } from '../../api/useBaustelle';
-import { IBaustelle } from '../../interfaces/ResponseInterfaces';
-import { BaustelleMutateComp } from './components';
+import { useGetBaustelleById, putBaustelle } from "../../api/useBaustelle";
+import { IBaustelle } from "../../interfaces/responseInterfaces";
+import { BaustelleMutateComp } from "./components";
 
 interface ParamTypes {
   id: string;
@@ -28,30 +28,28 @@ const BaustelleEditPage = (props: Props) => {
     isError: getIsError,
   } = useGetBaustelleById(parseInt(id));
 
-  const {
-    mutateAsync: mutateAsyncUpdate,
-    isLoading: mutateIsLoading,
-  } = useMutation(putBaustelle, {
-    onSuccess: (data, variables, context) => {
-      enqueueSnackbar('Datensatz gespeichert!', { variant: 'success' });
-    },
-    onError: (error, variables, context) => {
-      const axiosError = error as AxiosError;
-      enqueueSnackbar(
-        `Folgender Fehler ist aufgetreten! ${axiosError.message} Status: ${axiosError.response?.statusText}  
+  const { mutateAsync: mutateAsyncUpdate, isLoading: mutateIsLoading } =
+    useMutation(putBaustelle, {
+      onSuccess: (data, variables, context) => {
+        enqueueSnackbar("Datensatz gespeichert!", { variant: "success" });
+      },
+      onError: (error, variables, context) => {
+        const axiosError = error as AxiosError;
+        enqueueSnackbar(
+          `Folgender Fehler ist aufgetreten! ${axiosError.message} Status: ${axiosError.response?.statusText}  
     `,
-        { variant: 'error' }
-      );
-    },
-    onSettled: (data, error, variables, context) => {
-      queryClient.invalidateQueries(['GetBaustelle', id]); // Liste muss neu gelesen werden
-    },
-    retry: 0,
-  });
+          { variant: "error" }
+        );
+      },
+      onSettled: (data, error, variables, context) => {
+        queryClient.invalidateQueries(["GetBaustelle", id]); // Liste muss neu gelesen werden
+      },
+      retry: 0,
+    });
 
   async function handleSubmitData(payload: IBaustelle) {
     await mutateAsyncUpdate(payload);
-    history.push('/baustelle');
+    history.push("/baustelle");
   }
 
   if (getIsLoading || mutateIsLoading) {
@@ -60,10 +58,10 @@ const BaustelleEditPage = (props: Props) => {
 
   if (getError) {
     const axiosError = getError as AxiosError;
-    if (getError && typeof getError == 'object') {
+    if (getError && typeof getError == "object") {
       return (
         <div>
-          Es ist ein Fehler aufgetreten: {axiosError.response?.statusText}{' '}
+          Es ist ein Fehler aufgetreten: {axiosError.response?.statusText}{" "}
           {axiosError.message}
         </div>
       );
@@ -80,7 +78,7 @@ const BaustelleEditPage = (props: Props) => {
       <br />
       <br />
       <ButtonGroup>
-        <Button onClick={() => history.push('/baustelle')}>
+        <Button onClick={() => history.push("/baustelle")}>
           zur Übersicht
         </Button>
         <Button onClick={() => history.push(`/baustelle/delete/${id}`)}>

@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import { Button } from "@material-ui/core";
-import { ApplicationContext } from "../../p5coreLib/context/ApplicationContext";
-import ConfirmDialog from "../../p5coreLib/CommonPages/ConfirmDialog";
+import { ApplicationContext } from "../../p5coreLib/context/applicationContext";
+import ConfirmationDialog from "../../p5coreLib/commonPages/ConfirmationDialog";
 
 const Page1 = () => {
   const { messageCount, setMessageCount } = useContext(ApplicationContext);
@@ -20,16 +20,14 @@ const Page1 = () => {
       <h2>Page 1</h2>
       <br />
       <br />
-      <ConfirmDialog
-        isOpen={isOpen}
-        setIsOpen={setIsOpen}
-        dialogTitle="Dialog Tilte"
-        dialogContent="DialogContent"
-        dialogSubContent="Dialog SubContent"
-        buttonCancelCaption="Na"
-        buttonConfirmationCaption="Jo"
-        onCancelClicked={onCancelClicked}
-        onConfirmedClicked={onConfirmedClicked}
+      <ConfirmationDialog
+        dialogContentTextValue={"dialogContentTextValue"}
+        dialogTitleContextTextValue={"dialogTitleContextTextValue"}
+        confirmButtonTextValue="löschen"
+        openDialog={isOpen}
+        setOpenDialog={setIsOpen}
+        onConfirm={() => onConfirmedClicked}
+        onCancel={() => onCancelClicked}
       />
       <br />
       <br />

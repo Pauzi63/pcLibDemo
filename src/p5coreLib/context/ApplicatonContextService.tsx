@@ -1,5 +1,5 @@
 import * as React from "react";
-import { ApplicationContext } from "./ApplicationContext";
+import { ApplicationContext } from "./applicationContext";
 import { GetNotificationCounter } from "../../p5Lib/p5LibNotification";
 
 function ApplicationContextService(props: any) {

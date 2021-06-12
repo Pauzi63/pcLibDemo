@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import NotificationCompontent from "../../components/NotificationComponent";
-import { ApplicationContext } from "../context/ApplicationContext";
+import { ApplicationContext } from "../context/applicationContext";
 import globals from "../../p5Lib/globals";
 import { useLocalStorage } from "../utils/useLocalStorage";
 import { getCurrentNotificationId } from "../../p5Lib/p5LibNotification";

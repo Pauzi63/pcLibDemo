@@ -3,7 +3,10 @@ import { Button, ButtonGroup, CircularProgress } from "@material-ui/core";
 import { AxiosError } from "axios";
 import { useHistory, useParams } from "react-router-dom";
 import { useSnackbar } from "notistack";
-import BlankPage from "../../p5coreLib/CommonPages/BlankPage";
+
+import BlankPage from "../../p5coreLib/commonPages/BlankPage";
+import ConfirmationDialog from "../../p5coreLib/commonPages/ConfirmationDialog";
+
 import { useGetBaustelleById, deleteBaustelle } from "../../api/useBaustelle";
 import { useMutation, useQueryClient } from "react-query";
 
@@ -17,7 +20,11 @@ const BaustelleDeletePage = (props: Props) => {
   const { id } = useParams<ParamTypes>();
   const { enqueueSnackbar } = useSnackbar();
   const queryClient = useQueryClient();
+
   const { data, error, isLoading, isError } = useGetBaustelleById(parseInt(id));
+  const [confirmationDialogOpen, setConfirmationDialogOpen] =
+    React.useState(false); // Sicherheitsabfrage vor Löshung
+
   const { mutateAsync: mutateAsyncDelete } = useMutation(deleteBaustelle, {
     onSuccess: (data, variables, context) => {
       enqueueSnackbar("Datensatz gelöscht!", { variant: "success" });
@@ -67,6 +74,16 @@ const BaustelleDeletePage = (props: Props) => {
   return (
     data && (
       <React.Fragment>
+        <ConfirmationDialog
+          dialogContentTextValue={data.nachname}
+          dialogTitleContextTextValue={`Baustelle ${data.id} löschen?`}
+          confirmButtonTextValue="löschen"
+          openDialog={confirmationDialogOpen}
+          setOpenDialog={setConfirmationDialogOpen}
+          onConfirm={() => handleDelete(data.id)}
+          onCancel={() => console.log("jetzt NICHT löschen!")}
+        />
+
         {data.id}
         <br />
         {data.baustelle}
@@ -86,9 +103,7 @@ const BaustelleDeletePage = (props: Props) => {
           <Button
             variant="contained"
             color="primary"
-            onClick={() => {
-              handleDelete(data.id);
-            }}
+            onClick={() => setConfirmationDialogOpen(true)}
           >
             Löschen
           </Button>

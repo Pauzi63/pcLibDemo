@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import Button from "@material-ui/core/Button";
-import { ApplicationContext } from "../../p5coreLib/context/ApplicationContext";
+import { ApplicationContext } from "../../p5coreLib/context/applicationContext";
 import { Typography } from "@material-ui/core";
 
 const Page2 = () => {

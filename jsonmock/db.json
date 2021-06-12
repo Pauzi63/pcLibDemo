@@ -15,13 +15,6 @@
       "ort": "Schlüßlberg 4707"
     },
     {
-      "id": 3,
-      "baustelle": "Baustelle 3",
-      "vorname": "Karl",
-      "nachname": "Karlinger",
-      "ort": "Wels"
-    },
-    {
       "id": 4,
       "baustelle": "Baustelle 4",
       "vorname": "Hans",
@@ -113,23 +106,9 @@
       "ort": ""
     },
     {
-      "id": 17,
-      "baustelle": "Bst 21",
-      "vorname": "2021-01-31",
-      "nachname": "08",
-      "ort": "23"
-    },
-    {
       "id": 18,
       "baustelle": "",
       "vorname": "default",
-      "nachname": "",
-      "ort": ""
-    },
-    {
-      "id": 19,
-      "baustelle": "",
-      "vorname": "Tobias",
       "nachname": "",
       "ort": ""
     },
@@ -146,6 +125,13 @@
       "vorname": "02-21",
       "nachname": "07:35",
       "ort": ""
+    },
+    {
+      "id": 26,
+      "baustelle": "2021-05-24",
+      "vorname": "10:02",
+      "nachname": "Pfingst",
+      "ort": "Montag"
     }
   ],
   "authentication": {

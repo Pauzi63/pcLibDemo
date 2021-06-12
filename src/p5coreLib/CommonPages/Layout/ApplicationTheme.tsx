@@ -2,7 +2,7 @@ import React from "react";
 import { ThemeProvider } from "@material-ui/core/styles";
 import useThemes from "../../styles/krmTheme";
 
-import { UserLayoutSettings } from "../../context/UserLayoutSettings";
+import { UserLayoutSettings } from "../../context/userLayoutSettings";
 
 import useDarkMode from "../../utils/useDarkMode";
 import useLanguage from "../../utils/useLanguage";

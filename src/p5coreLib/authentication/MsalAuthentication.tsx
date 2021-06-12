@@ -9,9 +9,9 @@ import {
 import { JwtAuthentication } from "./JwtAuthentication";
 import { AuthProvider } from "./MsalAuthProvider";
 
-import ErrorPage from "../CommonPages/ErrorPage";
-import LoadingPage from "../CommonPages/LoadingPage";
-import BlankPage from "../CommonPages/BlankPage";
+import ErrorPage from "../commonPages/ErrorPage";
+import LoadingPage from "../commonPages/LoadingPage";
+import BlankPage from "../commonPages/BlankPage";
 
 const MsalAuthentication = (props: { children: any }) => {
   const { children } = props;

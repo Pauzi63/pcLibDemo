@@ -1,13 +1,13 @@
-import React, { useEffect } from 'react';
-import { Button, CircularProgress, Snackbar } from '@material-ui/core';
-import { useMutation } from 'react-query';
-import { useHistory } from 'react-router-dom';
-import { AxiosError } from 'axios';
-import { useSnackbar } from 'notistack';
+import React, { useEffect } from "react";
+import { Button, CircularProgress, Snackbar } from "@material-ui/core";
+import { useMutation } from "react-query";
+import { useHistory } from "react-router-dom";
+import { AxiosError } from "axios";
+import { useSnackbar } from "notistack";
 
-import { postBaustelle } from '../../api/useBaustelle';
-import { IBaustelle } from '../../interfaces/ResponseInterfaces';
-import { BaustelleMutateComp } from './components';
+import { postBaustelle } from "../../api/useBaustelle";
+import { IBaustelle } from "../../interfaces/responseInterfaces";
+import { BaustelleMutateComp } from "./components";
 
 interface Props {}
 
@@ -22,16 +22,16 @@ const BaustelleAddPage = (props: Props) => {
   } = useMutation(postBaustelle, {
     onSuccess: (data, variables, context) => {
       enqueueSnackbar(`Datensatz ${data.id} gespeichert!`, {
-        variant: 'success',
+        variant: "success",
       });
-      history.push('/baustelle');
+      history.push("/baustelle");
     },
     onError: (error, variables, context) => {
       const axiosError = error as AxiosError;
       enqueueSnackbar(
         `Folgender Fehler ist aufgetreten! ${axiosError.message} Status: ${axiosError.response?.statusText}  
   `,
-        { variant: 'error' }
+        { variant: "error" }
       );
     },
     onSettled: (data, error, variables, context) => {},
@@ -41,10 +41,10 @@ const BaustelleAddPage = (props: Props) => {
 
   const intialValues: IBaustelle = {
     id: 0,
-    baustelle: '',
-    vorname: '',
-    nachname: '',
-    ort: '',
+    baustelle: "",
+    vorname: "",
+    nachname: "",
+    ort: "",
   };
 
   async function handleSubmitData(payload: IBaustelle) {
@@ -64,7 +64,7 @@ const BaustelleAddPage = (props: Props) => {
       />
       <br />
       <br />
-      <Button onClick={() => history.push('/baustelle')}>zur Übersicht</Button>
+      <Button onClick={() => history.push("/baustelle")}>zur Übersicht</Button>
       <br />
     </React.Fragment>
   );

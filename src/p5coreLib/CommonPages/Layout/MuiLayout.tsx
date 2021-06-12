@@ -7,7 +7,7 @@ import Sidebar from "./Sidebar";
 import Footer from "./Footer";
 import Content from "./Content";
 import { useHistory } from "react-router-dom";
-import { ApplicationContext } from "../../context/ApplicationContext";
+import { ApplicationContext } from "../../context/applicationContext";
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -25,9 +25,8 @@ export default function MuiLayout(props: { children: any }) {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [anchorEl, setAnchorEl] = React.useState(null);
 
-  const { setMessageCount, notificationOpen, setNotificationOpen } = useContext(
-    ApplicationContext
-  );
+  const { setMessageCount, notificationOpen, setNotificationOpen } =
+    useContext(ApplicationContext);
 
   let history = useHistory();
 

@@ -40,7 +40,7 @@ import FormatAlignRightIcon from "@material-ui/icons/FormatAlignRight";
 import FormatAlignJustifyIcon from "@material-ui/icons/FormatAlignJustify";
 import { useGetToDos } from "../../api/useDoTo";
 import { useGetBaustellen, useGetBaustelleById } from "../../api/useBaustelle";
-import { IBaustelle } from "../../interfaces/ResponseInterfaces";
+import { IBaustelle } from "../../interfaces/responseInterfaces";
 import { AxiosError } from "axios";
 
 interface Values {

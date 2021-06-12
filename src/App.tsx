@@ -1,6 +1,6 @@
 import React from "react";
 
-import ApplicationTheme from "./p5coreLib/CommonPages/Layout/ApplicationTheme";
+import ApplicationTheme from "./p5coreLib/commonPages/Layout/ApplicationTheme";
 import SnackbarProvider from "./p5coreLib/components/SnackbarProvider";
 import MsalAuthentication from "./p5coreLib/authentication/MsalAuthentication";
 import Root from "./Root";

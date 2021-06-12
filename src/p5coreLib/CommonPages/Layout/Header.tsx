@@ -23,8 +23,8 @@ import flagAT from "../../assets/flag-austria-64.png";
 import flagUK from "../../assets/flag-united-kingdom-64.png";
 
 import globals from "../../../p5Lib/globals";
-import { UserLayoutSettings } from "../../context/UserLayoutSettings";
-import { ApplicationContext } from "../../context/ApplicationContext";
+import { UserLayoutSettings } from "../../context/userLayoutSettings";
+import { ApplicationContext } from "../../context/applicationContext";
 import { getFullNameFromToken } from "../../utils/useJWT";
 
 const useStyles = makeStyles((theme: Theme) =>

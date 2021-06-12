@@ -1,6 +1,6 @@
 import axios from "axios";
 import { useMutation, useQuery, useQueryClient } from "react-query";
-import { IBaustelle } from "../interfaces/ResponseInterfaces";
+import { IBaustelle } from "../interfaces/responseInterfaces";
 
 const endpoint = `${process.env.REACT_APP_API_URL_FAKE}/baustellen`;
 

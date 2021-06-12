@@ -1,6 +1,7 @@
 v1.3.0-2021-05-24
 Umbenennung von core auf p5coreLib
 Neu: Folder p5Lib mit den 2 Files globals.ts und p5LibNotification.ts
+Neu: Permissions.ts
 
 v1.2.0-2021-05-18
 ConfirmationDialog hinzugefügt
