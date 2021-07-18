@@ -15,7 +15,6 @@ import IconExpandMore from "@material-ui/icons/ExpandMore";
 
 import AppMenuItemComponent from "./AppMenuItemComponent";
 import globals from "../../../p5Lib/globals";
-import Permissions from "../../../routes/Permissions";
 
 // React runtime PropTypes
 export const AppMenuItemPropTypes = {
@@ -23,7 +22,6 @@ export const AppMenuItemPropTypes = {
   link: PropTypes.string,
   Icon: PropTypes.elementType,
   items: PropTypes.array,
-  permission: PropTypes.string,
 };
 
 // TypeScript compile-time props type, infered from propTypes
@@ -37,7 +35,7 @@ export type AppMenuItemProps = AppMenuItemPropsWithoutItems & {
 };
 
 const AppMenuItem: React.FC<AppMenuItemProps> = (props) => {
-  const { name, link, Icon, permission, items = [] } = props;
+  const { name, link, Icon, items = [] } = props;
   const classes = useStyles();
   const isExpandable = items && items.length > 0;
   const [open, setOpen] = React.useState(false);
@@ -58,9 +56,7 @@ const AppMenuItem: React.FC<AppMenuItemProps> = (props) => {
           <Icon />
         </ListItemIcon>
       )}
-      {/* {permission && ( */}
-      <ListItemText primary={name} secondary={permission} inset={!Icon} />
-      {/* )} */}
+      <ListItemText primary={name} inset={!Icon} />
       {/* Display the expand menu if the item has children */}
       {isExpandable && !open && <IconExpandMore />}
       {isExpandable && open && <IconExpandLess />}

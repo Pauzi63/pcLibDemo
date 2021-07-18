@@ -1,3 +1,7 @@
+v1.4.0-2021-07-11
+neuer Endpoint /api/UserAccount/userpermission/{userAccountGuid}/application/{application}
+globals.ts: der appName: muss mit KrmCore Tabelle ApplicationConfiguration genau übereinstimmen!
+
 v1.3.0-2021-05-24
 Umbenennung von core auf p5coreLib
 Neu: Folder p5Lib mit den 2 Files globals.ts und p5LibNotification.ts

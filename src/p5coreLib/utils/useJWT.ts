@@ -10,6 +10,15 @@ export function getEmployeeAlternateAXIdFromToken(): string {
   }
 }
 
+export function getUserAccountGuidFromToken(): string {
+  const serializedToken: string | null = getToken();
+  if (serializedToken != null) {
+    return JwtToken.fromString(serializedToken).UserAccountGuid;
+  } else {
+    return "";
+  }
+}
+
 export function getRoleFromToken(): string {
   const serializedToken: string | null = getToken();
   if (serializedToken != null) {

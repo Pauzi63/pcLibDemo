@@ -52,8 +52,8 @@ export class JwtAuthentication implements TokenBasedAuthentication {
     return this.token as UserInfo;
   }
 
-  private issueToken(name: string, pw: string) {
-    return fetch(`${process.env.REACT_APP_API_URL}/Authentication`, {
+  private async issueToken(name: string, pw: string) {
+    return await fetch(`${process.env.REACT_APP_API_URL}/Authentication`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json; charset=utf-8",

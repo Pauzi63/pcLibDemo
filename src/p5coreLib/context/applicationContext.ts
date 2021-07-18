@@ -1,10 +1,16 @@
+import React from "react";
 import { createContext } from "react";
+import { IUserPermission } from "../interfaces/Ip5coreLibInterfaces";
+
+var initialPermission: IUserPermission[] = [];
 
 const initialState = {
   messageCount: 0,
-  setMessageCount: (messageCount: number) => {},
+  setMessageCount: (_messageCount: number) => {},
   notificationOpen: false,
-  setNotificationOpen: (notificationOpen: boolean) => {},
+  setNotificationOpen: (_notificationOpen: boolean) => {},
+  userPermission: initialPermission,
+  setUserPermission: (_userPermission: IUserPermission[]) => {},
 };
 
 export const ApplicationContext = createContext(initialState);

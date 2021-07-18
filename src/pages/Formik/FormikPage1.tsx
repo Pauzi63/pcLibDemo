@@ -11,6 +11,7 @@ import {
   FormControlLabel,
   Typography,
   CircularProgress,
+  Checkbox,
 } from "@material-ui/core";
 import MuiTextField from "@material-ui/core/TextField";
 import {
@@ -42,6 +43,7 @@ import { useGetToDos } from "../../api/useDoTo";
 import { useGetBaustellen, useGetBaustelleById } from "../../api/useBaustelle";
 import { IBaustelle } from "../../interfaces/responseInterfaces";
 import { AxiosError } from "axios";
+import { validateClaimsRequest } from "msal/lib-commonjs/AuthenticationParameters";
 
 interface Values {
   email: string;
@@ -142,6 +144,7 @@ const FormikPage1 = () => {
         toggle: [],
         autocomplete: [],
         freeSoloMultiple: [],
+        toggleCheckbox: true,
       }}
       validate={(values) => {
         const errors: Partial<Values> = {};
@@ -188,14 +191,15 @@ const FormikPage1 = () => {
                 name="password"
               />
             </Box>
-            <Box margin={1}>
+            {/* <Box margin={1}>
               <FormControlLabel
                 control={
                   <Field component={Switch} type="checkbox" name="rememberMe" />
                 }
                 label="Remember Me"
               />
-            </Box>
+              {values.rememberMe}
+            </Box> */}
             <Box margin={1}>
               <Field
                 component={TextField}
@@ -252,6 +256,16 @@ const FormikPage1 = () => {
                 // }}
               />
             </Box>
+
+            {/* <Box margin={1}>
+              <Field
+                component={Checkbox}
+                type="checkbox"
+                labeld="mit allen und alles einverstanden"
+                name="toggle"
+              />
+              {`${values.toggleCheckbox}`}
+            </Box> */}
 
             <Box margin={1}>
               <FormControl>

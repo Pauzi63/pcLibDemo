@@ -9,4 +9,5 @@ export abstract class Token {
   Role: string = "unbkannt";
   NetworkId: string = "unbkannt";
   EmployeeAlternateAXId: string = "unbkannt";
+  UserAccountGuid: string = "00000000-0000-0000-0000-000000000000";
 }
