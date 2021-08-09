@@ -5,12 +5,16 @@ import globals from "../../p5Lib/globals";
 
 const useLanguage = () => {
   const { i18n } = useTranslation();
-  const [, setSate] = useState<string>();
-  const language = window.localStorage.getItem(globals.languageKey);
+  const [language, setState] = useState<string>();
+  // let language = window.localStorage.getItem(globals.languageKey);
+  // if (language === null) {
+  //   language = globals.languageDefault;
+  // }
+  console.log("useLanguage language: ", language);
   const setLanguage = (language: string) => {
     window.localStorage.setItem(globals.languageKey, language);
     i18n.changeLanguage(language);
-    setSate(language);
+    setState(language);
   };
   return { language, setLanguage };
 };

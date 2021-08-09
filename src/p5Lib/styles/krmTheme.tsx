@@ -2,7 +2,7 @@ import { createMuiTheme, responsiveFontSizes } from "@material-ui/core/styles";
 import { red, grey } from "@material-ui/core/colors";
 
 // durch UserLayoutSettings Context ersetzen?
-import useDarkMode from "../utils/useDarkMode";
+import useDarkMode from "../../p5coreLib/utils/useDarkMode";
 
 const KrmTheme = () => {
   const { darkMode } = useDarkMode();

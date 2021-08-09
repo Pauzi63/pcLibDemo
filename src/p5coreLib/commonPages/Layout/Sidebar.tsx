@@ -38,6 +38,7 @@ interface Props {
 
 const Sidebar = (props: Props) => {
   const { drawerOpen, mobileOpen, setMobileOpen, anchorEl } = props;
+  console.log("draweropen: ", drawerOpen);
 
   const handleDrawerToggle = () => {
     setMobileOpen(!mobileOpen);
@@ -72,7 +73,7 @@ const Sidebar = (props: Props) => {
               paper: classes.drawerPaper,
             }}
             variant="persistent"
-            open={!drawerOpen}
+            open={drawerOpen}
           >
             <div className={classes.toolbar} />
             <AppMenu />

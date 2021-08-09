@@ -22,6 +22,18 @@ const globals = {
   // false: KrmCoreLogin IST NICHT notwendig
   krmCoreLogin: false,
 
+  // Notification Icon im Header anzeigen true oder false
+  showNotificationIcon: true,
+
+  // Sprachen Icon im Header anzeigen true oder false
+  showLanguageIcon: true,
+
+  // HamburgerMenu anzeigen true oder false
+  showMenuIcon: true,
+
+  // Avatar anzeigen
+  showAvatar: true,
+
   // Localization
   languageKey: "language",
   languageDefault: "en",

@@ -2,8 +2,8 @@ import i18n from "i18next";
 import { initReactI18next } from "react-i18next";
 
 import globals from "../../p5Lib/globals";
-import DE_AT from "./languages/DE-AT";
-import EN_UK from "./languages/EN-UK";
+import DE_AT from "../../p5Lib/languages/DE-AT";
+import EN_UK from "../../p5Lib/languages/EN-UK";
 
 const languages = ["de", "en"];
 
@@ -20,6 +20,8 @@ class Localization {
       interpolation: {
         escapeValue: false,
       },
+      fallbackLng: "de",
+      debug: true,
     });
   };
 }

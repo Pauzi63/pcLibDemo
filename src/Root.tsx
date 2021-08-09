@@ -11,6 +11,9 @@ const queryClient = new QueryClient();
 
 const Root = () => {
   const browserHistory = createBrowserHistory();
+  // const navigationClient = new CustomNavigationClient(history);
+  // pca.setNavigationClient(navigationClient);
+
   return (
     <React.Fragment>
       <ApplicationContextService>

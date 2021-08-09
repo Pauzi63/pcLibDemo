@@ -1,0 +1,15 @@
+// import { useMsal, useAccount } from "@azure/msal-react";
+// import React from "react";
+
+// export function useGetAccountInfo(): string {
+//   const { accounts } = useMsal();
+//   const account = useAccount(accounts[0] || {});
+//   const
+
+//   React.useEffect(() => {  if (account && account.name) {
+//     return account.name;
+//   } else {
+//     return "";
+//   }}, [])
+
+// }
