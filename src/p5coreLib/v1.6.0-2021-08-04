@@ -1,6 +1,6 @@
 v1.6.0-2021-08-04
 neu: 
-globals.ts neu: showMenuIcon, showAvatar
+globals.ts neu: showMenuIcon, showAvatar, azureScopes
 
 v1.5.0-2021-07-22
 KrmTheme Anpassungen

@@ -24,8 +24,11 @@ const AADLogin = (props: Props) => {
 
   React.useEffect(() => {
     console.log("AADLogin accounts changed: ", accounts);
+  }, [accounts]);
+
+  React.useEffect(() => {
     console.log("AADLogin isAuthenticated changed: ", isAuthenticated);
-  }, [accounts, isAuthenticated]);
+  }, [isAuthenticated]);
 
   return (
     <MsalAuthenticationTemplate

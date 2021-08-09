@@ -4,6 +4,7 @@ import {
   SilentRequest,
   LogLevel,
 } from "@azure/msal-browser";
+import globals from "../../p5Lib/globals";
 
 export const msalConfig: Configuration = {
   auth: {
@@ -45,7 +46,7 @@ export const msalConfig: Configuration = {
 
 // Add here scopes for id token to be used at MS Identity Platform endpoints.
 export const loginRequest: SilentRequest = {
-  scopes: ["user.Read", "openid", "profile", "calendars.read"],
+  scopes: globals.azureScopes,
 };
 
 // Add here the endpoints for MS Graph API services you would like to use.

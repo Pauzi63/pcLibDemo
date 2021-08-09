@@ -5,9 +5,9 @@ export abstract class Token {
   jti: string = "";
   nbf: number = 0;
   sub: string = "";
-  FullName: string = "unbkannt";
-  Role: string = "unbkannt";
-  NetworkId: string = "unbkannt";
-  EmployeeAlternateAXId: string = "unbkannt";
+  FullName: string = "unbekannt";
+  Role: string = "unbekannt";
+  NetworkId: string = "unbekannt";
+  EmployeeAlternateAXId: string = "unbekannt";
   UserAccountGuid: string = "00000000-0000-0000-0000-000000000000";
 }
