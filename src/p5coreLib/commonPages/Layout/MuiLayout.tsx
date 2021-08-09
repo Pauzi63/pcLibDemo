@@ -1,21 +1,21 @@
 import React, { useContext, useState } from "react";
-import { CssBaseline, Toolbar } from "@material-ui/core";
-import { createStyles, Theme, makeStyles } from "@material-ui/core/styles";
+import { CssBaseline } from "@material-ui/core";
+import { useHistory } from "react-router-dom";
 
+import useStyles from "../../../p5Lib/styles/useStyles";
 import Header from "./Header";
 import Sidebar from "./Sidebar";
 import Footer from "./Footer";
 import Content from "./Content";
-import { useHistory } from "react-router-dom";
 import { ApplicationContext } from "../../context/applicationContext";
 
-const useStyles = makeStyles((theme: Theme) =>
-  createStyles({
-    root: {
-      display: "flex",
-    },
-  })
-);
+// const useStyles = makeStyles((theme: Theme) =>
+//   createStyles({
+//     root: {
+//       display: "flex",
+//     },
+//   })
+// );
 
 export default function MuiLayout(props: { children: any }) {
   const { children } = props;
@@ -23,17 +23,14 @@ export default function MuiLayout(props: { children: any }) {
 
   const [drawerOpen, setDrawerOpen] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
-  const [anchorEl, setAnchorEl] = React.useState(null);
+  const [anchorEl] = React.useState(null);
 
-  const { setMessageCount, notificationOpen, setNotificationOpen } =
-    useContext(ApplicationContext);
+  const { notificationOpen } = useContext(ApplicationContext);
 
   let history = useHistory();
 
   React.useEffect(() => {
-    console.log("MuiLayout push");
     if (notificationOpen === true) {
-      console.log("MuiLayout gepushed");
       history.push("/notification");
     }
   }, [notificationOpen]);

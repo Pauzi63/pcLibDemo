@@ -8,8 +8,8 @@ import { useLocalStorage } from "../p5coreLib/utils/useLocalStorage";
 // Großschreibung notwendig, da ein Hook verwendet wird!
 // hier muss die Anzahl der noch nicht gelesenen Notification ermittelt werden
 export function GetNotificationCounter() {
-  const [notificatonId, setNotificationId] = useLocalStorage<any>(
-    `${globals.appName}` + ".NOTIFICATIONID",
+  const [notificatonId] = useLocalStorage<any>(
+    `${globals.appName}.NOTIFICATIONID`,
     0
   );
 

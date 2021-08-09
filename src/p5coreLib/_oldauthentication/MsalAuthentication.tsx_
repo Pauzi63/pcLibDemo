@@ -12,6 +12,8 @@ import { AuthProvider } from "./MsalAuthProvider";
 import ErrorPage from "../commonPages/ErrorPage";
 import LoadingPage from "../commonPages/LoadingPage";
 import BlankPage from "../commonPages/BlankPage";
+import axios from "axios";
+import { setToken } from "./tokenstorage";
 
 const MsalAuthentication = (props: { children: any }) => {
   const { children } = props;
@@ -21,24 +23,48 @@ const MsalAuthentication = (props: { children: any }) => {
   const [aadError, setAadError] = React.useState();
 
   async function loginToKrmCore(loginName: string, password: string) {
-    const jwtAuthentication = new JwtAuthentication();
-    return await jwtAuthentication
-      .authenticate(loginName, password)
-      .then(() => {
-        return jwtAuthentication.token;
-      })
-      .then(() => {
+    // const jwtAuthentication = new JwtAuthentication();
+    // return await jwtAuthentication
+    //   .authenticate(loginName, password)
+    //   .then(() => {
+    //     return jwtAuthentication.token;
+    //   })
+    //   .then(() => {
+    //     setIsAuthenticated(true);
+    //   })
+    //   .catch((reject) => {
+    //     setIsAuthenticated(false);
+    //     setAadError(reject.err);
+    //   });
+    await axios
+      .post(
+        `${process.env.REACT_APP_API_URL}/Authentication`,
+        JSON.stringify({
+          networkId: loginName,
+          application: globals.appName,
+        }),
+        {
+          headers: {
+            "Content-Type": "application/json; charset=utf-8",
+          },
+        }
+      )
+      .then((response) => {
+        setToken(response.data.token);
         setIsAuthenticated(true);
       })
-      .catch((reject) => {
+      .catch(() => {
         setIsAuthenticated(false);
-        setAadError(reject.err);
       });
   }
 
-  const timeout = useEffect(() => {
-    return () => clearTimeout(setTimeout(() => {}, 2000));
-  }, []);
+  // const timeout = useEffect(() => {
+  //   return () => clearTimeout(setTimeout(() => {}, 2000));
+  // }, []);
+
+  React.useEffect(() => {
+    console.log("isAuthenticated: ", { isAuthenticated });
+  }, [isAuthenticated]);
 
   return (
     <AzureAD provider={AuthProvider} forceLogin={true}>
@@ -52,7 +78,7 @@ const MsalAuthentication = (props: { children: any }) => {
         return (
           <React.Fragment>
             {authenticationState === AuthenticationState.Unauthenticated && (
-              <BlankPage />
+              <LoadingPage />
             )}
             {authenticationState === AuthenticationState.InProgress && (
               <LoadingPage />
@@ -60,10 +86,12 @@ const MsalAuthentication = (props: { children: any }) => {
             {authenticationState === AuthenticationState.Authenticated &&
               isAuthenticated === true && <div>{children}</div>}
             {authenticationState === AuthenticationState.Authenticated &&
+              isAuthenticated === undefined && <LoadingPage />}
+            {authenticationState === AuthenticationState.Authenticated &&
               isAuthenticated === false && (
                 <ErrorPage code="KrmCore Error" message={aadError} />
               )}
-            {error && timeout && (
+            {error && (
               <ErrorPage code={error.errorCode} message={error.errorMessage} />
             )}
           </React.Fragment>

@@ -3,11 +3,11 @@ import NotificationCompontent from "../../components/NotificationComponent";
 import { ApplicationContext } from "../context/applicationContext";
 import globals from "../../p5Lib/globals";
 import { useLocalStorage } from "../utils/useLocalStorage";
-import { getCurrentNotificationId } from "../../p5Lib/p5LibNotification";
+import { getCurrentNotificationId } from "../../p5Lib/p5LibNotifiaction";
 
 interface Props {}
 
-const NotificationPage = () => {
+const NotificationPage = (props: Props) => {
   const { setMessageCount, setNotificationOpen } =
     useContext(ApplicationContext);
 
@@ -15,10 +15,6 @@ const NotificationPage = () => {
     `${globals.appName}.NOTIFICATIONID`,
     0
   );
-
-  function doit(x: number) {
-    console.log("doit: ", x);
-  }
 
   function notificationConfirmed() {
     setMessageCount(0); // Notification Icon auf 0 setzen

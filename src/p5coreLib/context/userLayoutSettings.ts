@@ -1,9 +1,9 @@
-import { createContext, Dispatch, SetStateAction } from 'react';
+import { createContext } from "react";
 
 const initialState = {
   darkMode: false,
   setDarkMode: (darkMode: boolean) => {},
-  language: null as string | null,
+  language: null as string | null | undefined,
   setLanguage: (language: string) => {},
 };
 

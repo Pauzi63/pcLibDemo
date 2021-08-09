@@ -14,7 +14,7 @@ import {
 import NotificationsIcon from "@material-ui/icons/Notifications";
 import MenuIcon from "@material-ui/icons/Menu";
 import AccountCircle from "@material-ui/icons/AccountCircle";
-import AddIcon from "@material-ui/icons/Add";
+import { useMsal } from "@azure/msal-react";
 
 import classNames from "classnames";
 
@@ -25,7 +25,9 @@ import flagUK from "../../assets/flag-united-kingdom-64.png";
 import globals from "../../../p5Lib/globals";
 import { UserLayoutSettings } from "../../context/userLayoutSettings";
 import { ApplicationContext } from "../../context/applicationContext";
-import { getFullNameFromToken } from "../../utils/useJWT";
+//import { getFullNameFromToken } from "../../utils/useJWT";
+// import { useGetAccountInfo } from "../../utils/useGetAccountInfo";
+import { useHistory } from "react-router-dom";
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -48,6 +50,7 @@ const useStyles = makeStyles((theme: Theme) =>
     },
     imgLogo: {
       marginRight: 8,
+      cursor: "pointer",
     },
     title: {
       flexGrow: 1,
@@ -90,12 +93,16 @@ interface Props {
 }
 
 const Header = (props: Props) => {
-  const classes = useStyles();
   const { drawerOpen, setDrawerOpen, mobileOpen, setMobileOpen } = props;
+  const classes = useStyles();
+  const history = useHistory();
+  const { accounts } = useMsal();
+  // const username = accounts[0].username;
+
   const { darkMode, setDarkMode, language, setLanguage } =
     useContext(UserLayoutSettings);
   const { messageCount, setNotificationOpen } = useContext(ApplicationContext);
-  const [currentUserName, setCurrentUserName] = React.useState("");
+  const [currentUserName, setCurrentUserName] = React.useState<string>("");
 
   const handleDrawerToggle = () => {
     setMobileOpen(!mobileOpen);
@@ -115,48 +122,57 @@ const Header = (props: Props) => {
   };
 
   React.useEffect(() => {
-    setCurrentUserName(getFullNameFromToken());
+    setCurrentUserName((accounts[0].name ?? accounts[0].name) || "");
   }, []);
 
   return (
     <div className={classes.root}>
       <AppBar position="fixed" className={classes.appBar} color="inherit">
         <Toolbar>
-          <Hidden smUp implementation="css">
-            <IconButton
-              color="inherit"
-              aria-label="Open drawer"
-              onClick={handleDrawerToggle}
-              className={classes.menuButton}
-            >
-              <AddIcon />
-            </IconButton>
-          </Hidden>
-          <Hidden xsDown implementation="css">
-            <IconButton
-              color="inherit"
-              aria-label="Open drawer"
-              onClick={handleDrawerOpen}
-              className={classNames(
-                classes.menuButtonDesktop,
-                drawerOpen && classes.hide
-              )}
-            >
-              <MenuIcon />
-            </IconButton>
-            <IconButton
-              color="inherit"
-              aria-label="Close drawer"
-              onClick={handleDrawerClose}
-              className={classNames(
-                classes.menuButtonDesktop,
-                !drawerOpen && classes.hide
-              )}
-            >
-              <MenuIcon />
-            </IconButton>
-          </Hidden>
-          <img src={logo} alt="logo" className={classes.imgLogo} />
+          {globals.showMenuIcon && (
+            <div>
+              <Hidden smUp implementation="css">
+                <IconButton
+                  color="inherit"
+                  aria-label="Open drawer"
+                  onClick={handleDrawerToggle}
+                  className={classes.menuButton}
+                >
+                  <MenuIcon />
+                </IconButton>
+              </Hidden>
+              <Hidden xsDown implementation="css">
+                <IconButton
+                  color="inherit"
+                  aria-label="Open drawer"
+                  onClick={handleDrawerOpen}
+                  className={classNames(
+                    classes.menuButtonDesktop,
+                    drawerOpen && classes.hide
+                  )}
+                >
+                  <MenuIcon />
+                </IconButton>
+                <IconButton
+                  color="inherit"
+                  aria-label="Close drawer"
+                  onClick={handleDrawerClose}
+                  className={classNames(
+                    classes.menuButtonDesktop,
+                    !drawerOpen && classes.hide
+                  )}
+                >
+                  <MenuIcon />
+                </IconButton>
+              </Hidden>
+            </div>
+          )}
+          <img
+            src={logo}
+            alt="logo"
+            className={classes.imgLogo}
+            onClick={() => history.push("/")}
+          />
           <Typography
             className={classes.title}
             variant="h6"
@@ -169,51 +185,57 @@ const Header = (props: Props) => {
           {/* <Hidden xsDown implementation="css">
             <div className={classes.grow} />
           </Hidden> */}
-          <MenuItem>
-            <IconButton color="inherit">
-              <Badge badgeContent={messageCount} color="secondary">
-                <NotificationsIcon onClick={handleNotificationOpen} />
-              </Badge>
-            </IconButton>
-          </MenuItem>
+          {globals.showNotificationIcon && (
+            <MenuItem>
+              <IconButton color="inherit">
+                <Badge badgeContent={messageCount} color="secondary">
+                  <NotificationsIcon onClick={handleNotificationOpen} />
+                </Badge>
+              </IconButton>
+            </MenuItem>
+          )}
           <div hidden className={classes.grow} />
-          <Tooltip title={"changeLanguage"}>
-            <div>
-              {language === "de" && (
-                <img
-                  src={flagAT}
-                  alt={"language"}
-                  className={classes.imgFlag}
-                  onClick={() => setLanguage("en")}
-                />
-              )}
-              {language === "en" && (
-                <img
-                  src={flagUK}
-                  alt={"language"}
-                  className={classes.imgFlag}
-                  onClick={() => setLanguage("de")}
-                />
-              )}
-            </div>
-          </Tooltip>
+          {globals.showLanguageIcon && (
+            <Tooltip title={"changeLanguage"}>
+              <div>
+                {language === "de" && (
+                  <img
+                    src={flagAT}
+                    alt={"language"}
+                    className={classes.imgFlag}
+                    onClick={() => setLanguage("en")}
+                  />
+                )}
+                {language === "en" && (
+                  <img
+                    src={flagUK}
+                    alt={"language"}
+                    className={classes.imgFlag}
+                    onClick={() => setLanguage("de")}
+                  />
+                )}
+              </div>
+            </Tooltip>
+          )}
           <Tooltip title={darkMode ? "switchToLightMode" : "switchToDarkMode"}>
             <Switch
               checked={darkMode}
               onChange={() => setDarkMode(!darkMode)}
             />
           </Tooltip>
-          <Hidden xsDown implementation="css">
-            <div>
-              <Tooltip
-                title={currentUserName}
-                classes={{ tooltip: classes.lightTooltip }}
-                placement="bottom"
-              >
-                <AccountCircle />
-              </Tooltip>
-            </div>
-          </Hidden>
+          {globals.showAvatar && (
+            <Hidden xsDown implementation="css">
+              <div>
+                <Tooltip
+                  title={currentUserName}
+                  classes={{ tooltip: classes.lightTooltip }}
+                  placement="bottom"
+                >
+                  <AccountCircle />
+                </Tooltip>
+              </div>
+            </Hidden>
+          )}
         </Toolbar>
       </AppBar>
     </div>

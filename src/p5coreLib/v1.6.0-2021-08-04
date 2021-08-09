@@ -1,3 +1,14 @@
+v1.6.0-2021-08-04
+neu: 
+globals.ts neu: showMenuIcon, showAvatar
+
+v1.5.0-2021-07-22
+KrmTheme Anpassungen
+neu: 
+- p5coreLib Localiziation.tsx
+- p5Lib     languages, useStyles
+- globals   showNotificationIcon, showLanguageSelection
+
 v1.4.0-2021-07-11
 neuer Endpoint /api/UserAccount/userpermission/{userAccountGuid}/application/{application}
 globals.ts: der appName: muss mit KrmCore Tabelle ApplicationConfiguration genau übereinstimmen!

@@ -1,5 +1,5 @@
 import { makeStyles } from "@material-ui/core/styles";
-import globals from "../../p5Lib/globals";
+import globals from "../globals";
 
 import KrmTheme from "./krmTheme";
 
