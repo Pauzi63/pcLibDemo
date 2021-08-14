@@ -9,7 +9,7 @@ const globals = {
   // App
   appName: "KrmDemo",
   appDisplayName: "Demo Template Applikation",
-  appVersion: "v 0.4 2021-05-24",
+  appVersion: "v 0.5 2021-08-09",
 
   // Theme
   darkModeKey: "dark-mode-enabled",
@@ -30,16 +30,19 @@ const globals = {
 
   // HamburgerMenu anzeigen true oder false
   showMenuIcon: true,
+  sideBarOpen: false,
 
   // Avatar anzeigen
   showAvatar: true,
 
   // Localization
   languageKey: "language",
-  languageDefault: "en",
+  languageDefault: "de",
   numeralLocale: "de",
 
   guidDefault: "00000000-0000-0000-0000-000000000000",
+
+  azureScopes: ["User.Read", "OpenId", "profile"],
 
   // Google-API
   googleMapsApiKey: "6Lfna9UZAAAAAJvR7SX4F5htPata_CXOJ4AWGMYd",

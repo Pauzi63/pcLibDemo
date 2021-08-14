@@ -1,13 +1,14 @@
 import React, { useContext, useState } from "react";
-import { CssBaseline } from "@material-ui/core";
-import { useHistory } from "react-router-dom";
 
-import useStyles from "../../../p5Lib/styles/useStyles";
+import { ApplicationContext } from "../../context/applicationContext";
+import Content from "./Content";
+import { CssBaseline } from "@material-ui/core";
+import Footer from "./Footer";
 import Header from "./Header";
 import Sidebar from "./Sidebar";
-import Footer from "./Footer";
-import Content from "./Content";
-import { ApplicationContext } from "../../context/applicationContext";
+import globals from "../../../p5Lib/globals";
+import { useHistory } from "react-router-dom";
+import useStyles from "../../../p5Lib/styles/useStyles";
 
 // const useStyles = makeStyles((theme: Theme) =>
 //   createStyles({
@@ -21,7 +22,7 @@ export default function MuiLayout(props: { children: any }) {
   const { children } = props;
   const classes = useStyles();
 
-  const [drawerOpen, setDrawerOpen] = useState(false);
+  const [drawerOpen, setDrawerOpen] = useState(globals.sideBarOpen);
   const [mobileOpen, setMobileOpen] = useState(false);
   const [anchorEl] = React.useState(null);
 
