@@ -1,3 +1,6 @@
+v1.7.0-2021-08-14
+Add react-error-boundary
+
 v1.6.0-2021-08-09
 neu: 
 globals.ts neu: showMenuIcon, showAvatar, azureScopes, sideBarOpen

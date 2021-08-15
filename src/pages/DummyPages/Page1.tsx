@@ -1,11 +1,14 @@
 import React, { useContext } from "react";
-import { Button } from "@material-ui/core";
+
 import { ApplicationContext } from "../../p5coreLib/context/applicationContext";
+import { Button } from "@material-ui/core";
 import ConfirmationDialog from "../../p5coreLib/commonPages/ConfirmationDialog";
+import { useErrorHandler } from "react-error-boundary";
 
 const Page1 = () => {
   const { messageCount, setMessageCount } = useContext(ApplicationContext);
   const [isOpen, setIsOpen] = React.useState(false);
+  const handleError = useErrorHandler();
 
   function onCancelClicked() {
     console.log("Cancel!");
@@ -49,6 +52,28 @@ const Page1 = () => {
         onClick={() => setMessageCount(messageCount + 1)}
       >
         Nachricht hinzufügen
+      </Button>
+      <br />
+      <br />
+      <Button
+        variant="outlined"
+        color="primary"
+        onClick={() => {
+          throw new Error("Da ist irgendein Fehler aufgetreten");
+        }}
+      >
+        Throw Error
+      </Button>
+      <br />
+      <br />
+      <Button
+        variant="outlined"
+        color="primary"
+        onClick={() => {
+          let x = 15 / 0;
+        }}
+      >
+        Division durch 0
       </Button>
     </React.Fragment>
   );
