@@ -7,7 +7,7 @@ import Page2 from "../pages/DummyPages/Page2";
 import Page3 from "../pages/DummyPages/Page3";
 import Page4 from "../pages/DummyPages/Page4";
 import Page5 from "../pages/DummyPages/Page5";
-import MsGraph from "../pages/DummyPages/MsGraph";
+import MsGraph from "../pages/DummyPages/MsGraph/MsGraph";
 import FilePondPage from "../pages/DummyPages/FilePondDemo";
 import MaterialTableListPage1 from "../pages/MaterialTable/MaterialTableListPage1";
 import MaterialTableDetailPage1 from "../pages/MaterialTable/MaterialTableDetailPage1";

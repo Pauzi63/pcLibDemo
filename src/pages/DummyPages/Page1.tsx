@@ -4,11 +4,15 @@ import { ApplicationContext } from "../../p5coreLib/context/applicationContext";
 import { Button } from "@material-ui/core";
 import ConfirmationDialog from "../../p5coreLib/commonPages/ConfirmationDialog";
 import { useErrorHandler } from "react-error-boundary";
+import useAccessToken from "../../p5coreLib/utils/getAADToken";
 
 const Page1 = () => {
   const { messageCount, setMessageCount } = useContext(ApplicationContext);
   const [isOpen, setIsOpen] = React.useState(false);
   const handleError = useErrorHandler();
+
+  const [xx, setXx] = React.useState<string | null>();
+  const xxx = useAccessToken();
 
   function onCancelClicked() {
     console.log("Cancel!");
@@ -17,6 +21,14 @@ const Page1 = () => {
   function onConfirmedClicked() {
     console.log("Confirmed!");
   }
+
+  // React.useEffect(() => {
+  //   setXx(useAccessToken());
+  // }, []);
+
+  React.useEffect(() => {
+    console.log("xxx: ", xxx);
+  }, [xxx]);
 
   return (
     <React.Fragment>
