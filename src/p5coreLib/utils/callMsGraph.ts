@@ -4,7 +4,7 @@
 import React from "react";
 import axios from "axios";
 import { graphConfig } from "../authentication/authConfig";
-import useAccessToken from "./getAccessToken";
+// import useAccessToken from "./getAccessToken";
 import { useQuery } from "react-query";
 
 export async function callMsGraph(accessToken: string) {

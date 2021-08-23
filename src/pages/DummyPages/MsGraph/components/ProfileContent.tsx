@@ -2,7 +2,7 @@ import { AccountInfo, InteractionRequiredAuthError } from "@azure/msal-browser";
 import { GraphData, ProfileData } from "./ProfileData";
 import { useEffect, useState } from "react";
 
-import getAccessToken from "../../../../p5coreLib/utils/getAccessToken";
+import { getAccessToken } from "../../../../p5coreLib/utils/getAccessToken";
 import { Paper } from "@material-ui/core";
 import React from "react";
 import { loginRequest } from "../../../../p5coreLib/authentication/authConfig";
