@@ -20,7 +20,7 @@ export async function getAccessToken(
 
   // if (accounts.length > 0) {
   const request = {
-    scopes: ["User.Read"],
+    scopes: ["User.Read"], //, "Device.Read.All"
     account: accounts[0],
   };
   await instance
@@ -28,7 +28,6 @@ export async function getAccessToken(
     .then((response) => {
       console.log("token response: ", response);
       console.log("token accessToken: ", response.accessToken);
-      // setAccessToken(response.accessToken);
       retValue = response.accessToken;
     })
     .catch((error) => {
@@ -36,7 +35,6 @@ export async function getAccessToken(
       // acquireTokenSilent can fail for a number of reasons, fallback to interaction
       if (error instanceof InteractionRequiredAuthError) {
         instance.acquireTokenPopup(request).then((response) => {
-          // setAccessToken(response.accessToken);
           retValue = response.accessToken;
         });
       }
