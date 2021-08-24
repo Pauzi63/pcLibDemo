@@ -20,7 +20,7 @@ export async function getAccessToken(
 
   // if (accounts.length > 0) {
   const request = {
-    scopes: ["User.Read"], //, "Device.Read.All"
+    scopes: ["User.Read", "Device.Read"], //, "Device.Read.All"
     account: accounts[0],
   };
   await instance

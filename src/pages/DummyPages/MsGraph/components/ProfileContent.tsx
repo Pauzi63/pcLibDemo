@@ -6,9 +6,10 @@ import { Paper } from "@material-ui/core";
 import { GraphData, ProfileData } from "./ProfileData";
 import { callMsGraphMe } from "../../../../p5coreLib/utils/callMsGraph";
 import { getAccessToken } from "../../../../p5coreLib/utils/getAccessToken";
+import { AccountInfo, IPublicClientApplication } from "@azure/msal-browser";
 
 const ProfileContent = () => {
-  const { instance, inProgress, accounts } = useMsal();
+  const { instance, accounts } = useMsal();
   const [accessToken, setAccessToken] = React.useState<string>("");
   const [graphData, setGraphData] = React.useState<null | GraphData>(null);
 
@@ -22,9 +23,15 @@ const ProfileContent = () => {
   );
 
   React.useEffect(() => {
-    getAccessToken(instance, accounts).then((tok) => {
-      setAccessToken(tok);
-    });
+    async function getToken(
+      instance: IPublicClientApplication,
+      accounts: AccountInfo[]
+    ) {
+      const token = await getAccessToken(instance, accounts);
+      console.log("token: ", token);
+      setAccessToken(token);
+    }
+    getToken(instance, accounts);
   }, []);
 
   React.useEffect(() => {
@@ -36,12 +43,6 @@ const ProfileContent = () => {
 
   return (
     <>
-      <div>Na Hallo {accessToken}</div>
-      <br />
-      <div>Anzahl accounts {accounts.length}</div>
-      <br />
-      Franzi
-      <br />
       <Paper>
         {graphQuery.data ? <ProfileData graphData={graphQuery.data} /> : null}
       </Paper>

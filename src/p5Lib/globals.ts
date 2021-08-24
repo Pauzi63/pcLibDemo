@@ -42,7 +42,7 @@ const globals = {
 
   guidDefault: "00000000-0000-0000-0000-000000000000",
 
-  azureScopes: ["User.Read", "openid", "profile"], //"Device.Read.All"
+  azureScopes: ["User.Read", "openid", "profile", "Device.Read"], //"Device.Read.All"
 
   // Google-API
   googleMapsApiKey: "6Lfna9UZAAAAAJvR7SX4F5htPata_CXOJ4AWGMYd",
