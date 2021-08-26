@@ -8,15 +8,17 @@ import Header from "./Header";
 import Sidebar from "./Sidebar";
 import globals from "../../../p5Lib/globals";
 import { useHistory } from "react-router-dom";
-import useStyles from "../../../p5Lib/styles/useStyles";
+import { createStyles, Theme, makeStyles } from "@material-ui/core/styles";
+// import useStyles from "../../../p5Lib/styles/useStyles";
 
-// const useStyles = makeStyles((theme: Theme) =>
-//   createStyles({
-//     root: {
-//       display: "flex",
-//     },
-//   })
-// );
+const useStyles = makeStyles((theme: Theme) =>
+  createStyles({
+    root: {
+      display: "flex",
+      aligncontent: "flex-start",
+    },
+  })
+);
 
 export default function MuiLayout(props: { children: any }) {
   const { children } = props;
