@@ -4,18 +4,23 @@ import { useQuery } from "react-query";
 import { Paper } from "@material-ui/core";
 
 import { GraphData, ProfileData } from "./ProfileData";
-import { callMsGraphMe } from "../../../../p5coreLib/utils/callMsGraph";
+import { callMsGraphDevices } from "../../../../p5coreLib/utils/callMsGraph";
 import { getAccessToken } from "../../../../p5coreLib/utils/getAccessToken";
 import { AccountInfo, IPublicClientApplication } from "@azure/msal-browser";
 
-const ProfileContent = () => {
-  const { instance, accounts } = useMsal();
+const OwnDevicesContent = () => {
+  const { instance, inProgress, accounts } = useMsal();
   const [accessToken, setAccessToken] = React.useState<string>("");
   const [graphData, setGraphData] = React.useState<null | GraphData>(null);
+  const [xx, setXx] = React.useState<string>();
 
   const graphQuery = useQuery(
-    ["GetMsGraph", accessToken],
-    async () => callMsGraphMe(accessToken),
+    ["GetMsGraphDevices", accessToken],
+    async () =>
+      callMsGraphDevices(
+        accessToken,
+        "christian.pauzenberger@kremsmueller.com"
+      ),
     {
       retry: 0,
       enabled: false,
@@ -41,13 +46,17 @@ const ProfileContent = () => {
     }
   }, [accessToken]);
 
+  React.useEffect(() => {
+    if (graphQuery.data !== null) {
+      setXx(JSON.stringify(graphQuery.data));
+    }
+  }, [graphQuery.data]);
+
   return (
     <>
-      <Paper>
-        {graphQuery.data ? <ProfileData graphData={graphQuery.data} /> : null}
-      </Paper>
+      <Paper>{graphQuery.data ? <div>{xx}</div> : null}</Paper>
     </>
   );
 };
 
-export default ProfileContent;
+export default OwnDevicesContent;

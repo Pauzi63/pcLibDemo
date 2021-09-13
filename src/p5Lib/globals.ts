@@ -30,7 +30,7 @@ const globals = {
 
   // HamburgerMenu anzeigen true oder false
   showMenuIcon: true,
-  sideBarOpen: false,
+  sideBarOpen: true,
 
   // Avatar anzeigen
   showAvatar: true,

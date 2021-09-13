@@ -122,7 +122,11 @@ const Header = (props: Props) => {
   };
 
   React.useEffect(() => {
-    setCurrentUserName((accounts[0].name ?? accounts[0].name) || "");
+        if (accounts.length > 0) {
+      setCurrentUserName((accounts[0].name ?? accounts[0].name) || "");
+    } else {
+      setCurrentUserName("");
+    }
   }, []);
 
   return (
