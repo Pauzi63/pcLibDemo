@@ -146,6 +146,13 @@
       "vorname": "08",
       "nachname": "21",
       "ort": "06:41"
+    },
+    {
+      "id": 29,
+      "baustelle": "Paustelle 2 ab",
+      "vorname": "Andrea",
+      "nachname": "Göpfert",
+      "ort": "Schlüßlberg"
     }
   ],
   "authentication": {
